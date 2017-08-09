@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-09T08:50:21.316Z</updated>
+  <updated>2017-08-09T09:08:52.715Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Unity优化（一）：Draw Call</title>
+    <title>Unity优化(一)：Draw Call</title>
     <link href="http://yoursite.com/2017/08/09/draw%20call/"/>
     <id>http://yoursite.com/2017/08/09/draw call/</id>
     <published>2017-08-09T08:44:18.818Z</published>
-    <updated>2017-08-09T08:50:21.316Z</updated>
+    <updated>2017-08-09T09:08:52.715Z</updated>
     
     <summary type="html">
     
@@ -37,12 +37,11 @@
     <link href="http://yoursite.com/2017/08/04/shader1/"/>
     <id>http://yoursite.com/2017/08/04/shader1/</id>
     <published>2017-08-04T06:55:01.075Z</published>
-    <updated>2017-08-09T01:44:18.106Z</updated>
+    <updated>2017-08-09T09:03:17.152Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;shader入门笔记&lt;/p&gt;
-&lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;shader（着色器）实际上就是一小段程序，它负责将输入的Mes
+      &lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;shader（着色器）实际上就是一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图或
     
     </summary>
     
