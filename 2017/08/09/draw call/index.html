@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Wed Aug 09 2017 16:44:18 GMT+0800" />
-        <meta property="article:modified_time" content="Wed Aug 09 2017 17:56:55 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Aug 09 2017 18:02:00 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity优化（一）：Draw Call",
     "url": "http://yoursite.com/2017/08/09/draw call/index.html",
     "datePublished": "Wed Aug 09 2017 16:44:18 GMT+0800",
-    "dateModified": "Wed Aug 09 2017 17:56:55 GMT+0800",
+    "dateModified": "Wed Aug 09 2017 18:02:00 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -470,7 +470,7 @@
 <li>让GPU在单位时间内获得充分的负载</li>
 <li>GPU在Draw Call之间，为了防止前后Draw的依赖关系造成绘制错误或者资源竞用，一般会在Draw Call后Flush整个流水线，小粒度的Draw Call对GPU流水线来说是个很大的浪费。虽然说理论上来说可以让硬件的不同单元运行在不同的Context上，但是这一设计需要不小的成本，也增加了很多的复杂度。</li>
 </ul>
-<h2 id="如何优化Draw-Call？"><a href="#如何优化Draw-Call？" class="headerlink" title="如何优化Draw Call？"></a>如何优化Draw Call？</h2><p>&emsp;&emsp;Unity 内置了一个Draw Call Batching 的技术。它的主要目的是在同一次Draw Call 中批处理多个物体。<strong>只要物体的变换和材质相同，GPU就可以按完全相同的方式进行处理，即可以把它们放在一个Draw Call中。</strong> Draw Call Batching技术的核心就是在可见性测试之后，检查所有要绘制的物体的材质，把相同材质的分为一组（一个Batch），然后把它们组合成一个物体（统一变换），这样就可以在一个Draw Call中处理多个物体了（实际上是组合后的一个物体）。但Draw Call Batching存在一个缺陷，就是它需要把一个Batch中的所有物体组合到一起，相当于创建了一个与这些物体加起来一样大的物体，与此同时就需要分配相应大小的内存。这不仅会消耗更多内存，还需要消耗CPU时间。特别是对于移动的物体，每一帧都得重新进行组合，这就需要进行一些权衡，否则得不偿失。但对于静止不动的物体来说，只需要进行一次组合，之后就可以一直使用，效率要高得多。<strong>Unity提供了Dynamic Batching和Static Batching两种方式。</strong> Dynamic Batching是完全自动进行的，不需要也无法进行任何干预，对于顶点数在300以内的可移动物体，只要使用相同的材质，就会组成Batch。Static Batching则需要把静止的物体标记为Static，然后无论大小，都会组成Batch。如前文所说，Static Batching显然比Dynamic Batching要高效得多。&emsp;&emsp;<strong>要有效利用Draw Call Batching：</strong></p>
+<h2 id="如何优化Draw-Call？"><a href="#如何优化Draw-Call？" class="headerlink" title="如何优化Draw Call？"></a>如何优化Draw Call？</h2><p>&emsp;&emsp;Unity 内置了一个Draw Call Batching 的技术。它的主要目的是在同一次Draw Call 中批处理多个物体。<strong>只要物体的变换和材质相同，GPU就可以按完全相同的方式进行处理，即可以把它们放在一个Draw Call中。</strong> Draw Call Batching技术的核心就是在可见性测试之后，检查所有要绘制的物体的材质，把相同材质的分为一组（一个Batch），然后把它们组合成一个物体（统一变换），这样就可以在一个Draw Call中处理多个物体了（实际上是组合后的一个物体）。但Draw Call Batching存在一个缺陷，就是它需要把一个Batch中的所有物体组合到一起，相当于创建了一个与这些物体加起来一样大的物体，与此同时就需要分配相应大小的内存。这不仅会消耗更多内存，还需要消耗CPU时间。特别是对于移动的物体，每一帧都得重新进行组合，这就需要进行一些权衡，否则得不偿失。但对于静止不动的物体来说，只需要进行一次组合，之后就可以一直使用，效率要高得多。<strong>Unity提供了Dynamic Batching和Static Batching两种方式。</strong> Dynamic Batching是完全自动进行的，不需要也无法进行任何干预，对于顶点数在300以内的可移动物体，只要使用相同的材质，就会组成Batch。Static Batching则需要把静止的物体标记为Static，然后无论大小，都会组成Batch。如前文所说，Static Batching显然比Dynamic Batching要高效得多。<strong>要有效利用Draw Call Batching：</strong></p>
 <ul>
 <li>尽量减少场景中使用的材质数量，即尽量共享材质，对于仅纹理不同的材质可以把纹理组合到一张更大的纹理中（称为Texture Atlasing）</li>
 <li>把不会移动的物体标记为Static。此外还可以通过CombineChildren脚本（Standard Assets/Scripts/Unity Scripts/CombineChildren）手动把物体组合在一起，但这个脚本会影响可见性测试，因为组合在一起的物体始终会被看作一个物体，从而会增加GPU要处理的几何体数量，因此要小心使用。</li>
