@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>kurong00</title>
+  <subtitle>Zero World</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-08-09T01:44:18.106Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>kurong00</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity Shader 入门（一）</title>
+    <link href="http://yoursite.com/2017/08/04/shader1/"/>
+    <id>http://yoursite.com/2017/08/04/shader1/</id>
+    <published>2017-08-04T06:55:01.075Z</published>
+    <updated>2017-08-09T01:44:18.106Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;shader入门笔记&lt;/p&gt;
+&lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;shader（着色器）实际上就是一小段程序，它负责将输入的Mes
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
