@@ -291,7 +291,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -495,7 +495,61 @@
 <li>表面着色器（Surface Shader） – 为你做了大部分的工作，只需要简单的技巧即可实现很多不错的效果。类比卡片机，上手以后不太需要很多努力就能拍出不错的效果。</li>
 <li>片段着色器（Fragment Shader） – 可以做的事情更多，但是也比较难写。使用片段着色器的主要目的是可以在比较低的层级上进行更复杂（或者针对目标设备更高效）的开发</li>
 </ul>
-<h2 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">Shader &quot;Custom/Diffuse Texture&quot; </div><div class="line">&#123;</div><div class="line">	Properties &#123;</div><div class="line">		//_Color:类似变量名</div><div class="line">		//&quot;Color&quot;:显示在面板上的名字</div><div class="line">		//Color:类型</div><div class="line">		//(1，1，1，1):默认值</div><div class="line">		_Color (&quot;Color&quot;, Color) = (1,1,1,1)</div><div class="line">		_MainTex (&quot;Albedo (RGB)&quot;, 2D) = &quot;white&quot; &#123;&#125;</div><div class="line">		_Glossiness (&quot;Smoothness&quot;, Range(0,1)) = 0.5</div><div class="line">		_Metallic (&quot;Metallic&quot;, Range(0,1)) = 0.0</div><div class="line">	&#125;</div><div class="line">	SubShader &#123;</div><div class="line">		//标签，Opaque为渲染非透明物体</div><div class="line">		Tags &#123; &quot;RenderType&quot;=&quot;Opaque&quot; &#125;</div><div class="line">		//Level of Details的缩写，200为unity内置的数值</div><div class="line">		LOD 200</div><div class="line">		//表示这是一段Cg程序，和结尾的ENDCG对应</div><div class="line">		CGPROGRAM</div><div class="line">		//编译指令</div><div class="line">		//1.surface：表示是表面着色器；2.surf：表示着色器代码方法的名字</div><div class="line">		//3.Standard：表示使用的光照模型，这里为标准光照</div><div class="line">		#pragma surface surf Standard fullforwardshadows</div><div class="line">		#pragma target 3.0</div><div class="line">		//sampler2D就是GLSL中的2D贴图的类型,在这段Cg程序中要想访问Properties中的变量</div><div class="line">		//必须使用和之前变量相同的名字进行声明</div><div class="line"></div><div class="line">		sampler2D _MainTex;</div><div class="line">		struct Input &#123;</div><div class="line">			//UV mapping的作用是将一个2D贴图上的点按照一定规则映射到3D模型上是3D渲染中最常见的一种顶点处理</div><div class="line">			//手段。在CG程序中，在一个贴图变量例如上面的 &quot;_MainTex&quot; 之前加上uv两个字母，就代表提取它的uv值</div><div class="line">			float2 uv_MainTex;</div><div class="line">		&#125;;</div><div class="line">		half _Glossiness;</div><div class="line">		half _Metallic;</div><div class="line">		fixed4 _Color;</div><div class="line">		</div><div class="line">		UNITY_INSTANCING_CBUFFER_START(Props)</div><div class="line">		UNITY_INSTANCING_CBUFFER_END</div><div class="line">		//shader的核心代码</div><div class="line">		void surf (Input IN, inout SurfaceOutputStandard o) &#123;</div><div class="line">			//这是CG程序中用来在一张贴图中对一个点进行采样的方法，返回一个float4</div><div class="line">			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;</div><div class="line">			//将其颜色的rbg值赋予了输出的像素颜色</div><div class="line">			o.Albedo = c.rgb;</div><div class="line">			o.Metallic = _Metallic;</div><div class="line">			o.Smoothness = _Glossiness;</div><div class="line">			//将a值赋予透明度</div><div class="line">			o.Alpha = c.a;</div><div class="line">		&#125;</div><div class="line">		ENDCG</div><div class="line">	&#125;</div><div class="line">	FallBack &quot;Diffuse&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h2><pre class=" language-HLSL"><code class="language-HLSL">Shader "Custom/Diffuse Texture" 
+{
+    Properties {
+        //_Color:类似变量名
+        //"Color":显示在面板上的名字
+        //Color:类型
+        //(1，1，1，1):默认值
+        _Color ("Color", Color) = (1,1,1,1)
+        _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        _Glossiness ("Smoothness", Range(0,1)) = 0.5
+        _Metallic ("Metallic", Range(0,1)) = 0.0
+    }
+    SubShader {
+        //标签，Opaque为渲染非透明物体
+        Tags { "RenderType"="Opaque" }
+        //Level of Details的缩写，200为unity内置的数值
+        LOD 200
+        //表示这是一段Cg程序，和结尾的ENDCG对应
+        CGPROGRAM
+        //编译指令
+        //1.surface：表示是表面着色器；2.surf：表示着色器代码方法的名字
+        //3.Standard：表示使用的光照模型，这里为标准光照
+        #pragma surface surf Standard fullforwardshadows
+        #pragma target 3.0
+        //sampler2D就是GLSL中的2D贴图的类型,在这段Cg程序中要想访问Properties中的变量
+        //必须使用和之前变量相同的名字进行声明
+
+        sampler2D _MainTex;
+        struct Input {
+            //UV mapping的作用是将一个2D贴图上的点按照一定规则映射到3D模型上是3D渲染中最常见的一种顶点处理
+            //手段。在CG程序中，在一个贴图变量例如上面的 "_MainTex" 之前加上uv两个字母，就代表提取它的uv值
+            float2 uv_MainTex;
+        };
+        half _Glossiness;
+        half _Metallic;
+        fixed4 _Color;
+
+        UNITY_INSTANCING_CBUFFER_START(Props)
+        UNITY_INSTANCING_CBUFFER_END
+        //shader的核心代码
+        void surf (Input IN, inout SurfaceOutputStandard o) {
+            //这是CG程序中用来在一张贴图中对一个点进行采样的方法，返回一个float4
+            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            //将其颜色的rbg值赋予了输出的像素颜色
+            o.Albedo = c.rgb;
+            o.Metallic = _Metallic;
+            o.Smoothness = _Glossiness;
+            //将a值赋予透明度
+            o.Alpha = c.a;
+        }
+        ENDCG
+    }
+    FallBack "Diffuse"
+}
+</code></pre>
 
     
 
