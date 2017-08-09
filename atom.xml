@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-09T09:08:52.715Z</updated>
+  <updated>2017-08-09T09:11:41.236Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,16 +16,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Unity优化(一)：Draw Call</title>
+    <title>Unity优化（一）：Draw Call</title>
     <link href="http://yoursite.com/2017/08/09/draw%20call/"/>
     <id>http://yoursite.com/2017/08/09/draw call/</id>
     <published>2017-08-09T08:44:18.818Z</published>
-    <updated>2017-08-09T09:08:52.715Z</updated>
+    <updated>2017-08-09T09:11:41.236Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Unity优化入门笔记&lt;/p&gt;
-&lt;h2 id=&quot;什么是Draw-Call？&quot;&gt;&lt;a href=&quot;#什么是Draw-Call？&quot; class=&quot;headerlink&quot; title=&quot;什么是Draw Call？&quot;&gt;&lt;/a&gt;什么是Draw Call？&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;
+      &lt;h2 id=&quot;什么是Draw-Call？&quot;&gt;&lt;a href=&quot;#什么是Draw-Call？&quot; class=&quot;headerlink&quot; title=&quot;什么是Draw Call？&quot;&gt;&lt;/a&gt;什么是Draw Call？&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;Unity生成一帧的画面的处
     
     </summary>
     
