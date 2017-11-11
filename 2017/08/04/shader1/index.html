@@ -141,6 +141,8 @@
         <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
         <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
         
+            <style id="/css/fontawesome.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("/css/fontawesome.min.css","/css/fontawesome.min.css?oOeExMqUwnGwM437AgVb5g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
         
         <!-- Config CSS -->
 
@@ -264,8 +266,101 @@
 
 
     
-        <body id="scheme-Nexus" class="lazy">
+        <body id="scheme-Isolation" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+                    <!-- Isolation Header -->
+                    <header class="header">
+    <div class="header-wrapper">
+        <!-- Header Copyright -->
+        <div class="header-copyright">
+            <div class="header-site">
+                ©&nbsp;
+                <script type="text/javascript">
+                    var fd = new Date();
+                    document.write(fd.getFullYear());
+                </script>
+                &nbsp;kurong00
+            </div>
+            <!--
+            I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+            It will not impact the appearance and can give developers a lot of support :)
+
+            很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+            它不会影响美观并可以给开发者很大的支持。 :)
+            -->
+            <div>
+                Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a>
+                <br>
+                Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a>
+            </div>
+        </div>
+
+        <!-- Header Title -->
+        <span class="header-title header-item">
+            <a href="/" title="kurong00">
+                kurong00
+            </a>
+        </span>
+
+        <p class="header-slogan header-item">
+        
+            
+                Hakuna Matata
+            
+        
+        </p>
+
+        <!-- Header Nav -->
+        <nav class="header-nav header-item">
+            <span class="header-nav-item">
+                <a href="/" title="Home">
+                    <span>主页</span>
+                </a>
+            </span>
+
+            <!-- Pages  -->
+            
+            
+        </nav>
+
+        <!-- Header SNS -->
+        <div class="header-item header-sns_list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/kurong00" target="_blank">
+            <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+        </a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+    </div>
+</header>
+
                 
 
                 <!-- Main Container -->
@@ -294,6 +389,21 @@
                 
 
 
+    <!-- Isolation Post Header -->
+    <!-- Post thumbnail -->
+    
+        <!-- Post Header Info -->
+        <div class="post-header_info without-thumbnail">
+            <!-- Author Avatar & Name -->
+            <img src="/img/avatar1.png" class="avatar-img" width="44px" height="44px" alt="kurong00's avatar">
+            <span class="name-span">kurong00</span>
+        </div>
+
+        <!-- Null Thumbnail -->
+        <div class="post_thumbnail-null">
+    
+        </div>
+
 
 
                 
@@ -303,9 +413,26 @@
     
 
     
+        <div class="post-content_wrapper">
+            <p class="post-title">
+                Unity Shader 入门（一）
+            </p>
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>&emsp;&emsp;shader（着色器）实际上就是一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图或者颜色等组合作用，然后输出。绘图单元可以依据这个输出来将图像绘制到屏幕上。输入的贴图或者颜色等，加上对应的Shader，以及对Shader的特定的参数设置，将这些内容（Shader及输入参数）打包存储在一起，得到的就是一个Material（材质）。之后，我们便可以将材质赋予合适的renderer（渲染器）来进行渲染（输出）了。</p>
+<p>&emsp;&emsp;所以说Shader并没有什么特别神奇的，它只是一段规定好输入（颜色，贴图等）和输出（渲染器能够读懂的点和颜色的对应关系）的程序。而Shader开发者要做的就是根据输入，进行计算变换，产生输出而已。</p>
+<p><strong>Shader大体上可以分为两类：</strong></p>
+<ul>
+<li>表面着色器（Surface Shader） – 为你做了大部分的工作，只需要简单的技巧即可实现很多不错的效果。类比卡片机，上手以后不太需要很多努力就能拍出不错的效果。</li>
+<li>片段着色器（Fragment Shader） – 可以做的事情更多，但是也比较难写。使用片段着色器的主要目的是可以在比较低的层级上进行更复杂（或者针对目标设备更高效）的开发</li>
+</ul>
+<h2 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">#pragma surface surf Standard fullforwardshadows</span></div><div class="line">    <span class="meta">#pragma target 3.0</span></div><div class="line">	<span class="comment">//sampler2D就是GLSL中的2D贴图的类型,在这段Cg程序中要想访问Properties中的变量必须使用和之前变量相同的名字进行声明</span></div><div class="line">	sampler2D _MainTex;</div><div class="line"></div><div class="line">	struct Input &#123;</div><div class="line">	<span class="comment">//UV mapping的作用是将一个2D贴图上的点按照一定规则映射到3D模型上是3D渲染中最常见的一种顶点处理手段。在CG程序中，在一个贴图变量例如上面的 "_MainTex" 之前加上uv两个字母，就代表提取它的uv</span></div><div class="line">	  float2 uv_MainTex;</div><div class="line">	&#125;;</div><div class="line">      half _Glossiness;</div><div class="line">      half _Metallic;</div><div class="line">      fixed4 _Color;</div><div class="line">	</div><div class="line">      UNITY_INSTANCING_CBUFFER_START(Props)</div><div class="line">      UNITY_INSTANCING_CBUFFER_END</div><div class="line">      <span class="comment">//shader的核心代码</span></div><div class="line">      void surf (Input IN, inout SurfaceOutputStandard o) &#123;</div><div class="line">      <span class="comment">//这是CG程序中用来在一张贴图中对一个点进行采样的方法，返回一个float4</span></div><div class="line">      fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;</div><div class="line">      <span class="comment">//将其颜色的rbg值赋予了输出的像素颜色</span></div><div class="line">      o.Albedo = c.rgb;</div><div class="line">      o.Metallic = _Metallic;</div><div class="line">      o.Smoothness = _Glossiness;</div><div class="line">      <span class="comment">//将a值赋予透明度</span></div><div class="line">      o.Alpha = c.a;</div><div class="line">      &#125;</div><div class="line">   ENDCG</div><div class="line">  &#125;</div><div class="line">FallBack <span class="string">"Diffuse"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        </div>
+    
 </div>
 
 
+                
+                    <!-- Paradox Post Info -->
+                    
                 
 
                 <!-- Post Comments -->

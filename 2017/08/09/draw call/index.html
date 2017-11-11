@@ -141,6 +141,8 @@
         <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
         <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
         
+            <style id="/css/fontawesome.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("/css/fontawesome.min.css","/css/fontawesome.min.css?oOeExMqUwnGwM437AgVb5g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
         
         <!-- Config CSS -->
 
@@ -264,8 +266,101 @@
 
 
     
-        <body id="scheme-Nexus" class="lazy">
+        <body id="scheme-Isolation" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+                    <!-- Isolation Header -->
+                    <header class="header">
+    <div class="header-wrapper">
+        <!-- Header Copyright -->
+        <div class="header-copyright">
+            <div class="header-site">
+                ©&nbsp;
+                <script type="text/javascript">
+                    var fd = new Date();
+                    document.write(fd.getFullYear());
+                </script>
+                &nbsp;kurong00
+            </div>
+            <!--
+            I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+            It will not impact the appearance and can give developers a lot of support :)
+
+            很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+            它不会影响美观并可以给开发者很大的支持。 :)
+            -->
+            <div>
+                Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a>
+                <br>
+                Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a>
+            </div>
+        </div>
+
+        <!-- Header Title -->
+        <span class="header-title header-item">
+            <a href="/" title="kurong00">
+                kurong00
+            </a>
+        </span>
+
+        <p class="header-slogan header-item">
+        
+            
+                Hakuna Matata
+            
+        
+        </p>
+
+        <!-- Header Nav -->
+        <nav class="header-nav header-item">
+            <span class="header-nav-item">
+                <a href="/" title="Home">
+                    <span>主页</span>
+                </a>
+            </span>
+
+            <!-- Pages  -->
+            
+            
+        </nav>
+
+        <!-- Header SNS -->
+        <div class="header-item header-sns_list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/kurong00" target="_blank">
+            <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+        </a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+    </div>
+</header>
+
                 
 
                 <!-- Main Container -->
@@ -294,6 +389,21 @@
                 
 
 
+    <!-- Isolation Post Header -->
+    <!-- Post thumbnail -->
+    
+        <!-- Post Header Info -->
+        <div class="post-header_info without-thumbnail">
+            <!-- Author Avatar & Name -->
+            <img src="/img/avatar1.png" class="avatar-img" width="44px" height="44px" alt="kurong00's avatar">
+            <span class="name-span">kurong00</span>
+        </div>
+
+        <!-- Null Thumbnail -->
+        <div class="post_thumbnail-null">
+    
+        </div>
+
 
 
                 
@@ -303,9 +413,32 @@
     
 
     
+        <div class="post-content_wrapper">
+            <p class="post-title">
+                Unity优化（一）：Draw Call
+            </p>
+            <h2 id="什么是Draw-Call？"><a href="#什么是Draw-Call？" class="headerlink" title="什么是Draw Call？"></a>什么是Draw Call？</h2><p>&emsp;&emsp;Unity生成一帧的画面的处理过程大致过程是：引擎经过可见性测试，确定摄像机可以看到的物体，然后把这些物体的顶点（例如顶点位置、法线、uv 等)，索引（如何组成三角形），变换（例如物体的位置，旋转，缩放，以及摄像机的位置）相关光源，纹理，渲染方式（由材质/Shader决定）等数据准备好然后通知图形API（或者就简单地看作是通知GPU）开始绘制，GPU基于这些数据经过一些列的运算，在屏幕上画出组成图形的三角形，构成一幅画。<strong>在unity 中每次引擎装备数据并通知GPU的过程为一次Draw Call。</strong></p>
+<h2 id="为什么应该尽量减少Draw-Call？"><a href="#为什么应该尽量减少Draw-Call？" class="headerlink" title="为什么应该尽量减少Draw Call？"></a>为什么应该尽量减少Draw Call？</h2><p>&emsp;&emsp;CPU和GPU的通信主要出现在两个时候：一是读写资源（Map/Unmap等等）；二是Draw的调用。这些通信都会变成Driver发给显卡的命令，除了往显存中写数据，还要给GPU提供一些状态。比如Vertex Buffer的地址，Index Buffer的地址，Texture的地址和行的Pitch等等。除了数据、基本状态，剩下就是有动作的命令：比如Transform、Rasterize、Tessellate、Query，等等。这些命令传送到显卡之后，显卡就真正的开始干活了。<strong>总结一下就是：CPU发送给GPU的内容，可以粗浅的分为数据、状态和命令。</strong> 那么这些内容都是什么时候被传输到GPU上的呢？事实上只要数据在修改完毕后、使用之前传输到GPU上就可以了。那如果都开始渲染了，这些内容还没有传送完毕要怎么办呢？那渲染就只能等它们都传输好再开始工作。Draw是实际执行绘制的函数，到了这里，绘制所需要的全部状态状态和数据都已经齐备，就只差绘制了。因此当Draw被调用的时候，除非硬件正忙，否则所有的工作都必须执行。此时就需要将渲染所需要的状态和命令在CPU上统计好，打包发送给硬件。在这一阶段，<strong>Draw需要完成很多工作，比如脏属性的检查以减少传输量，比如渲染状态的正确性和一致性检查等等，一般来说GPU命令的生成也可以放在这里完成。这个就是Draw主要的开销。</strong> 总结一下：</p>
+<ul>
+<li>减少Runtime/Driver在CPU端的CPU消耗</li>
+<li>让GPU在单位时间内获得充分的负载</li>
+<li>GPU在Draw Call之间，为了防止前后Draw的依赖关系造成绘制错误或者资源竞用，一般会在Draw Call后Flush整个流水线，小粒度的Draw Call对GPU流水线来说是个很大的浪费。虽然说理论上来说可以让硬件的不同单元运行在不同的Context上，但是这一设计需要不小的成本，也增加了很多的复杂度。</li>
+</ul>
+<h2 id="如何优化Draw-Call？"><a href="#如何优化Draw-Call？" class="headerlink" title="如何优化Draw Call？"></a>如何优化Draw Call？</h2><p>&emsp;&emsp;Unity 内置了一个Draw Call Batching 的技术。它的主要目的是在同一次Draw Call 中批处理多个物体。<strong>只要物体的变换和材质相同，GPU就可以按完全相同的方式进行处理，即可以把它们放在一个Draw Call中。</strong> Draw Call Batching技术的核心就是在可见性测试之后，检查所有要绘制的物体的材质，把相同材质的分为一组（一个Batch），然后把它们组合成一个物体（统一变换），这样就可以在一个Draw Call中处理多个物体了（实际上是组合后的一个物体）。但Draw Call Batching存在一个缺陷，就是它需要把一个Batch中的所有物体组合到一起，相当于创建了一个与这些物体加起来一样大的物体，与此同时就需要分配相应大小的内存。这不仅会消耗更多内存，还需要消耗CPU时间。特别是对于移动的物体，每一帧都得重新进行组合，这就需要进行一些权衡，否则得不偿失。但对于静止不动的物体来说，只需要进行一次组合，之后就可以一直使用，效率要高得多。<strong>Unity提供了Dynamic Batching和Static Batching两种方式。</strong> Dynamic Batching是完全自动进行的，不需要也无法进行任何干预，对于顶点数在300以内的可移动物体，只要使用相同的材质，就会组成Batch。Static Batching则需要把静止的物体标记为Static，然后无论大小，都会组成Batch。如前文所说，Static Batching显然比Dynamic Batching要高效得多。<strong>要有效利用Draw Call Batching：</strong></p>
+<ul>
+<li>尽量减少场景中使用的材质数量，即尽量共享材质，对于仅纹理不同的材质可以把纹理组合到一张更大的纹理中（称为Texture Atlasing）</li>
+<li>把不会移动的物体标记为Static。此外还可以通过CombineChildren脚本（Standard Assets/Scripts/Unity Scripts/CombineChildren）手动把物体组合在一起，但这个脚本会影响可见性测试，因为组合在一起的物体始终会被看作一个物体，从而会增加GPU要处理的几何体数量，因此要小心使用。</li>
+<li>对于复杂的静态场景，还可以考虑自行设计遮挡剔除算法，减少可见的物体数量同时也可以减少Draw Call。</li>
+</ul>
+
+        </div>
+    
 </div>
 
 
+                
+                    <!-- Paradox Post Info -->
+                    
                 
 
                 <!-- Post Comments -->
