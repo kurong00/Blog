@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sat Nov 11 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Nov 11 2017 22:07:10 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Nov 11 2017 22:20:18 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（一）：理论准备",
     "url": "http://yoursite.com/2017/11/11/shader1/index.html",
     "datePublished": "Sat Nov 11 2017 00:00:00 GMT+0800",
-    "dateModified": "Sat Nov 11 2017 22:07:10 GMT+0800",
+    "dateModified": "Sat Nov 11 2017 22:20:18 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -515,16 +515,17 @@
 </ul>
 <p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline3.PNG?raw=true" alt=""></p>
 <p>此时到达Vertex Shader，shader会进行一些操作，例如：改变顶点位置，对顶点进行坐标变换(模型空间-&gt;世界空间-&gt;裁剪空间-&gt;屏幕空间)，贴图位置转换等等。  </p>
-<p>下一步开始图元装配：将一个个零散的顶点组装成一个个三角形。  </p>
-<p>下一步曲面细分环节（可选项，不一定经历这个环节，在Direct3D 11、OpenGL 4、OpenGL ES 3.2以上才支持）：将上一部的图元进行细分。 </p>
-<p> 再下一步几何元着色器（也是可选项，不一定经历这个环节,在Direct3D 10、OpenGL 3.2、OpenGL ES 3.2以上支持）：增加顶点或者片元数</p>
-<p> 下一步裁剪：裁剪位于视锥外的片元</p>
-<p> 最后一步屏幕映射：输出屏幕空间的二维坐标和每个顶点的深度值，着色等信息。</p>
+<p>下一步开始<strong>图元装配</strong>：将一个个零散的顶点组装成一个个三角形。  </p>
+<p>下一步<strong>曲面细分环节</strong>（可选项，不一定经历这个环节，在Direct3D 11、OpenGL 4、OpenGL ES 3.2以上才支持）：将上一部的图元进行细分。 </p>
+<p> 再下一步<strong>几何元着色器</strong>（也是可选项，不一定经历这个环节,在Direct3D 10、OpenGL 3.2、OpenGL ES 3.2以上支持）：增加顶点或者片元数</p>
+<p> 下一步<strong>裁剪</strong>：裁剪位于视锥外的片元</p>
+<p> 最后一步<strong>屏幕映射</strong>：输出屏幕空间的二维坐标和每个顶点的深度值，着色等信息。</p>
 <ul>
 <li>光栅化阶段 </li>
 </ul>
 <p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline4.PNG?raw=true" alt=""></p>
-<p>将上一步得到的信息(深度值，着色，屏幕坐标等等)进行插值运算，确认哪些像素该被绘制在屏幕上。</p>
+<p>将上一步得到的信息(深度值，着色，屏幕坐标等等)进行插值运算，确认哪些像素该被绘制在屏幕上。 </p>
+<p><strong>以上是渲染流水线的一个简单说明，真实的实现过程远比上面描述的复杂，但是好在Unity Shader已经封装了非常多的功能，下一节我们将开始第一个Unity Shader的编写。</strong></p>
 
     
 
