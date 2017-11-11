@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-09T10:02:00.029Z</updated>
+  <updated>2017-11-11T10:06:40.048Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity Shader 入门（二）：查看第一个Shader</title>
+    <link href="http://yoursite.com/2017/11/11/shader2/"/>
+    <id>http://yoursite.com/2017/11/11/shader2/</id>
+    <published>2017-11-11T10:06:06.551Z</published>
+    <updated>2017-11-11T10:06:40.048Z</updated>
+    
+    <summary type="html">
+    
+      &lt;pre class=&quot; language-haxe&quot;&gt;&lt;code class=&quot;language-haxe&quot;&gt;    &lt;span class=&quot;token preprocessor builtin&quot;&gt;#pragma&lt;/span&gt; surface surf Standard fu
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Unity优化（一）：Draw Call</title>
@@ -32,15 +48,15 @@
   </entry>
   
   <entry>
-    <title>Unity Shader 入门（一）</title>
+    <title>Unity Shader 入门（一）：理论准备</title>
     <link href="http://yoursite.com/2017/08/04/shader1/"/>
     <id>http://yoursite.com/2017/08/04/shader1/</id>
     <published>2017-08-04T06:55:01.075Z</published>
-    <updated>2017-11-11T08:27:11.180Z</updated>
+    <updated>2017-11-11T10:05:47.813Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;shader（着色器）实际上就是一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图或
+      &lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;h3 id=&quot;1-什么是Shader？&quot;&gt;&lt;a href=&quot;#1-什么是Shader？&quot; class=&quot;headerlink&quot; 
     
     </summary>
     
