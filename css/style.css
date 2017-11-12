@@ -2645,6 +2645,11 @@ a {
 .nprogress-custom-parent #nprogress .spinner {
     position: absolute
 }
+
+.img-center{
+display: block ;
+margin: auto;
+}
 @-webkit-keyframes nprogress-spinner {
     0% {
         -webkit-transform: rotate(0)
