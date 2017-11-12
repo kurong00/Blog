@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sun Nov 12 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Nov 12 2017 17:10:46 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Nov 12 2017 17:16:07 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（二）：查看第一个Shader",
     "url": "http://yoursite.com/2017/11/12/shader2/index.html",
     "datePublished": "Sun Nov 12 2017 00:00:00 GMT+0800",
-    "dateModified": "Sun Nov 12 2017 17:10:46 GMT+0800",
+    "dateModified": "Sun Nov 12 2017 17:16:07 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -741,7 +741,7 @@
 </ul>
 <p>对应上面的编译指令：我们声明了一个表面着色器，实际的代码在 surf 函数中（在下面的代码能找到该函数），使用 Standard 作为光照模型。</p>
 <p>接下来是  <code>sampler2D _MainTex;</code> 我们知道在CG中，Texture（贴图）简单来说就是一块内存存储的，使用了RGBA通道，且每个通道8bits，的数据。而具体地想知道像素与坐标的对应关系，以及获取这些数据，一次一次去计算内存地址或者偏移显然不可行，因此可以通过sampler2D来对贴图进行操作。一言以蔽之就是，sampler2D是GLSL中的2D贴图的类型，相应的，还有sampler1D，sampler3D，samplerCube等等格式。</p>
-<p>然后的重点是：为什么在这里需要一句对_MainTex的声明？首先之前我们已经在Properties里声明过它是贴图了（<code>_MainTex (&quot;Albedo (RGB)&quot;, 2D) = &quot;white&quot; {}</code>）。我们用来实例的这个shader其实是由两个相对独立的块组成的，外层的属性声明，回滚等等是Unity可以直接使用和编译的ShaderLab；而现在我们是在CGPROGRAM…ENDCG这样一个代码块中，这是一段CG程序。对于这段CG程序，要想访问在Properties中所定义的变量的话，必须使用<strong>和之前变量相同的名字进行声明</strong>。因此<code>sampler2D _MainTex;</code>做的事情就是再次声明并链接了_MainTex，使得接下来的CG程序能够使用这个变量。后面的<br><code>half _Glossiness;</code> <code>half _Metallic;</code>  <code>fixed4 _Color;</code><br>都是同样的道理。回到原来的地方，下一句是</p>
+<p>然后的重点是：为什么在这里需要一句对_MainTex的声明？首先之前我们已经在Properties里声明过它是贴图了（<code>_MainTex (&quot;Albedo (RGB)&quot;, 2D) = &quot;white&quot; {}</code>）。我们用来实例的这个shader其实是由两个相对独立的块组成的，外层的属性声明，回滚等等是Unity可以直接使用和编译的ShaderLab；而现在我们是在CGPROGRAM…ENDCG这样一个代码块中，这是一段CG程序。对于这段CG程序，要想访问在Properties中所定义的变量的话，必须使用<strong>和之前变量相同的名字进行声明</strong>。因此<code>sampler2D _MainTex;</code>做的事情就是再次声明并链接了_MainTex，使得接下来的CG程序能够使用这个变量。后面的<code>half _Glossiness;</code> <code>half _Metallic;</code>  <code>fixed4 _Color;</code>都是同样的道理。回到原来的地方，下一句是:</p>
 <pre class=" language-haxe"><code class="language-haxe">struct Input <span class="token punctuation">{</span>
     float2 uv_MainTex<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -761,21 +761,21 @@
 <p>在这个例子里，我们声明了一个叫做<code>uv_MainTex</code>的包含两个浮点数的变量。UV mapping的作用是将一个2D贴图上的点按照一定规则映射到3D模型上，在CG程序中，我们有这样的约定，在一个贴图变量之前加上uv两个字母，就代表提取它的uv值。我们之后就可以在surf程序中直接通过访问uv_MainTex来取得这张贴图当前需要计算的点的坐标值。接下来我们详细看surf内部的操作：</p>
 <pre class=" language-haxe"><code class="language-haxe">fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
 </code></pre>
-<p>这里用到了一个tex2d函数，这是CG程序中用来在一张贴图中对一个点进行采样的方法，返回一个float4。这个例子中刚刚得到的float4*_Color使得这个贴图经过和颜色混合。</p>
+<p>这里用到了一个tex2d函数，这是CG程序中用来在一张贴图中对一个点进行采样的方法，返回一个float4。这个例子中用刚刚得到的float4*_Color使得这个贴图经过和颜色混合。</p>
 <pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
 </code></pre>
 <p>将其颜色的rbg值赋予了输出的像素颜色</p>
 <pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Metallic <span class="token operator">=</span> _Metallic<span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Smoothness <span class="token operator">=</span> _Glossiness<span class="token punctuation">;</span>
 </code></pre>
-<p>都是用到Properties来赋值材质中的Metallic and smoothness</p>
+<p>都是用到上头Properties中我们定义的变量来赋值材质中的Metallic and smoothness</p>
 <pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
 </code></pre>
 <p>将a值赋予透明度。至此surf介绍完毕，这个例子中shader最重要的部分就是以上这些啦！</p>
 <h3 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h3><pre class=" language-haxe"><code class="language-haxe">FallBack <span class="token string">"Diffuse"</span>
 </code></pre>
-<p>当所有上面的SubShader都不可以在目标平台上运行时，Unity就会调用这个shader，当然你也可以关闭这个选项，那就意味着如果没有显卡可以跑上面的shader那就不管他啦!</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这是最简单最简单的shader，这时候的你应该可以看懂一些简单shader了，可以去Unity的Surface Shader Exampless上查看一些基础shader，下一篇我们会开始第一个shader的编写。</p>
+<p>当所有上面的SubShader都不可以在目标平台上运行时，Unity就会调用这个shader，当然你也可以关闭这个选项，那就意味着如果没有显卡可以跑上面的shader，那我们就不管它啦!</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这是最简单最简单的shader，看到这里的你应该可以了解一些简单的shader了，可以去Unity的Surface Shader Exampless上查看一些基础shader的编写内容，下一篇我们会开始第一个shader的编写。</p>
 
     
 
