@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sun Nov 12 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Nov 12 2017 11:17:41 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Nov 12 2017 11:46:20 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（二）：查看第一个Shader",
     "url": "http://yoursite.com/2017/11/12/shader2/index.html",
     "datePublished": "Sun Nov 12 2017 00:00:00 GMT+0800",
-    "dateModified": "Sun Nov 12 2017 11:17:41 GMT+0800",
+    "dateModified": "Sun Nov 12 2017 11:46:20 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -484,57 +484,59 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="查看第一个shader"><a href="#查看第一个shader" class="headerlink" title="查看第一个shader"></a>查看第一个shader</h2><p>我们在Unity中新建一个shader（Assets-&gt;Create-&gt;shader-&gt;standard surface shader）打开看发现里面已经有很多代码了。（版本Unity 2017.2.0f3）</p>
-<pre class=" language-GLSL"><code class="language-GLSL">Shader "Custom/NewSurfaceShader" {
-    Properties {
-        _Color ("Color", Color) = (1,1,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
-    }
-    SubShader {
-        Tags { "RenderType"="Opaque" }
-        LOD 200
+        <h2 id="查看第一个shader"><a href="#查看第一个shader" class="headerlink" title="查看第一个shader"></a>查看第一个shader</h2><p>上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（Cg，HLSL,GLSL,OpenGl，DirectX的官方Doc等等），如果不求甚解的话，那我们就通过查看第一个shader来加深理解。我们在Unity中新建一个shader（Assets-&gt;Create-&gt;shader-&gt;standard surface shader）打开看发现里面已经有很多代码了。（版本Unity 2017.2.0f3）</p>
+<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span> <span class="token punctuation">{</span>
+    Properties <span class="token punctuation">{</span>
+        <span class="token function">_Color</span> <span class="token punctuation">(</span><span class="token string">"Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_MainTex</span> <span class="token punctuation">(</span><span class="token string">"Albedo (RGB)"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token function">_Glossiness</span> <span class="token punctuation">(</span><span class="token string">"Smoothness"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.5</span>
+        <span class="token function">_Metallic</span> <span class="token punctuation">(</span><span class="token string">"Metallic"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.0</span>
+    <span class="token punctuation">}</span>
+    SubShader <span class="token punctuation">{</span>
+        Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Opaque"</span> <span class="token punctuation">}</span>
+        LOD <span class="token number">200</span>
 
         CGPROGRAM
-        // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+        <span class="token comment" spellcheck="true">// Physically based Standard lighting model, and enable shadows on all light types</span>
+        <span class="token preprocessor builtin">#pragma</span> surface surf Standard fullforwardshadows
 
-        // Use shader model 3.0 target, to get nicer looking lighting
-        #pragma target 3.0
+        <span class="token comment" spellcheck="true">// Use shader model 3.0 target, to get nicer looking lighting</span>
+        <span class="token preprocessor builtin">#pragma</span> target <span class="token number">3.0</span>
 
-        sampler2D _MainTex;
+        sampler2D _MainTex<span class="token punctuation">;</span>
 
-        struct Input {
-            float2 uv_MainTex;
-        };
+        struct Input <span class="token punctuation">{</span>
+            float2 uv_MainTex<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-        half _Glossiness;
-        half _Metallic;
-        fixed4 _Color;
+        half _Glossiness<span class="token punctuation">;</span>
+        half _Metallic<span class="token punctuation">;</span>
+        fixed4 _Color<span class="token punctuation">;</span>
 
-        // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
-        // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
-        // #pragma instancing_options assumeuniformscaling
-        UNITY_INSTANCING_CBUFFER_START(Props)
-            // put more per-instance properties here
+        <span class="token comment" spellcheck="true">// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.</span>
+        <span class="token comment" spellcheck="true">// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.</span>
+        <span class="token comment" spellcheck="true">// #pragma instancing_options assumeuniformscaling</span>
+        <span class="token function">UNITY_INSTANCING_CBUFFER_START</span><span class="token punctuation">(</span>Props<span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true">// put more per-instance properties here</span>
         UNITY_INSTANCING_CBUFFER_END
 
-        void surf (Input IN, inout SurfaceOutputStandard o) {
-            // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            o.Albedo = c.rgb;
-            // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
-        }
+        void <span class="token function">surf</span> <span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutputStandard o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Albedo comes from a texture tinted by color</span>
+            fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// Metallic and smoothness come from slider variables</span>
+            o<span class="token punctuation">.</span>Metallic <span class="token operator">=</span> _Metallic<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Smoothness <span class="token operator">=</span> _Glossiness<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         ENDCG
-    }
-    FallBack "Diffuse"
-}
+    <span class="token punctuation">}</span>
+    FallBack <span class="token string">"Diffuse"</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>emmm…….即使你有编程的基础也可能看的一头雾水，不过没关系，我们现在来一个个拆解这段代码。</p>
+<p>首先我们来看shader的一个大体结构: </p>
+<p><div align="center"><img src="&quot;https://github.com/kurong00/blog/blob/master/thumbnail/shader2/Shader.png?raw=true&quot;" alt=""><br></div><br><img style="margin: center" src="https://github.com/kurong00/blog/blob/master/thumbnail/shader2/Shader.png?raw=true"><br><img src="" alt=""></p>
 <pre class=" language-haxe"><code class="language-haxe">    <span class="token preprocessor builtin">#pragma</span> surface surf Standard fullforwardshadows
     <span class="token preprocessor builtin">#pragma</span> target <span class="token number">3.0</span>
     <span class="token comment" spellcheck="true">//sampler2D就是GLSL中的2D贴图的类型,在这段Cg程序中要想访问Properties中的变量必须使用和之前变量相同的名字进行声明</span>

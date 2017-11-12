@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-12T03:17:41.566Z</updated>
+  <updated>2017-11-12T03:46:20.589Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://yoursite.com/2017/11/12/shader2/"/>
     <id>http://yoursite.com/2017/11/12/shader2/</id>
     <published>2017-11-11T16:00:00.000Z</published>
-    <updated>2017-11-12T03:17:41.566Z</updated>
+    <updated>2017-11-12T03:46:20.589Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;查看第一个shader&quot;&gt;&lt;a href=&quot;#查看第一个shader&quot; class=&quot;headerlink&quot; title=&quot;查看第一个shader&quot;&gt;&lt;/a&gt;查看第一个shader&lt;/h2&gt;&lt;p&gt;我们在Unity中新建一个shader（Assets-&amp;gt;Cre
+      &lt;h2 id=&quot;查看第一个shader&quot;&gt;&lt;a href=&quot;#查看第一个shader&quot; class=&quot;headerlink&quot; title=&quot;查看第一个shader&quot;&gt;&lt;/a&gt;查看第一个shader&lt;/h2&gt;&lt;p&gt;上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（C
     
     </summary>
     
