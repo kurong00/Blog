@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-11T10:06:40.048Z</updated>
+  <updated>2017-11-12T03:14:23.184Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,14 +17,14 @@
   
   <entry>
     <title>Unity Shader 入门（二）：查看第一个Shader</title>
-    <link href="http://yoursite.com/2017/11/11/shader2/"/>
-    <id>http://yoursite.com/2017/11/11/shader2/</id>
-    <published>2017-11-11T10:06:06.551Z</published>
-    <updated>2017-11-11T10:06:40.048Z</updated>
+    <link href="http://yoursite.com/2017/11/12/shader2/"/>
+    <id>http://yoursite.com/2017/11/12/shader2/</id>
+    <published>2017-11-11T16:00:00.000Z</published>
+    <updated>2017-11-12T03:14:23.184Z</updated>
     
     <summary type="html">
     
-      &lt;pre class=&quot; language-haxe&quot;&gt;&lt;code class=&quot;language-haxe&quot;&gt;    &lt;span class=&quot;token preprocessor builtin&quot;&gt;#pragma&lt;/span&gt; surface surf Standard fu
+      &lt;h2 id=&quot;查看第一个shader&quot;&gt;&lt;a href=&quot;#查看第一个shader&quot; class=&quot;headerlink&quot; title=&quot;查看第一个shader&quot;&gt;&lt;/a&gt;查看第一个shader&lt;/h2&gt;&lt;p&gt;我们在Unity中新建一个shader（Assets-&amp;gt;Cre
     
     </summary>
     
@@ -36,7 +36,7 @@
     <link href="http://yoursite.com/2017/11/11/shader1/"/>
     <id>http://yoursite.com/2017/11/11/shader1/</id>
     <published>2017-11-10T16:00:00.000Z</published>
-    <updated>2017-11-11T14:22:25.142Z</updated>
+    <updated>2017-11-12T02:48:46.322Z</updated>
     
     <summary type="html">
     

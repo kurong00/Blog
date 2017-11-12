@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sat Nov 11 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Nov 11 2017 22:22:25 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Nov 12 2017 10:48:46 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（一）：理论准备",
     "url": "http://yoursite.com/2017/11/11/shader1/index.html",
     "datePublished": "Sat Nov 11 2017 00:00:00 GMT+0800",
-    "dateModified": "Sat Nov 11 2017 22:22:25 GMT+0800",
+    "dateModified": "Sun Nov 12 2017 10:48:46 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -390,17 +390,6 @@
 
     <!-- Qrcode -->
     
-        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">devices other</i>
-    <span class="visuallyhidden">devices other</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
-    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-    
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACYElEQVR42u3aQY7DMAgF0N7/0p3tSKMmH4idTPW8qqIq5XlhKOb1/ur1wsPDw8PDw8PDexjvFa/f3//7huMnyfePnyex4eHh4e3knRy1A14v9F5seHh4ePt5k2TwCZOEmzwvxIaHh4f3MF5y6E82JfktPDw8vP/Fy4/743dGDVk8PDy8x/PyP/z5sV4lzWPDw8PD28PrXYDt+Xzb/R4eHh7eB17vsO5dcfWaueUI8fDw8BbzjgOdlMtJO2PJUAIeHh7erbxeS6JKLYR+VZcaDw8Pb8CrNiZ6CeCqdnA5MeDh4eEt4FVHpnqJpFkc94Zf8fDw8BbzkoCqg1PXtiFOrruqeQ8PDw9vCy9/MmnI5mX3xYkBDw8Pr1VS56NO1cGCXsN3FAMeHh7eFt47XvkY62Q7Jm/Gw8PD28mrjqL2WhXVhFT9FTw8PLx7efOGbz5ulfNOth4PDw9vMW90SV8srPNRqklhjYeHh7eT13s+b93mqSKKDQ8PD28771VcearIt2/S+MDDw8Nbzev9+e81I45h+WadDIfh4eHhLeZVj+PeYEGeciZUPDw8vJ286k/mTd782mzSusXDw8PbyZuUtvmlV96QzRsfeHh4eHfxqqtaWCfFen7lFiUkPDw8vMW86kVX3mjojQJUC3c8PDy8u3iTy/vqplTHEaoDBHh4eHg7efPrqGqDeL5ZhcSAh4eHdxMvH8bKN6I6mnDyBA8PD++RvKsK5d74wvHb8PDw8Hbyqsfx5Pqq1+SNYsPDw8Pbwps0ZOcDAUnhPkoMeHh4eJfyvm/h4eHh4eHh4eE9YP0Abpq6lo6L7fYAAAAASUVORK5CYII=">
-    
-</ul>
-    
 
     <!-- Tags (bookmark) -->
     
@@ -498,8 +487,8 @@
         <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="1-什么是Shader？"><a href="#1-什么是Shader？" class="headerlink" title="1. 什么是Shader？"></a>1. 什么是Shader？</h3><p>shader（着色器）是<font color="#560A4A">GPU的渲染流水线上的一小段程序</font>，它负责将输入的Mesh（网格）以指定的方式，和输入的贴图或者颜色等组合作用后输出。绘图单元可以依据这个输出来将图像绘制到屏幕上。 </p>
 <h3 id="2-Shader的分类？"><a href="#2-Shader的分类？" class="headerlink" title="2. Shader的分类？"></a>2. Shader的分类？</h3><p>shader大体上可以分为两类：</p>
 <ul>
-<li>表面着色器（Surface Shader）：为你做了大部分的工作，只需要简单的技巧即可实现很多不错的效果。</li>
-<li>片段着色器（Fragment Shader）：可以做的事情更多，但是也比较难写。使用片段着色器的主要目的是可以在比较低的层级上进行更复杂（或者针对目标设备更高效）的开发 </li>
+<li>表面着色器（Surface Shader）：已经为你做了大部分的工作，只需要简单的编写就可以实现很多不错的效果。</li>
+<li>片元着色器（Fragment Shader）：可以做的事情更多，相应的难度也会加大。可以在比较低的层级上进行更复杂（或者针对目标设备更高效）的开发。 </li>
 </ul>
 <h3 id="3-什么是渲染流水线？"><a href="#3-什么是渲染流水线？" class="headerlink" title="3. 什么是渲染流水线？"></a>3. 什么是渲染流水线？</h3><p>既然shader所在的阶段是渲染流水线上的一部分，那渲染流水线又是什么呢？ </p>
 <p>首先GPU上的渲染流水线任务是：<font color="#560A4A">从一个三维场景出发，把这些信息最终转换成一张二维图像。</font>我们可以将渲染流水线分成三个阶段：应用阶段-&gt;几何阶段-&gt;光栅化阶段。</p>
@@ -516,7 +505,7 @@
 <p> 最后一步<strong>屏幕映射</strong>：输出屏幕空间的二维坐标和每个顶点的深度值，着色等信息。</p>
 <h4 id="光栅化阶段"><a href="#光栅化阶段" class="headerlink" title="光栅化阶段"></a>光栅化阶段</h4><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline4.PNG?raw=true" alt=""></p>
 <p>将上一步得到的信息(深度值，着色，屏幕坐标等等)进行插值运算，确认哪些像素该被绘制在屏幕上。 </p>
-<p><strong>以上是渲染流水线的一个简单说明，真实的实现过程远比上面描述的复杂，但是好在Unity Shader已经封装了非常多的功能，下一节我们将开始第一个Unity Shader的编写。</strong></p>
+<p><strong>以上是渲染流水线的一个简单说明，真实的实现过程远比上面描述的复杂，但是好在Unity Shader已经封装了非常多的功能，下一节我们将开始分析第一个Unity Shader。</strong></p>
 
     
 
@@ -536,7 +525,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/11/11/shader2/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/11/12/shader2/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
