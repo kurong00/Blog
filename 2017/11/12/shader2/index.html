@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sun Nov 12 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Nov 12 2017 16:31:04 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Nov 12 2017 17:10:46 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（二）：查看第一个Shader",
     "url": "http://yoursite.com/2017/11/12/shader2/index.html",
     "datePublished": "Sun Nov 12 2017 00:00:00 GMT+0800",
-    "dateModified": "Sun Nov 12 2017 16:31:04 GMT+0800",
+    "dateModified": "Sun Nov 12 2017 17:10:46 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -327,7 +327,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看第一个shader"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看第一个shader</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#逐行代码查看"><span class="post-toc-number">2.</span> <span class="post-toc-text">逐行代码查看</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#首先第一行"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">首先第一行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接着一段代码块"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">接着一段代码块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SubShader内部构造"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">SubShader内部构造</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Tags：键值对"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">Tags：键值对</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LOD：Level-of-Detail"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">LOD：Level of Detail</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">实现代码</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看第一个shader"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看第一个shader</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#逐行代码查看"><span class="post-toc-number">2.</span> <span class="post-toc-text">逐行代码查看</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#首先第一行"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">首先第一行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接着一段代码块"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">接着一段代码块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SubShader内部构造"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">SubShader内部构造</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Tags：键值对"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">Tags：键值对</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LOD：Level-of-Detail"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">LOD：Level of Detail</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">实现代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最后一步"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">最后一步</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">3.</span> <span class="post-toc-text">结语</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -705,27 +705,21 @@
 <h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><pre class=" language-haxe"><code class="language-haxe">CGPROGRAM
         <span class="token comment" spellcheck="true">// Physically based Standard lighting model, and enable shadows on all light types</span>
         <span class="token preprocessor builtin">#pragma</span> surface surf Standard fullforwardshadows
-
         <span class="token comment" spellcheck="true">// Use shader model 3.0 target, to get nicer looking lighting</span>
         <span class="token preprocessor builtin">#pragma</span> target <span class="token number">3.0</span>
-
         sampler2D _MainTex<span class="token punctuation">;</span>
-
         struct Input <span class="token punctuation">{</span>
             float2 uv_MainTex<span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
         half _Glossiness<span class="token punctuation">;</span>
         half _Metallic<span class="token punctuation">;</span>
         fixed4 _Color<span class="token punctuation">;</span>
-
         <span class="token comment" spellcheck="true">// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.</span>
         <span class="token comment" spellcheck="true">// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.</span>
         <span class="token comment" spellcheck="true">// #pragma instancing_options assumeuniformscaling</span>
         <span class="token function">UNITY_INSTANCING_CBUFFER_START</span><span class="token punctuation">(</span>Props<span class="token punctuation">)</span>
             <span class="token comment" spellcheck="true">// put more per-instance properties here</span>
         UNITY_INSTANCING_CBUFFER_END
-
         void <span class="token function">surf</span> <span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutputStandard o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">// Albedo comes from a texture tinted by color</span>
             fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
@@ -746,37 +740,42 @@
 <li>lightModel ： 使用的光照模型。</li>
 </ul>
 <p>对应上面的编译指令：我们声明了一个表面着色器，实际的代码在 surf 函数中（在下面的代码能找到该函数），使用 Standard 作为光照模型。</p>
-<pre class=" language-haxe"><code class="language-haxe">    <span class="token preprocessor builtin">#pragma</span> surface surf Standard fullforwardshadows
-    <span class="token preprocessor builtin">#pragma</span> target <span class="token number">3.0</span>
-    <span class="token comment" spellcheck="true">//sampler2D就是GLSL中的2D贴图的类型,在这段Cg程序中要想访问Properties中的变量必须使用和之前变量相同的名字进行声明</span>
-    sampler2D _MainTex<span class="token punctuation">;</span>
-
-    struct Input <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//UV mapping的作用是将一个2D贴图上的点按照一定规则映射到3D模型上是3D渲染中最常见的一种顶点处理手段。在CG程序中，在一个贴图变量例如上面的 "_MainTex" 之前加上uv两个字母，就代表提取它的uv</span>
-      float2 uv_MainTex<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-      half _Glossiness<span class="token punctuation">;</span>
-      half _Metallic<span class="token punctuation">;</span>
-      fixed4 _Color<span class="token punctuation">;</span>
-
-      <span class="token function">UNITY_INSTANCING_CBUFFER_START</span><span class="token punctuation">(</span>Props<span class="token punctuation">)</span>
-      UNITY_INSTANCING_CBUFFER_END
-      <span class="token comment" spellcheck="true">//shader的核心代码</span>
-      void <span class="token function">surf</span> <span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutputStandard o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">//这是CG程序中用来在一张贴图中对一个点进行采样的方法，返回一个float4</span>
-      fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
-      <span class="token comment" spellcheck="true">//将其颜色的rbg值赋予了输出的像素颜色</span>
-      o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
-      o<span class="token punctuation">.</span>Metallic <span class="token operator">=</span> _Metallic<span class="token punctuation">;</span>
-      o<span class="token punctuation">.</span>Smoothness <span class="token operator">=</span> _Glossiness<span class="token punctuation">;</span>
-      <span class="token comment" spellcheck="true">//将a值赋予透明度</span>
-      o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-   ENDCG
-  <span class="token punctuation">}</span>
-FallBack <span class="token string">"Diffuse"</span>
-<span class="token punctuation">}</span>
+<p>接下来是  <code>sampler2D _MainTex;</code> 我们知道在CG中，Texture（贴图）简单来说就是一块内存存储的，使用了RGBA通道，且每个通道8bits，的数据。而具体地想知道像素与坐标的对应关系，以及获取这些数据，一次一次去计算内存地址或者偏移显然不可行，因此可以通过sampler2D来对贴图进行操作。一言以蔽之就是，sampler2D是GLSL中的2D贴图的类型，相应的，还有sampler1D，sampler3D，samplerCube等等格式。</p>
+<p>然后的重点是：为什么在这里需要一句对_MainTex的声明？首先之前我们已经在Properties里声明过它是贴图了（<code>_MainTex (&quot;Albedo (RGB)&quot;, 2D) = &quot;white&quot; {}</code>）。我们用来实例的这个shader其实是由两个相对独立的块组成的，外层的属性声明，回滚等等是Unity可以直接使用和编译的ShaderLab；而现在我们是在CGPROGRAM…ENDCG这样一个代码块中，这是一段CG程序。对于这段CG程序，要想访问在Properties中所定义的变量的话，必须使用<strong>和之前变量相同的名字进行声明</strong>。因此<code>sampler2D _MainTex;</code>做的事情就是再次声明并链接了_MainTex，使得接下来的CG程序能够使用这个变量。后面的<br><code>half _Glossiness;</code> <code>half _Metallic;</code>  <code>fixed4 _Color;</code><br>都是同样的道理。回到原来的地方，下一句是</p>
+<pre class=" language-haxe"><code class="language-haxe">struct Input <span class="token punctuation">{</span>
+    float2 uv_MainTex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
+<p>如果你有编程的经历，那么结构体应该很熟悉了，这一段我们结合下面的surf一起来说</p>
+<pre class=" language-haxe"><code class="language-haxe">void <span class="token function">surf</span> <span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutputStandard o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Albedo comes from a texture tinted by color</span>
+            fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// Metallic and smoothness come from slider variables</span>
+            o<span class="token punctuation">.</span>Metallic <span class="token operator">=</span> _Metallic<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Smoothness <span class="token operator">=</span> _Glossiness<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<p>刚才提到的<code>#pragma surface surf Standard fullforwardshadows</code>里面surf 函数就是对应的上面一段。我们看函数头输入的参数有Input IN。这个Input就对应上面的结构体。我们可以把所需要参与计算的数据都放到这个Input结构中，再传入surf函数使用；SurfaceOutputStandard是已经定义好了里面类型输出结构。作为输入的结构体<strong>必须命名为Input</strong>，这个结构体中定义了一个float2的变量，emmmm···你可能会感到奇怪float后面跟着数字，这是什么意思呢？其实float和vec都可以在之后加入一个2到4的数字，来表示被打包在一起的2到4个同类型数。比如：<code>float4 color;</code> <code>float3 multipliedColor = color.rgb * coordinate.x;</code>之类的。</p>
+<p>在这个例子里，我们声明了一个叫做<code>uv_MainTex</code>的包含两个浮点数的变量。UV mapping的作用是将一个2D贴图上的点按照一定规则映射到3D模型上，在CG程序中，我们有这样的约定，在一个贴图变量之前加上uv两个字母，就代表提取它的uv值。我们之后就可以在surf程序中直接通过访问uv_MainTex来取得这张贴图当前需要计算的点的坐标值。接下来我们详细看surf内部的操作：</p>
+<pre class=" language-haxe"><code class="language-haxe">fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
+</code></pre>
+<p>这里用到了一个tex2d函数，这是CG程序中用来在一张贴图中对一个点进行采样的方法，返回一个float4。这个例子中刚刚得到的float4*_Color使得这个贴图经过和颜色混合。</p>
+<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+</code></pre>
+<p>将其颜色的rbg值赋予了输出的像素颜色</p>
+<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Metallic <span class="token operator">=</span> _Metallic<span class="token punctuation">;</span>
+o<span class="token punctuation">.</span>Smoothness <span class="token operator">=</span> _Glossiness<span class="token punctuation">;</span>
+</code></pre>
+<p>都是用到Properties来赋值材质中的Metallic and smoothness</p>
+<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
+</code></pre>
+<p>将a值赋予透明度。至此surf介绍完毕，这个例子中shader最重要的部分就是以上这些啦！</p>
+<h3 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h3><pre class=" language-haxe"><code class="language-haxe">FallBack <span class="token string">"Diffuse"</span>
+</code></pre>
+<p>当所有上面的SubShader都不可以在目标平台上运行时，Unity就会调用这个shader，当然你也可以关闭这个选项，那就意味着如果没有显卡可以跑上面的shader那就不管他啦!</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这是最简单最简单的shader，这时候的你应该可以看懂一些简单shader了，可以去Unity的Surface Shader Exampless上查看一些基础shader，下一篇我们会开始第一个shader的编写。</p>
 
     
 
