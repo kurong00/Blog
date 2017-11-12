@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sun Nov 12 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Nov 12 2017 12:24:10 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Nov 12 2017 13:19:08 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（二）：查看第一个Shader",
     "url": "http://yoursite.com/2017/11/12/shader2/index.html",
     "datePublished": "Sun Nov 12 2017 00:00:00 GMT+0800",
-    "dateModified": "Sun Nov 12 2017 12:24:10 GMT+0800",
+    "dateModified": "Sun Nov 12 2017 13:19:08 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -327,7 +327,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看第一个shader"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看第一个shader</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看第一个shader"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看第一个shader</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逐行代码查看"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">逐行代码查看</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#首先第一行"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">首先第一行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接着一段代码块"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">接着一段代码块</span></a></li></ol></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -484,7 +484,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="查看第一个shader"><a href="#查看第一个shader" class="headerlink" title="查看第一个shader"></a>查看第一个shader</h2><p>上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（Cg，HLSL,GLSL,OpenGl，DirectX的官方Doc等等），如果不求甚解的话，那我们就通过查看第一个shader来加深理解。我们在Unity中新建一个shader（Assets-&gt;Create-&gt;shader-&gt;standard surface shader）打开看发现里面已经有很多代码了。（版本Unity 2017.2.0f3）</p>
+        <h2 id="查看第一个shader"><a href="#查看第一个shader" class="headerlink" title="查看第一个shader"></a>查看第一个shader</h2><p>上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（Cg，HLSL，GLSL，OpenGl，DirectX的官方Doc等等），如果不求甚解的话，那我们就通过查看第一个shader来加深理解。我们在Unity中新建一个shader（Assets-&gt;Create-&gt;shader-&gt;standard surface shader）打开看发现里面已经有很多代码了。（版本Unity 2017.2.0f3）</p>
 <pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span> <span class="token punctuation">{</span>
     Properties <span class="token punctuation">{</span>
         <span class="token function">_Color</span> <span class="token punctuation">(</span><span class="token string">"Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -535,8 +535,55 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>emmm…….即使你有编程的基础也可能看的一头雾水，不过没关系，我们现在来一个个拆解这段代码。</p>
-<p>首先我们来看shader的一个大体结构: </p>
-<p><img style="margin: auto;" src="https://github.com/kurong00/blog/blob/master/thumbnail/shader2/Shader.png?raw=true"></p>
+<p>首先我们来看shader的一个大体结构:  </p>
+<p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader2/Shader.png?raw=true" class="img-topic"></p>
+<p>一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。  </p>
+<h3 id="逐行代码查看"><a href="#逐行代码查看" class="headerlink" title="逐行代码查看"></a>逐行代码查看</h3><p>我们打开刚刚新建的shader代码，开始逐行来看吧：</p>
+<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span> <span class="token punctuation">{</span>
+    Properties <span class="token punctuation">{</span>
+        <span class="token function">_Color</span> <span class="token punctuation">(</span><span class="token string">"Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_MainTex</span> <span class="token punctuation">(</span><span class="token string">"Albedo (RGB)"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token function">_Glossiness</span> <span class="token punctuation">(</span><span class="token string">"Smoothness"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.5</span>
+        <span class="token function">_Metallic</span> <span class="token punctuation">(</span><span class="token string">"Metallic"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.0</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="首先第一行"><a href="#首先第一行" class="headerlink" title="首先第一行"></a>首先第一行</h4><pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span>
+</code></pre>
+<p>Custom是自定义的shader默认的文件夹，如果你自己想要归类shader文件夹，就可以定义二级标题比如”Custom/MyShader/NewSurfaceShader”，这样NewSurfaceShader就归类在MyShader下啦。</p>
+<h4 id="接着一段代码块"><a href="#接着一段代码块" class="headerlink" title="接着一段代码块"></a>接着一段代码块</h4><pre class=" language-haxe"><code class="language-haxe">Properties <span class="token punctuation">{</span>
+        <span class="token function">_Color</span> <span class="token punctuation">(</span><span class="token string">"Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_MainTex</span> <span class="token punctuation">(</span><span class="token string">"Albedo (RGB)"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token function">_Glossiness</span> <span class="token punctuation">(</span><span class="token string">"Smoothness"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.5</span>
+        <span class="token function">_Metallic</span> <span class="token punctuation">(</span><span class="token string">"Metallic"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.0</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>这里是shader的属性部分：属性的格式写作如下<br><code>_Name(&quot;Display Name&quot;, type) = defaultValue[{options}]</code> </p>
+<ul>
+<li>_Name : 变量名，在之后的Shader代码中都用这个名字来获取该属性的内容</li>
+<li>Display Name : 显示名，在Unity Inspector上显示的名字</li>
+<li><p>type : 类型，可能的type所表示的内容有以下几种：</p>
+</li>
+<li><ul>
+<li>Color - 一种2阶数大小颜色，由RGBA（红绿蓝和透明度）四个量来定义；<br>2D - 一张贴图。这张贴图将在采样后被转为对应基于模型UV的每个像素的颜色，最终被显示出来- Rect - 一个非2阶数大小的贴图；</li>
+</ul>
+</li>
+<li><ul>
+<li>Cube - 即Cube map texture（立方体纹理），简单说就是6张有联系的2D贴图的组合，主要用来做反射效果（比如天空盒和动态反射），也会被转换为对应点的采样；</li>
+</ul>
+</li>
+<li><ul>
+<li>Range(min, max) - 一个介于最小值和最大值之间的浮点数，一般用来当作调整Shader某些特性的参数（比如透明度渲染的截止值可以是从0至1的值等）；</li>
+</ul>
+</li>
+<li><ul>
+<li>Float - 任意一个浮点数；</li>
+</ul>
+</li>
+<li><ul>
+<li>Vector - 一个四维数；</li>
+</ul>
+</li>
+</ul>
 <pre class=" language-haxe"><code class="language-haxe">    <span class="token preprocessor builtin">#pragma</span> surface surf Standard fullforwardshadows
     <span class="token preprocessor builtin">#pragma</span> target <span class="token number">3.0</span>
     <span class="token comment" spellcheck="true">//sampler2D就是GLSL中的2D贴图的类型,在这段Cg程序中要想访问Properties中的变量必须使用和之前变量相同的名字进行声明</span>
