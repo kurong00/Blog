@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-12T09:16:07.416Z</updated>
+  <updated>2017-11-13T13:14:29.374Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Unity Shader 入门（二）：查看第一个Shader</title>
-    <link href="http://yoursite.com/2017/11/12/shader2/"/>
-    <id>http://yoursite.com/2017/11/12/shader2/</id>
-    <published>2017-11-11T16:00:00.000Z</published>
-    <updated>2017-11-12T09:16:07.416Z</updated>
+    <link href="http://yoursite.com/2017/09/12/shader2/"/>
+    <id>http://yoursite.com/2017/09/12/shader2/</id>
+    <published>2017-09-11T16:00:00.000Z</published>
+    <updated>2017-11-13T13:14:29.374Z</updated>
     
     <summary type="html">
     
@@ -33,10 +33,10 @@
   
   <entry>
     <title>Unity Shader 入门（一）：理论准备</title>
-    <link href="http://yoursite.com/2017/11/11/shader1/"/>
-    <id>http://yoursite.com/2017/11/11/shader1/</id>
-    <published>2017-11-10T16:00:00.000Z</published>
-    <updated>2017-11-12T02:48:46.322Z</updated>
+    <link href="http://yoursite.com/2017/09/04/shader1/"/>
+    <id>http://yoursite.com/2017/09/04/shader1/</id>
+    <published>2017-09-03T16:00:00.000Z</published>
+    <updated>2017-11-13T13:14:20.578Z</updated>
     
     <summary type="html">
     
