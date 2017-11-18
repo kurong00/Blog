@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-13T13:14:29.374Z</updated>
+  <updated>2017-11-18T02:32:26.580Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity Shader 入门（三）：编写第一个Shader</title>
+    <link href="http://yoursite.com/2017/11/13/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E4%B8%AAShader/"/>
+    <id>http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/</id>
+    <published>2017-11-12T16:00:00.000Z</published>
+    <updated>2017-11-18T02:32:26.580Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;编写第一个Shader&quot;&gt;&lt;a href=&quot;#编写第一个Shader&quot; class=&quot;headerlink&quot; title=&quot;编写第一个Shader&quot;&gt;&lt;/a&gt;编写第一个Shader&lt;/h2&gt;&lt;p&gt;上一节我们学习了第一个简单的Shader，是时候开始写第一个shad
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Unity Shader 入门（二）：查看第一个Shader</title>
