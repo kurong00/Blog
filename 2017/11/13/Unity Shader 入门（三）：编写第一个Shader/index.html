@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Mon Nov 13 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Nov 18 2017 11:21:14 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Nov 18 2017 18:04:48 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（三）：编写第一个Shader",
     "url": "http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/index.html",
     "datePublished": "Mon Nov 13 2017 00:00:00 GMT+0800",
-    "dateModified": "Sat Nov 18 2017 11:21:14 GMT+0800",
+    "dateModified": "Sat Nov 18 2017 18:04:48 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -484,30 +484,29 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="编写第一个Shader"><a href="#编写第一个Shader" class="headerlink" title="编写第一个Shader"></a>编写第一个Shader</h2><p>上一节我们学习了第一个简单的Shader，是时候开始写第一个shader了（搓搓手）。emmm…..今天我们挑一个【边缘发光】的shader来写</p>
-<p>首先先来看一下效果图：<img src="" alt=""></p>
+        <h2 id="编写第一个Shader"><a href="#编写第一个Shader" class="headerlink" title="编写第一个Shader"></a>编写第一个Shader</h2><p>上一节我们学习了第一个简单的Shader，是时候开始写第一个shader了（搓搓手）。emmm…..今天我们挑一个【边缘发光（水晶球）】的shader来写</p>
+<p>首先先来看一下效果图：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader.PNG?raw=true" alt=""></p>
 <h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#560A4A">重点：向量点积运算。</font></p>
-<h3 id="详细解说："><a href="#详细解说：" class="headerlink" title="详细解说："></a>详细解说：</h3><pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/RimColor"</span> <span class="token punctuation">{</span>
-    Properties <span class="token punctuation">{</span>
-        <span class="token function">_Color</span> <span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token function">_MainTex</span> <span class="token punctuation">(</span><span class="token string">"Base (RGB) Gloss (A)"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-        <span class="token function">_BumpMap</span> <span class="token punctuation">(</span><span class="token string">"Normalmap"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"bump"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-        <span class="token function">_RimColor</span> <span class="token punctuation">(</span><span class="token string">"Rim Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1.1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token function">_RimStrength</span> <span class="token punctuation">(</span><span class="token string">"Rim Power"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span><span class="token number">8.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">2.0</span>
+<h3 id="详细解说："><a href="#详细解说：" class="headerlink" title="详细解说："></a>详细解说：</h3><pre class=" language-haxe"><code class="language-haxe">Shader "Custom<span class="token operator">/</span>Rim<span class="token comment" spellcheck="true">//RimBump" {</span>
+    Properties<span class="token punctuation">{</span>
+        <span class="token function">_Color</span><span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_SpecColor</span><span class="token punctuation">(</span><span class="token string">"Specular Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_BumpMap</span><span class="token punctuation">(</span><span class="token string">"Normalmap"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"bump"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token function">_RimColor</span><span class="token punctuation">(</span><span class="token string">"Rim Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0.26</span><span class="token punctuation">,</span><span class="token number">0.19</span><span class="token punctuation">,</span><span class="token number">0.16</span><span class="token punctuation">,</span><span class="token number">0.0</span><span class="token punctuation">)</span>
+        <span class="token function">_RimPower</span><span class="token punctuation">(</span><span class="token string">"Rim Power"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token number">8.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">2.0</span>
     <span class="token punctuation">}</span>
-    SubShader <span class="token punctuation">{</span> 
-        Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span> <span class="token operator">=</span> <span class="token string">"Opaque"</span> <span class="token punctuation">}</span>
-        LOD <span class="token number">200</span>
+        SubShader<span class="token punctuation">{</span>
+            Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span> <span class="token operator">=</span> <span class="token string">"Opaque"</span> <span class="token punctuation">}</span>
+            LOD <span class="token number">400</span>
 
         CGPROGRAM
-        <span class="token preprocessor builtin">#pragma</span> surface surf Lambert
+        <span class="token preprocessor builtin">#pragma</span> surface surf BlinnPhong
         <span class="token preprocessor builtin">#pragma</span> target <span class="token number">3.0</span>
 
-        sampler2D _MainTex<span class="token punctuation">;</span>
         sampler2D _BumpMap<span class="token punctuation">;</span>
         fixed4 _Color<span class="token punctuation">;</span>
         float4 _RimColor<span class="token punctuation">;</span>
-        float _RimStrength<span class="token punctuation">;</span>
+        float _RimPower<span class="token punctuation">;</span>
 
         struct Input <span class="token punctuation">{</span>
             float2 uv_MainTex<span class="token punctuation">;</span>
@@ -515,42 +514,40 @@
             float3 viewDir<span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-        void <span class="token function">surf</span> <span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutput o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span><span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb <span class="token operator">*</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
-            o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a <span class="token operator">*</span> _Color<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
+        void <span class="token function">surf</span><span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutput o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Gloss <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>Normal <span class="token operator">=</span> <span class="token function">UnpackNormal</span><span class="token punctuation">(</span><span class="token function">tex2D</span><span class="token punctuation">(</span>_BumpMap<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_BumpMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span><span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimPower<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
         ENDCG
-    <span class="token punctuation">}</span>
-    FallBack <span class="token string">"Diffuse"</span>
+        <span class="token punctuation">}</span>
+            FallBack <span class="token string">"Diffuse"</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下</p>
-<pre class=" language-haxe"><code class="language-haxe">void <span class="token function">surf</span> <span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutput o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span><span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb <span class="token operator">*</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+<pre class=" language-haxe"><code class="language-haxe">void <span class="token function">surf</span><span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutput o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Gloss <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>Normal <span class="token operator">=</span> <span class="token function">UnpackNormal</span><span class="token punctuation">(</span><span class="token function">tex2D</span><span class="token punctuation">(</span>_BumpMap<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_BumpMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span><span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimPower<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 </code></pre>
 <ul>
-<li><p>首先这两句：</p>
-<pre class=" language-haxe"><code class="language-haxe">fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span><span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span><span class="token punctuation">;</span>
-o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb <span class="token operator">*</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+<li>首先这两句：</li>
+</ul>
+<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+o<span class="token punctuation">.</span>Gloss <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 </code></pre>
-<p>类比上一篇，o.Albedo 此时可以获得我们设置的颜色和贴图之间混合后的颜色</p>
-</li>
-<li><p>接下来是重点：</p>
-<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Normal <span class="token operator">=</span> <span class="token function">UnpackNormal</span><span class="token punctuation">(</span><span class="token function">tex2D</span><span class="token punctuation">(</span>_BumpMap<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_BumpMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>类比上一篇，o.Albedo 此时可以获得我们设置的颜色和贴图之间混合后的颜色，o.Gloss 我们将发光强度设置成1</p>
+<ul>
+<li>接下来是重点：<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Normal <span class="token operator">=</span> <span class="token function">UnpackNormal</span><span class="token punctuation">(</span><span class="token function">tex2D</span><span class="token punctuation">(</span>_BumpMap<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_BumpMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><code>UnpackNormal</code> 是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），<code>UnpackNormal</code>接受一个fixed4的输入，并将其转换为所对应的法线值（fixed3）。在解包得到这个值之后，将其赋给输出的Normal，接下来我们就可以来使用Normal值啦。</p>
-<h4 id="有关法线贴图"><a href="#有关法线贴图" class="headerlink" title="有关法线贴图"></a>有关法线贴图</h4></li>
+<code>UnpackNormal</code> 是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），<code>UnpackNormal</code>接受一个fixed4的输入，并将其转换为所对应的法线值（fixed3）。在解包得到这个值之后，将其赋给输出的Normal，接下来我们就可以来使用Normal值啦。<h4 id="有关法线贴图"><a href="#有关法线贴图" class="headerlink" title="有关法线贴图"></a>有关法线贴图</h4></li>
 </ul>
 <p>这一点归类于扩展阅读，如果你想知道<code>UnpackNormal</code>的原理可以继续查看，如果不的话就跳过这一段吧！<br>如果你想知道原理的话：那首先思考一个问题<strong>为什么法线贴图大多是蓝色的？</strong> </p>
 <ul>
@@ -568,8 +565,12 @@ o<span class="token punctuation">.</span>Emission <span class="token operator">=
 <pre class=" language-haxe"><code class="language-haxe">half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>首先我们看<code>normalize</code>函数：为了对向量进行归一化处理，<code>dot</code>函数：返回传入的两个参数的点积，<code>saturate</code>函数：判断传入的参数是否在0-1之间，如果小于0，返回 0；如果大于 1，返回1；<br>接着第二句：</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这是最简单最简单的shader，看到这里的你应该可以了解一些简单的shader了，可以去Unity的Surface Shader Exampless上查看一些基础shader的编写内容，下一篇我们会开始第一个shader的编写。</p>
+<ul>
+<li>首先我们看<code>normalize</code>函数：为了对向量进行归一化处理（这里传入IN.viewDir指的是：WorldSpace View Direction，也就是当前坐标的视角方向），<code>dot</code>函数：返回传入的两个参数的点积，<code>saturate</code>函数：判断传入的参数是否在0-1之间，如果小于0，返回 0；如果大于 1，返回1； </li>
+<li>接着第二句：<code>_RimColor.rgb * pow (rim, _RimStrength)</code>从_RimColor参数获取自发光颜色再和发光的强度混合，最终将颜色赋值给像素的Emission（发散颜色）</li>
+<li>以上就是边缘发光效果的实现。</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>边缘发光简单，但是用处很广。下一次我们会实现半透明效果的边缘发光。</p>
 
     
 
