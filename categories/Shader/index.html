@@ -12,7 +12,7 @@
     
     <title>
         
-            Unity Shader 入门（一）：理论准备 | 
+            分类: Shader | 
         
         kurong00
     </title>
@@ -65,18 +65,15 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Unity Shader 入门（一）：理论准备 | kurong00">
+    <meta property="og:title" content="分类: Shader | kurong00">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
     
 
     
-        <meta property="article:published_time" content="Mon Sep 04 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Nov 18 2017 11:21:34 GMT+0800" />
-    
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Unity Shader 入门（一）：理论准备 | kurong00">
+    <meta name="twitter:title" content="分类: Shader | kurong00">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -84,43 +81,13 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html" />
+        <link rel="canonical" href="http://yoursite.com/categories/Shader/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
-
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "publisher": {
-        "@type": "Organization",
-        "name": "kurong00",
-        "logo": "/img/favicon.png"
-    },
-    "author": {
-        "@type": "Person",
-        "name": "kurong00",
-        "image": {
-            "@type": "ImageObject",
-            "url": "/img/favicon.png"
-        },
-        "description": "Hakuna Matata"
-    },
-    "headline": "Unity Shader 入门（一）：理论准备",
-    "url": "http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html",
-    "datePublished": "Mon Sep 04 2017 00:00:00 GMT+0800",
-    "dateModified": "Sat Nov 18 2017 11:21:34 GMT+0800",
-    "description": "",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "http://yoursite.com"
-    }
-}
-</script>
 
 
     
@@ -300,250 +267,208 @@
                         </button>
                     
 
-                    <!-- Post TOC -->
-
+                    <!-- Index Module -->
+<div class="material-index mdl-grid">
     
-    <!-- Back Button -->
-    <!--
-    <div class="material-back" id="backhome-div" tabindex="0">
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-           href="#" onclick="window.history.back();return false;"
-           target="_self"
-           role="button"
-           data-upgraded=",MaterialButton,MaterialRipple">
-            <i class="material-icons" role="presentation">arrow_back</i>
-            <span class="mdl-button__ripple-container">
-                <span class="mdl-ripple"></span>
-            </span>
-        </a>
-    </div>
-    -->
+    <div class="locate-thumbnail-symbol"></div>
 
-    <!-- Left aligned menu below button -->
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">format_list_numbered</i>
-    </button>
-
-    
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-什么是Shader？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 什么是Shader？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Shader的分类？"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. Shader的分类？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-什么是渲染流水线？"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. 什么是渲染流水线？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#应用阶段"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">应用阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#几何阶段"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">几何阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#光栅化阶段"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">光栅化阶段</span></a></li></ol></li></ol></li></ol>
-        <!--
-        <li class="mdl-menu__item">
-            Some Action
-        </li>
-        -->
-    </ul>
+    <!-- Pin on top -->
     
 
-
-
-
-
-<!-- Layouts -->
-
-    <!-- Post Module -->
-    <div class="material-post_container">
-
-        <div class="material-post mdl-grid">
-            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-
-                <!-- Post Header(Thumbnail & Title) -->
-                
-    <!-- Paradox Post Header -->
+    <!-- Normal Post -->
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1.jpg?raw=true)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/thumbnail.jpg?raw=true">
     
-            <p class="article-headline-p">
-                Unity Shader 入门（一）：理论准备
-            </p>
-        </div>
 
-
-
-
-
-                
-                    <!-- Paradox Post Info -->
-                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-
-    <!-- Author Avatar -->
-    <div id="author-avatar">
-        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar"/>
-    </div>
-    <!-- Author Name & Date -->
-    <div>
-        <strong>kurong00</strong>
-        <span>9月 04, 2017</span>
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/">Unity Shader 入门（三）：编写第一个Shader</a></p>
     </div>
 
-    <div class="section-spacer"></div>
-
-    <!-- Favorite -->
-    <!--
-        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
-            <i class="material-icons" role="presentation">favorite</i>
-            <span class="visuallyhidden">favorites</span>
-        </button>
-    -->
-
-    <!-- Qrcode -->
-    
-
-    <!-- Tags (bookmark) -->
-    
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-    </ul>
-    
-
-    <!-- Share -->
-    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">share</i>
-    <span class="visuallyhidden">share</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
-    
-
-    
-
-    <!-- Share Weibo -->
-    
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Unity Shader 入门（一）：理论准备&url=http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html&pic=&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
-                分享到微博
-            </li>
-        </a>
-    
-
-    <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Unity Shader 入门（一）：理论准备&url=http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html&via=kurong00" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Twitter
-            </li>
-        </a>
-    
-
-    <!-- Share Facebook -->
-    
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Facebook
-            </li>
-        </a>
-    
-
-    <!-- Share Google+ -->
-    
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Google+
-            </li>
-        </a>
-    
-
-    <!-- Share LinkedIn -->
-    
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html&title=Unity Shader 入门（一）：理论准备" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 LinkedIn
-            </li>
-        </a>
-    
-
-    <!-- Share QQ -->
-    
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=kurong00&title=Unity Shader 入门（一）：理论准备&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 QQ
-            </li>
-        </a>
-    
-
-    <!-- Share Telegram -->
-    
-        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/09/04/Unity Shader 入门（一）：理论准备/index.html&text=Unity Shader 入门（一）：理论准备" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Telegram
-            </li>
-        </a>
-    
-</ul>
-
-</div>
-
-                
-
-                <!-- Post Content -->
-                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-    
-        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="1-什么是Shader？"><a href="#1-什么是Shader？" class="headerlink" title="1. 什么是Shader？"></a>1. 什么是Shader？</h3><p>shader（着色器）是<font color="#560A4A">GPU的渲染流水线上的一小段程序</font>，它负责将输入的Mesh（网格）以指定的方式，和输入的贴图或者颜色等组合作用后输出。绘图单元可以依据这个输出来将图像绘制到屏幕上。 </p>
-<h3 id="2-Shader的分类？"><a href="#2-Shader的分类？" class="headerlink" title="2. Shader的分类？"></a>2. Shader的分类？</h3><p>shader大体上可以分为两类：</p>
-<ul>
-<li>表面着色器（Surface Shader）：已经为你做了大部分的工作，只需要简单的编写就可以实现很多不错的效果。</li>
-<li>片元着色器（Fragment Shader）：可以做的事情更多，相应的难度也会加大。可以在比较低的层级上进行更复杂（或者针对目标设备更高效）的开发。 </li>
-</ul>
-<h3 id="3-什么是渲染流水线？"><a href="#3-什么是渲染流水线？" class="headerlink" title="3. 什么是渲染流水线？"></a>3. 什么是渲染流水线？</h3><p>既然shader所在的阶段是渲染流水线上的一部分，那渲染流水线又是什么呢？ </p>
-<p>首先GPU上的渲染流水线任务是：<font color="#560A4A">从一个三维场景出发，把这些信息最终转换成一张二维图像。</font>我们可以将渲染流水线分成三个阶段：应用阶段-&gt;几何阶段-&gt;光栅化阶段。</p>
-<p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline.PNG?raw=true" alt=""></p>
-<p>我们逐一来看三个阶段： </p>
-<h4 id="应用阶段"><a href="#应用阶段" class="headerlink" title="应用阶段"></a>应用阶段</h4><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline2.PNG?raw=true" alt=""></p>
-<p>这个阶段我们将一些数据，例如：顶点位置，法向量，顶点颜色，贴图位置等等顶点的数据输入GPU。</p>
-<h4 id="几何阶段"><a href="#几何阶段" class="headerlink" title="几何阶段"></a>几何阶段</h4><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline3.PNG?raw=true" alt=""></p>
-<p>此时到达Vertex Shader，shader会进行一些操作，例如：改变顶点位置，对顶点进行坐标变换(模型空间-&gt;世界空间-&gt;裁剪空间-&gt;屏幕空间)，贴图位置转换等等。  </p>
-<p>下一步开始<strong>图元装配</strong>：将一个个零散的顶点组装成一个个三角形。  </p>
-<p>下一步<strong>曲面细分环节</strong>（可选项，不一定经历这个环节，在Direct3D 11、OpenGL 4、OpenGL ES 3.2以上才支持）：将上一部的图元进行细分。 </p>
-<p> 再下一步<strong>几何元着色器</strong>（也是可选项，不一定经历这个环节,在Direct3D 10、OpenGL 3.2、OpenGL ES 3.2以上支持）：增加顶点或者片元数</p>
-<p> 下一步<strong>裁剪</strong>：裁剪位于视锥外的片元</p>
-<p> 最后一步<strong>屏幕映射</strong>：输出屏幕空间的二维坐标和每个顶点的深度值，着色等信息。</p>
-<h4 id="光栅化阶段"><a href="#光栅化阶段" class="headerlink" title="光栅化阶段"></a>光栅化阶段</h4><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline4.PNG?raw=true" alt=""></p>
-<p>将上一步得到的信息(深度值，着色，屏幕坐标等等)进行插值运算，确认哪些像素该被绘制在屏幕上。 </p>
-<p><strong>以上是渲染流水线的一个简单说明，真实的实现过程远比上面描述的复杂，但是好在Unity Shader已经封装了非常多的功能，下一节我们将开始分析第一个Unity Shader。</strong></p>
-
-    
-
-    
-</div>
-
-
-                
-
-                <!-- Post Comments -->
-                
-                    
-                
+            
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar1.png" width="44px" height="44px" alt="kurong00's avatar">
             </div>
+            <div>
+                <strong>kurong00</strong>
+                <span>11月 13, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/Shader/">Shader</a>
+            </span>
 
-            <!-- Post Prev & Next Nav -->
-            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-    <!-- Prev Nav -->
-    
-        <a href="/2017/09/12/Unity Shader 入门（二）：查看第一个Shader/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
+            
 
-    <!-- Section Spacer -->
-    <div class="section-spacer"></div>
+            
 
-    <!-- Next Nav -->
-    
-</nav>
-
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
         </div>
     </div>
+</div>
 
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="https://github.com/kurong00/blog/blob/master/thumbnail/shader2/thumbnail2.png?raw=true">
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/09/12/Unity Shader 入门（二）：查看第一个Shader/">Unity Shader 入门（二）：查看第一个Shader</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/09/12/Unity Shader 入门（二）：查看第一个Shader/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar1.png" width="44px" height="44px" alt="kurong00's avatar">
+            </div>
+            <div>
+                <strong>kurong00</strong>
+                <span>9月 12, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/Shader/">Shader</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1.jpg?raw=true">
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/09/04/Unity Shader 入门（一）：理论准备/">Unity Shader 入门（一）：理论准备</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            基础知识
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/09/04/Unity Shader 入门（一）：理论准备/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar1.png" width="44px" height="44px" alt="kurong00's avatar">
+            </div>
+            <div>
+                <strong>kurong00</strong>
+                <span>9月 04, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/Shader/">Shader</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+
+    
+
+    
+        <script type="text/ls-javascript" id="thumbnail-script">
+    var randomNum;
+
+    var locatePost = $('.locate-thumbnail-symbol').next();
+    for(var i = 0; i < 10; i++) {
+        randomNum = Math.floor(Math.random() * 15 + 1);
+
+        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
+        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+
+        locatePost = locatePost.next();
+    }
+</script>
+
+    
+</div>
 
 
                     
