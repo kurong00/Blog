@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Mon Nov 13 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Nov 18 2017 18:23:49 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Nov 18 2017 19:47:34 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（三）：编写第一个Shader",
     "url": "http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/index.html",
     "datePublished": "Mon Nov 13 2017 00:00:00 GMT+0800",
-    "dateModified": "Sat Nov 18 2017 18:23:49 GMT+0800",
+    "dateModified": "Sat Nov 18 2017 19:47:34 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -557,15 +557,11 @@ o<span class="token punctuation">.</span>Emission <span class="token operator">=
 </li>
 <li>这样，之前的法线值(0, 0, 1)实际上对应了法线纹理中RGB的值为(0.5, 0.5, 1)，而这个颜色也就是法线纹理中那大片的蓝色。这些蓝色实际上说明<strong>顶点的大部分法线是和模型本身法线一样</strong>的，不需要改变。总结一下就是，<code>法线纹理的RGB通道存储了在每个顶点各自的Tangent Space中的法线方向的映射值。</code></li>
 <li>Unity编辑器中加入一张发现贴图，编辑器都会提示把法线纹理的“Texture Type”设置成“Normal Map”，这是为什么呢？是因为这样的设置可以让Unity根据不同平台对纹理进行压缩，通过UnpackNormal函数对法线纹理进行正确的采样，即<strong>将把颜色通道变成一个适合于实时法向映射的格式。</strong></li>
+<li>其实法线贴图只有两个通道是真正必不可少的，因为第三个通道的值可以用另外两个推导出来（法线是单位向量）法线（x,y,z）是一条单位向量。所以知道了x,y,z里的任意两个，剩下的那个就可以通过计算得出。所以我们就可以使用2个通道的图储存x,y,z里的两个值，将xyz里剩余的值省略，通过计算得出。<br>而压缩后的法线贴图，大小只有原来的1/4左右，故可以使用更大或者更多的贴图来提升画面品质。<code>UnpackNormal</code>是解压了法线纹理中的信息，利于我们之后的光照处理</li>
 </ul>
 </blockquote>
 </li>
 </ul>
-<blockquote>
-<ul>
-<li>其实法线贴图只有两个通道是真正必不可少的，因为第三个通道的值可以用另外两个推导出来（法线是单位向量）法线（x,y,z）是一条单位向量。所以知道了x,y,z里的任意两个，剩下的那个就可以通过计算得出。所以我们就可以使用2个通道的图储存x,y,z里的两个值，将xyz里剩余的值省略，通过计算得出。<br>而压缩后的法线贴图，大小只有原来的1/4左右，故可以使用更大或者更多的贴图来提升画面品质。<code>UnpackNormal</code>是解压了法线纹理中的信息，利于我们之后的光照处理</li>
-</ul>
-</blockquote>
 <h3 id="重点讲解"><a href="#重点讲解" class="headerlink" title="重点讲解"></a>重点讲解</h3><p>回到刚刚打断的地方，下面两句：</p>
 <pre class=" language-haxe"><code class="language-haxe">half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
