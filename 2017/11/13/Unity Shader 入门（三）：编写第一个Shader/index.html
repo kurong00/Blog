@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Mon Nov 13 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Nov 18 2017 19:47:34 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Nov 19 2017 16:15:37 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（三）：编写第一个Shader",
     "url": "http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/index.html",
     "datePublished": "Mon Nov 13 2017 00:00:00 GMT+0800",
-    "dateModified": "Sat Nov 18 2017 19:47:34 GMT+0800",
+    "dateModified": "Sun Nov 19 2017 16:15:37 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -327,7 +327,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编写第一个Shader"><span class="post-toc-number">1.</span> <span class="post-toc-text">编写第一个Shader</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现原理："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">实现原理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#详细解说："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">详细解说：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#有关法线贴图"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">有关法线贴图</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重点讲解"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">重点讲解</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">2.</span> <span class="post-toc-text">结语</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编写第一个Shader"><span class="post-toc-number">1.</span> <span class="post-toc-text">编写第一个Shader</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现原理："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">实现原理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体解说："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">具体解说：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#有关法线贴图"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">有关法线贴图</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重点讲解"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">重点讲解</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">2.</span> <span class="post-toc-text">结语</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -484,10 +484,11 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="编写第一个Shader"><a href="#编写第一个Shader" class="headerlink" title="编写第一个Shader"></a>编写第一个Shader</h2><p>上一节我们学习了第一个简单的Shader，是时候开始写第一个shader了（搓搓手）。emmm…..今天我们挑一个【边缘发光（水晶球）】的shader来写</p>
-<p>首先先来看一下效果图：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader.PNG?raw=true" alt=""></p>
+        <h2 id="编写第一个Shader"><a href="#编写第一个Shader" class="headerlink" title="编写第一个Shader"></a>编写第一个Shader</h2><p>上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个【边缘发光（水晶球）】的shader来写</p>
+<p>首先来看一下效果图，如果你感兴趣的话就接下来看吧：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader.PNG?raw=true" alt=""></p>
 <h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#560A4A">重点：向量点积运算。</font></p>
-<h3 id="详细解说："><a href="#详细解说：" class="headerlink" title="详细解说："></a>详细解说：</h3><pre class=" language-haxe"><code class="language-haxe">Shader "Custom<span class="token operator">/</span>Rim<span class="token comment" spellcheck="true">//RimBump" {</span>
+<h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：</p>
+<pre class=" language-haxe"><code class="language-haxe">Shader "Custom<span class="token operator">/</span>Rim<span class="token comment" spellcheck="true">//RimBump" {</span>
     Properties<span class="token punctuation">{</span>
         <span class="token function">_Color</span><span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token function">_SpecColor</span><span class="token punctuation">(</span><span class="token string">"Specular Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -526,7 +527,7 @@
             FallBack <span class="token string">"Diffuse"</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下</p>
+<p>如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下：</p>
 <pre class=" language-haxe"><code class="language-haxe">void <span class="token function">surf</span><span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutput o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>Gloss <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
@@ -541,14 +542,14 @@
 <pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Gloss <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 </code></pre>
-<p>类比上一篇，o.Albedo 此时可以获得我们设置的颜色和贴图之间混合后的颜色，o.Gloss 我们将发光强度设置成1</p>
+<p>类比上一篇，o.Albedo 此时可以获得我们设置的颜色和贴图之间混合后的颜色，o.Gloss 我们将发光强度设置成1。</p>
 <ul>
 <li>接下来是重点：<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Normal <span class="token operator">=</span> <span class="token function">UnpackNormal</span><span class="token punctuation">(</span><span class="token function">tex2D</span><span class="token punctuation">(</span>_BumpMap<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_BumpMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <code>UnpackNormal</code> 是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），<code>UnpackNormal</code>接受一个fixed4的输入，并将其转换为所对应的法线值（fixed3）。在解包得到这个值之后，将其赋给输出的Normal，接下来我们就可以来使用Normal值啦。<h4 id="有关法线贴图"><a href="#有关法线贴图" class="headerlink" title="有关法线贴图"></a>有关法线贴图</h4><blockquote>
-<p>这一点归类于扩展阅读，如果你想知道<code>UnpackNormal</code>的原理可以继续查看，如果不的话就跳过这一段吧！<br>如果你想知道原理的话：那首先思考一个问题<strong>为什么法线贴图大多是蓝色的？</strong> </p>
+<p>这一点归类于扩展阅读，如果你想知道<code>UnpackNormal</code>的原理可以继续查看，如果不的话就跳过这一段吧！<br>假设你想知道原理，那首先思考一个问题<strong>为什么法线贴图看起来大多是蓝色的？</strong> </p>
 <ul>
 <li>实际上，我们通常见到的这种偏蓝色的法线纹理中，存储的是在Tangent Space中的顶点法线方向。那么，问题又来了，什么是Tangent Space。在Tangent Space中，坐标原点就是顶点的位置，其中z轴是该顶点本身的法线方向（N）。这样，另外两个坐标轴就是和该点相切的两条切线。这样的切线是有无数条，但模型一般会给定该顶点的一个tangent。（<a href="http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/" target="_blank" rel="external">给定的过程可以见这个链接</a>）</li>
 <li>通常我们所见的法线纹理是基于<strong>原法线信息构建的坐标系</strong>来构建出来的。那种偏蓝色的法线纹理其实就是存储在每个顶点各自的Tangent Space中<strong>法线的扰动方向</strong>。也就是说，如果一个顶点的法线方向不变，那么在它的Tangent Space中，新的normal值就是z轴方向，也就是说值为(0, 0, 1)。但这并不是法线纹理中存储的最终值：因为一个向量每个维度的取值范围在(-1, 1)，在法线贴图中被压缩在颜色的范围[0,1]中，所以需要转换：<pre class=" language-haxe"><code class="language-haxe">颜色 <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> 法线 <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
@@ -567,11 +568,11 @@ o<span class="token punctuation">.</span>Emission <span class="token operator">=
 o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ul>
-<li>首先我们看<code>normalize</code>函数：为了对向量进行归一化处理（这里传入IN.viewDir指的是：WorldSpace View Direction，也就是当前坐标的视角方向），<code>dot</code>函数：返回传入的两个参数的点积，<code>saturate</code>函数：判断传入的参数是否在0-1之间，如果小于0，返回 0；如果大于 1，返回1； </li>
+<li>首先我们看<code>normalize</code>函数：为了对向量进行归一化处理（这里传入IN.viewDir指的是：WorldSpace View Direction，也就是当前坐标的视角方向）。 <code>dot</code>函数：返回传入的两个参数的点积，<code>saturate</code>函数：判断传入的参数是否在0-1之间，如果小于0，返回 0；如果大于 1，返回1； </li>
 <li>接着第二句：<code>_RimColor.rgb * pow (rim, _RimStrength)</code>从_RimColor参数获取自发光颜色再和发光的强度混合，最终将颜色赋值给像素的Emission（发散颜色）</li>
 <li>以上就是边缘发光效果的实现。</li>
 </ul>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>边缘发光简单，但是用处很广。下一次我们会实现半透明效果的边缘发光。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>上述实现的方式非常简单，但是因为根据<code>物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位</code>这个方法对于类似<code>立方体</code>之类的过渡位置非常尖锐，夹角骤变的物体效果就不好。下一次我们将来写【半透明】的边缘发光效果</p>
 
     
 
