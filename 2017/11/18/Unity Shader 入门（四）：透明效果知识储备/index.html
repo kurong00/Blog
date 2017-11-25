@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sat Nov 18 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Nov 25 2017 21:41:37 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Nov 25 2017 21:45:13 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（四）：透明效果知识储备",
     "url": "http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/index.html",
     "datePublished": "Sat Nov 18 2017 00:00:00 GMT+0800",
-    "dateModified": "Sat Nov 25 2017 21:41:37 GMT+0800",
+    "dateModified": "Sat Nov 25 2017 21:45:13 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -497,7 +497,43 @@
 </ul>
 </li>
 </ol>
-<h3 id="Unity设置的渲染序列"><a href="#Unity设置的渲染序列" class="headerlink" title="Unity设置的渲染序列"></a>Unity设置的渲染序列</h3><p>类似之前<code>Tags { &quot;RenderType&quot;=&quot;Opaque&quot; }</code>,我们可以用Queue标签来决定我们的模型是怎么渲染的。<br>|         队列名称         |                   队列索引                   |                  索引描述                  |<br>| :——————: | :————————————–: | :———————————-: |<br>|        Background         |         1000          |     最早被渲染的队列，一般绘制背景元素     |<br>|      Geometry      |        2000         |     默认渲染队列，不透明物体渲染队列     |<br>|   AlphaTest    |            2450            |   需要透明度测试的物体在这个队列渲染    |<br>| Transparent |            3000             | 使用透明度混合的物体在这个队列渲染 |<br>|   Overlay    |     4000      |   最后被渲染的物体在这个队列，一般用于叠加效果    |</p>
+<h3 id="Unity设置的渲染序列"><a href="#Unity设置的渲染序列" class="headerlink" title="Unity设置的渲染序列"></a>Unity设置的渲染序列</h3><p>类似之前<code>Tags { &quot;RenderType&quot;=&quot;Opaque&quot; }</code>,我们可以用Queue标签来决定我们的模型是怎么渲染的。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">队列名称</th>
+<th style="text-align:center">队列索引</th>
+<th style="text-align:center">索引描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Background</td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">最早被渲染的队列，一般绘制背景元素</td>
+</tr>
+<tr>
+<td style="text-align:center">Geometry</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">默认渲染队列，不透明物体渲染队列</td>
+</tr>
+<tr>
+<td style="text-align:center">AlphaTest</td>
+<td style="text-align:center">2450</td>
+<td style="text-align:center">需要透明度测试的物体在这个队列渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">Transparent</td>
+<td style="text-align:center">3000</td>
+<td style="text-align:center">使用透明度混合的物体在这个队列渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">Overlay</td>
+<td style="text-align:center">4000</td>
+<td style="text-align:center">最后被渲染的物体在这个队列，一般用于叠加效果</td>
+</tr>
+</tbody>
+</table>
 <h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下</p>
 <pre class=" language-haxe"><code class="language-haxe"> SubShader
     <span class="token punctuation">{</span>
