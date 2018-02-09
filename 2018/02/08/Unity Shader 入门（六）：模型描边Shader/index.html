@@ -12,7 +12,7 @@
     
     <title>
         
-            Unity Shader 入门（一）：理论准备 | 
+            Unity Shader 入门（六）：模型描边Shader | 
         
         kurong00
     </title>
@@ -65,18 +65,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Unity Shader 入门（一）：理论准备 | kurong00">
+    <meta property="og:title" content="Unity Shader 入门（六）：模型描边Shader | kurong00">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
     
 
     
-        <meta property="article:published_time" content="Sat Nov 11 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Nov 12 2017 10:48:46 GMT+0800" />
+        <meta property="article:published_time" content="Thu Feb 08 2018 00:00:00 GMT+0800" />
+        <meta property="article:modified_time" content="Fri Feb 09 2018 16:25:09 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Unity Shader 入门（一）：理论准备 | kurong00">
+    <meta name="twitter:title" content="Unity Shader 入门（六）：模型描边Shader | kurong00">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -84,7 +84,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2017/11/11/shader1/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -110,10 +110,10 @@
         },
         "description": "Hakuna Matata"
     },
-    "headline": "Unity Shader 入门（一）：理论准备",
-    "url": "http://yoursite.com/2017/11/11/shader1/index.html",
-    "datePublished": "Sat Nov 11 2017 00:00:00 GMT+0800",
-    "dateModified": "Sun Nov 12 2017 10:48:46 GMT+0800",
+    "headline": "Unity Shader 入门（六）：模型描边Shader",
+    "url": "http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html",
+    "datePublished": "Thu Feb 08 2018 00:00:00 GMT+0800",
+    "dateModified": "Fri Feb 09 2018 16:25:09 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -327,7 +327,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-什么是Shader？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 什么是Shader？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Shader的分类？"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. Shader的分类？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-什么是渲染流水线？"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. 什么是渲染流水线？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#应用阶段"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">应用阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#几何阶段"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">几何阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#光栅化阶段"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">光栅化阶段</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导语"><span class="post-toc-number">1.</span> <span class="post-toc-text">导语</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#具体实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现原理："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">实现原理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体解说："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">具体解说：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包含问题"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">包含问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">更新方案</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -353,10 +353,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1.jpg?raw=true)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader6.png?raw=true)">
     
             <p class="article-headline-p">
-                Unity Shader 入门（一）：理论准备
+                Unity Shader 入门（六）：模型描边Shader
             </p>
         </div>
 
@@ -375,7 +375,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>kurong00</strong>
-        <span>11月 11, 2017</span>
+        <span>2月 08, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -415,7 +415,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Unity Shader 入门（一）：理论准备&url=http://yoursite.com/2017/11/11/shader1/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Unity Shader 入门（六）：模型描边Shader&url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -424,7 +424,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Unity Shader 入门（一）：理论准备&url=http://yoursite.com/2017/11/11/shader1/index.html&via=kurong00" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Unity Shader 入门（六）：模型描边Shader&url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html&via=kurong00" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -433,7 +433,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/11/11/shader1/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -442,7 +442,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/11/11/shader1/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -451,7 +451,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com/2017/11/11/shader1/index.html&title=Unity Shader 入门（一）：理论准备" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html&title=Unity Shader 入门（六）：模型描边Shader" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -460,7 +460,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=kurong00&title=Unity Shader 入门（一）：理论准备&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/11/11/shader1/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=kurong00&title=Unity Shader 入门（六）：模型描边Shader&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -469,7 +469,7 @@
 
     <!-- Share Telegram -->
     
-        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/11/11/shader1/index.html&text=Unity Shader 入门（一）：理论准备" target="_blank">
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html&text=Unity Shader 入门（六）：模型描边Shader" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Telegram
             </li>
@@ -484,28 +484,224 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="1-什么是Shader？"><a href="#1-什么是Shader？" class="headerlink" title="1. 什么是Shader？"></a>1. 什么是Shader？</h3><p>shader（着色器）是<font color="#560A4A">GPU的渲染流水线上的一小段程序</font>，它负责将输入的Mesh（网格）以指定的方式，和输入的贴图或者颜色等组合作用后输出。绘图单元可以依据这个输出来将图像绘制到屏幕上。 </p>
-<h3 id="2-Shader的分类？"><a href="#2-Shader的分类？" class="headerlink" title="2. Shader的分类？"></a>2. Shader的分类？</h3><p>shader大体上可以分为两类：</p>
-<ul>
-<li>表面着色器（Surface Shader）：已经为你做了大部分的工作，只需要简单的编写就可以实现很多不错的效果。</li>
-<li>片元着色器（Fragment Shader）：可以做的事情更多，相应的难度也会加大。可以在比较低的层级上进行更复杂（或者针对目标设备更高效）的开发。 </li>
-</ul>
-<h3 id="3-什么是渲染流水线？"><a href="#3-什么是渲染流水线？" class="headerlink" title="3. 什么是渲染流水线？"></a>3. 什么是渲染流水线？</h3><p>既然shader所在的阶段是渲染流水线上的一部分，那渲染流水线又是什么呢？ </p>
-<p>首先GPU上的渲染流水线任务是：<font color="#560A4A">从一个三维场景出发，把这些信息最终转换成一张二维图像。</font>我们可以将渲染流水线分成三个阶段：应用阶段-&gt;几何阶段-&gt;光栅化阶段。</p>
-<p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline.PNG?raw=true" alt=""></p>
-<p>我们逐一来看三个阶段： </p>
-<h4 id="应用阶段"><a href="#应用阶段" class="headerlink" title="应用阶段"></a>应用阶段</h4><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline2.PNG?raw=true" alt=""></p>
-<p>这个阶段我们将一些数据，例如：顶点位置，法向量，顶点颜色，贴图位置等等顶点的数据输入GPU。</p>
-<h4 id="几何阶段"><a href="#几何阶段" class="headerlink" title="几何阶段"></a>几何阶段</h4><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline3.PNG?raw=true" alt=""></p>
-<p>此时到达Vertex Shader，shader会进行一些操作，例如：改变顶点位置，对顶点进行坐标变换(模型空间-&gt;世界空间-&gt;裁剪空间-&gt;屏幕空间)，贴图位置转换等等。  </p>
-<p>下一步开始<strong>图元装配</strong>：将一个个零散的顶点组装成一个个三角形。  </p>
-<p>下一步<strong>曲面细分环节</strong>（可选项，不一定经历这个环节，在Direct3D 11、OpenGL 4、OpenGL ES 3.2以上才支持）：将上一部的图元进行细分。 </p>
-<p> 再下一步<strong>几何元着色器</strong>（也是可选项，不一定经历这个环节,在Direct3D 10、OpenGL 3.2、OpenGL ES 3.2以上支持）：增加顶点或者片元数</p>
-<p> 下一步<strong>裁剪</strong>：裁剪位于视锥外的片元</p>
-<p> 最后一步<strong>屏幕映射</strong>：输出屏幕空间的二维坐标和每个顶点的深度值，着色等信息。</p>
-<h4 id="光栅化阶段"><a href="#光栅化阶段" class="headerlink" title="光栅化阶段"></a>光栅化阶段</h4><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline4.PNG?raw=true" alt=""></p>
-<p>将上一步得到的信息(深度值，着色，屏幕坐标等等)进行插值运算，确认哪些像素该被绘制在屏幕上。 </p>
-<p><strong>以上是渲染流水线的一个简单说明，真实的实现过程远比上面描述的复杂，但是好在Unity Shader已经封装了非常多的功能，下一节我们将开始分析第一个Unity Shader。</strong></p>
+        <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>之前我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。</p>
+<p>老规矩还是来看一下效果图，如果你感兴趣的话就接下来看吧：</p>
+<p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLighting.PNG?raw=true" alt=""></p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>下面开始这个Shader的讲解：</p>
+<h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>Mesh Doubling (复制网格)： </p>
+<ol>
+<li>需要一个单独的Pass来实现，重新绘制一个将所有表面都<font color="#D37885">沿着法线方向</font>延展过的模型，然后将正面剪裁掉，只输出描边的颜色；</li>
+<li>第二个Pass就是一个正常着色的Pass</li>
+</ol>
+<h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：</p>
+<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/Rim/RimLighting"</span> <span class="token punctuation">{</span>
+    Properties<span class="token punctuation">{</span>
+        <span class="token function">_MainColor</span><span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_OutlineCol</span><span class="token punctuation">(</span><span class="token string">"OutlineCol"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_OutlineFactor</span><span class="token punctuation">(</span><span class="token string">"OutlineFactor"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.1</span>
+        <span class="token function">_MainTex</span><span class="token punctuation">(</span><span class="token string">"Base 2D"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    SubShader
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//描边使用两个Pass，第一个pass沿法线挤出一点，只输出描边的颜色</span>
+        Pass
+        <span class="token punctuation">{</span>
+            Cull Front
+            CGPROGRAM
+            <span class="token preprocessor builtin">#include</span> <span class="token string">"UnityCG.cginc"</span>
+            fixed4 _OutlineCol<span class="token punctuation">;</span>
+            float _OutlineFactor<span class="token punctuation">;</span>
+
+            struct v2f
+            <span class="token punctuation">{</span>
+                float4 pos <span class="token punctuation">:</span> SV_POSITION<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+            v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_full v<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                v2f o<span class="token punctuation">;</span>
+                o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>vertex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//将法线方向转换到视空间</span>
+                float3 vnormal <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token punctuation">(</span>float3x3<span class="token punctuation">)</span>UNITY_MATRIX_IT_MV<span class="token punctuation">,</span> v<span class="token punctuation">.</span>normal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//将视空间法线xy坐标转化到投影空间，只有xy需要，z深度不需要了</span>
+                float2 offset <span class="token operator">=</span> <span class="token function">TransformViewToProjection</span><span class="token punctuation">(</span>vnormal<span class="token punctuation">.</span>xy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//在最终投影阶段输出进行偏移操作</span>
+                o<span class="token punctuation">.</span>pos<span class="token punctuation">.</span>xy <span class="token operator">+</span><span class="token operator">=</span> offset <span class="token operator">*</span> _OutlineFactor<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            fixed4 <span class="token function">frag</span><span class="token punctuation">(</span>v2f i<span class="token punctuation">)</span> <span class="token punctuation">:</span> SV_Target
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//这个Pass直接输出描边颜色</span>
+                <span class="token keyword">return</span> _OutlineCol<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">//使用vert函数和frag函数</span>
+            <span class="token preprocessor builtin">#pragma</span> vertex vert
+            <span class="token preprocessor builtin">#pragma</span> fragment frag
+            ENDCG
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//正常着色的Pass</span>
+        Pass
+        <span class="token punctuation">{</span>
+            CGPROGRAM
+            <span class="token comment" spellcheck="true">//引入头文件</span>
+            <span class="token preprocessor builtin">#include</span> <span class="token string">"Lighting.cginc"</span>
+            <span class="token comment" spellcheck="true">//使用vert函数和frag函数</span>
+            <span class="token preprocessor builtin">#pragma</span> vertex vert
+            <span class="token preprocessor builtin">#pragma</span> fragment frag    
+            <span class="token comment" spellcheck="true">//定义Properties中的变量</span>
+            fixed4 _MainColor<span class="token punctuation">;</span>
+            sampler2D _MainTex<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//定义结构体：vertex shader阶段输出的内容</span>
+            struct v2f
+            <span class="token punctuation">{</span>
+                float4 pos <span class="token punctuation">:</span> SV_POSITION<span class="token punctuation">;</span>
+                float3 worldNormal <span class="token punctuation">:</span> TEXCOORD0<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//定义顶点shader,参数直接使用appdata_base（包含position, noramal, texcoord）</span>
+            v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_base v<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                v2f o<span class="token punctuation">;</span>
+                o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>vertex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//通过TRANSFORM_TEX宏转化纹理坐标，主要处理了Offset和Tiling的改变</span>
+                o<span class="token punctuation">.</span>worldNormal <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>normal<span class="token punctuation">,</span> <span class="token punctuation">(</span>float3x3<span class="token punctuation">)</span>unity_WorldToObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//定义片元shader</span>
+            fixed4 <span class="token function">frag</span><span class="token punctuation">(</span>v2f i<span class="token punctuation">)</span> <span class="token punctuation">:</span> SV_Target
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//unity自身的diffuse也是带了环境光，这里我们也增加一下环境光</span>
+                fixed3 ambient <span class="token operator">=</span> UNITY_LIGHTMODEL_AMBIENT<span class="token punctuation">.</span>xyz <span class="token operator">*</span> _MainColor<span class="token punctuation">.</span>xyz<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//归一化法线，即使在vert归一化也不行，从vert到frag阶段有差值处理，传入的法线方向并不是vertex shader直接传出的</span>
+                fixed3 worldNormal <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>worldNormal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//把光照方向归一化</span>
+                fixed3 worldLightDir <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>_WorldSpaceLightPos0<span class="token punctuation">.</span>xyz<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//根据半兰伯特模型计算像素的光照信息</span>
+                fixed3 lambert <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> <span class="token function">dot</span><span class="token punctuation">(</span>worldNormal<span class="token punctuation">,</span> worldLightDir<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//最终输出颜色为lambert光强*材质diffuse颜色*光颜色</span>
+                fixed3 diffuse <span class="token operator">=</span> lambert <span class="token operator">*</span> _MainColor<span class="token punctuation">.</span>xyz <span class="token operator">*</span> _LightColor0<span class="token punctuation">.</span>xyz <span class="token operator">+</span> ambient<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//进行纹理采样</span>
+                fixed4 color <span class="token operator">=</span> _MainColor<span class="token punctuation">;</span>
+                color<span class="token punctuation">.</span>rgb <span class="token operator">=</span> color<span class="token punctuation">.</span>rgb<span class="token operator">*</span> diffuse<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token function">fixed4</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            ENDCG
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    FallBack <span class="token string">"Diffuse"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>详细的实现，包含在注释之中了。</p>
+<h3 id="包含问题"><a href="#包含问题" class="headerlink" title="包含问题"></a>包含问题</h3><p>但是这个实现方法有一个问题：线条并不连续，在平滑表面的表现尚可，例如球体，胶囊体等等, 但是在锐利的表面上经常会出现断层，比如立方体等等。还是利用Mesh Doubling (复制网格)的方法，但是  <font color="#D37885">不严格地按照表面沿着法线的方向延展, 而是在标准化的点位置和法线方向之间取一个恰当的参数来做插值</font>。</p>
+<h2 id="更新方案"><a href="#更新方案" class="headerlink" title="更新方案"></a>更新方案</h2><p>修改描边Pass的vert函数：</p>
+<pre class=" language-haxe"><code class="language-haxe">v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_full v<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            v2f o<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span> <span class="token punctuation">(</span> v<span class="token punctuation">.</span>vertex <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float3 vnormal1 <span class="token operator">=</span> <span class="token function">normalize</span> <span class="token punctuation">(</span> v<span class="token punctuation">.</span>vertex<span class="token punctuation">.</span>xyz <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//将法线方向转换到视空间</span>
+            float3 vnormal2 <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token punctuation">(</span>float3x3<span class="token punctuation">)</span>UNITY_MATRIX_IT_MV<span class="token punctuation">,</span> v<span class="token punctuation">.</span>normal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            vnormal1 <span class="token operator">=</span> <span class="token function">lerp</span> <span class="token punctuation">(</span> vnormal1<span class="token punctuation">,</span> vnormal2<span class="token punctuation">,</span> _Factor <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            vnormal1 <span class="token operator">=</span> <span class="token function">mul</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span> float3x3 <span class="token punctuation">)</span> UNITY_MATRIX_IT_MV<span class="token punctuation">,</span> vnormal1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float2 offset <span class="token operator">=</span> <span class="token function">TransformViewToProjection</span> <span class="token punctuation">(</span>vnormal1<span class="token punctuation">.</span>xy <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            offset <span class="token operator">=</span> <span class="token function">normalize</span> <span class="token punctuation">(</span> offset <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float dist <span class="token operator">=</span> <span class="token function">distance</span> <span class="token punctuation">(</span> <span class="token function">mul</span> <span class="token punctuation">(</span> UNITY_MATRIX_M<span class="token punctuation">,</span> v<span class="token punctuation">.</span>vertex <span class="token punctuation">)</span><span class="token punctuation">,</span> _WorldSpaceCameraPos <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>pos<span class="token punctuation">.</span>xy <span class="token operator">+</span><span class="token operator">=</span> offset <span class="token operator">*</span>_OutlineFactor<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<p>效果是：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLightingFix.PNG?raw=true" alt=""></p>
+<p>最后上一个完整的修复过的Shader方案：</p>
+<p>```haxe<br>Shader “Custom/Rim/RimLightingFix” {<br>    Properties{<br>        _MainColor(“Main Color”, Color) = (1,1,1,1)<br>        _OutlineCol(“OutlineCol”, Color) = (1,0,0,1)<br>        _OutlineFactor(“OutlineFactor”, Range(0,1)) = 0.1<br>        _MainTex(“Base 2D”, 2D) = “white”{}<br>        _Factor(“Control Factor”,Range(0,1)) = 0.1<br>    }<br>    SubShader<br>    {<br>        //描边使用两个Pass，第一个pass沿法线挤出一点，只输出描边的颜色<br>        Pass{<br>        Cull Front<br>        CGPROGRAM</p>
+<pre><code>    #include &quot;UnityCG.cginc&quot;
+    //使用vert函数和frag函数
+    #pragma vertex vert
+    #pragma fragment frag
+    fixed4 _OutlineCol;
+    float _OutlineFactor;
+    float _Factor;    
+    struct v2f
+    {
+        float4 pos : SV_POSITION;
+    };
+
+    v2f vert(appdata_full v)
+    {
+        v2f o;
+        o.pos = UnityObjectToClipPos ( v.vertex );
+        float3 vnormal1 = normalize ( v.vertex.xyz );
+        //将法线方向转换到视空间
+        float3 vnormal2 = mul((float3x3)UNITY_MATRIX_IT_MV, v.normal);
+        vnormal1 = lerp ( vnormal1, vnormal2, _Factor );
+        vnormal1 = mul ( ( float3x3 ) UNITY_MATRIX_IT_MV, vnormal1);
+        float2 offset = TransformViewToProjection (vnormal1.xy );
+        offset = normalize ( offset );
+        float dist = distance ( mul ( UNITY_MATRIX_M, v.vertex ), _WorldSpaceCameraPos );
+        o.pos.xy += offset *_OutlineFactor;
+        return o;
+    }
+
+    fixed4 frag(v2f i) : SV_Target
+    {
+        //这个Pass直接输出描边颜色
+        return _OutlineCol;
+    }
+    ENDCG
+    }
+
+    //正常着色的Pass
+    Pass
+    {
+        CGPROGRAM
+        //引入头文件
+        #include &quot;Lighting.cginc&quot;
+        //使用vert函数和frag函数
+        #pragma vertex vert
+        #pragma fragment frag    
+        //定义Properties中的变量
+        fixed4 _MainColor;
+        sampler2D _MainTex;
+        //定义结构体：vertex shader阶段输出的内容
+        struct v2f
+        {
+            float4 pos : SV_POSITION;
+            float3 worldNormal : TEXCOORD0;
+        };
+        //定义顶点shader,参数直接使用appdata_base（包含position, noramal, texcoord）
+        v2f vert(appdata_base v)
+        {
+            v2f o;
+            o.pos = UnityObjectToClipPos(v.vertex);
+            //通过TRANSFORM_TEX宏转化纹理坐标，主要处理了Offset和Tiling的改变
+            o.worldNormal = mul(v.normal, (float3x3)unity_WorldToObject);
+            return o;
+        }
+
+        //定义片元shader
+        fixed4 frag(v2f i) : SV_Target
+        {
+            //unity自身的diffuse也是带了环境光，这里我们也增加一下环境光
+            fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * _MainColor.xyz;
+            //归一化法线，即使在vert归一化也不行，从vert到frag阶段有差值处理，传入的法线方向并不是vertex shader直接传出的
+            fixed3 worldNormal = normalize(i.worldNormal);
+            //把光照方向归一化
+            fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
+            //根据半兰伯特模型计算像素的光照信息
+            fixed3 lambert = 0.5 * dot(worldNormal, worldLightDir) + 0.5;
+            //最终输出颜色为lambert光强*材质diffuse颜色*光颜色
+            fixed3 diffuse = lambert * _MainColor.xyz * _LightColor0.xyz + ambient;
+            //进行纹理采样
+            fixed4 color = _MainColor;
+            color.rgb = color.rgb* diffuse;
+            return fixed4(color);
+        }
+        ENDCG
+    }
+}
+FallBack &quot;Diffuse&quot;
+</code></pre><p>}</p>
 
     
 
@@ -525,19 +721,19 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/11/12/shader2/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -625,7 +821,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/02/">二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -643,7 +839,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                
+                <a class="sidebar_archives-link" href="/categories/Shader/">Shader<span class="sidebar_archives-count">6</span></a>
             </ul>
         </li>
         

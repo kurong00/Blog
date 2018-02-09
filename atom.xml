@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-09T13:18:47.588Z</updated>
+  <updated>2018-02-09T08:25:09.665Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity Shader 入门（六）：模型描边Shader</title>
+    <link href="http://yoursite.com/2018/02/08/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%8F%8F%E8%BE%B9Shader/"/>
+    <id>http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/</id>
+    <published>2018-02-07T16:00:00.000Z</published>
+    <updated>2018-02-09T08:25:09.665Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;之前我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。
+    
+    </summary>
+    
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Unity Shader 入门（五）：边缘发光透明版</title>
