@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Thu Feb 08 2018 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Fri Feb 09 2018 16:41:00 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Feb 10 2018 21:59:58 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "Unity Shader 入门（六）：模型描边Shader",
     "url": "http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html",
     "datePublished": "Thu Feb 08 2018 00:00:00 GMT+0800",
-    "dateModified": "Fri Feb 09 2018 16:41:00 GMT+0800",
+    "dateModified": "Sat Feb 10 2018 21:59:58 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -327,7 +327,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导语"><span class="post-toc-number">1.</span> <span class="post-toc-text">导语</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#具体实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现原理："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">实现原理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体解说："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">具体解说：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包含问题"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">包含问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">更新方案</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导语"><span class="post-toc-number">1.</span> <span class="post-toc-text">导语</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#具体实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现原理："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">实现原理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体解说："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">具体解说：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包含问题"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">包含问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">更新方案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">4.</span> <span class="post-toc-text">结语</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -484,13 +484,13 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>之前我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。</p>
-<p>老规矩还是来看一下效果图，如果你感兴趣的话就接下来看吧：</p>
+        <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。</p>
+<p>老规矩还是来看一下效果图：</p>
 <p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLighting.PNG?raw=true" alt=""></p>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>下面开始这个Shader的讲解：</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>说明一下这个Shader的具体实现：</p>
 <h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>Mesh Doubling (复制网格)： </p>
 <ol>
-<li>需要一个单独的Pass来实现，重新绘制一个将所有表面都<font color="#D37885">沿着法线方向</font>延展过的模型，然后将正面剪裁掉，只输出描边的颜色；</li>
+<li>需要一个单独的Pass来实现，重新绘制一个将所有表面都<font color="#D37885">沿着法线方向</font>延展模型，挤出一点点，然后将正面剪裁掉，只输出描边的颜色；</li>
 <li>第二个Pass就是一个正常着色的Pass</li>
 </ol>
 <h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：</p>
@@ -594,7 +594,7 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>详细的实现，包含在注释之中了。</p>
-<h3 id="包含问题"><a href="#包含问题" class="headerlink" title="包含问题"></a>包含问题</h3><p>但是这个实现方法有一个问题：线条并不连续，在平滑表面的表现尚可，例如球体，胶囊体等等, 但是在锐利的表面上经常会出现断层，比如立方体等等。还是利用Mesh Doubling (复制网格)的方法，但是  <font color="#D37885">不严格地按照表面沿着法线的方向延展, 而是在标准化的点位置和法线方向之间取一个恰当的参数来做插值</font>。</p>
+<h3 id="包含问题"><a href="#包含问题" class="headerlink" title="包含问题"></a>包含问题</h3><p>但是这个实现方法有一个问题：<strong>线条并不连续</strong>，在平滑表面的表现尚可（球体，胶囊体等等），但是在锐利的表面上经常会出现断层（比如立方体等等）。还是利用Mesh Doubling (复制网格)的方法，但是不再简单只通过法线方向，而是：<font color="#D37885">不严格地按照表面沿着法线的方向延展, 而是在标准化的点位置和法线方向之间取一个恰当的参数来做插值</font>。</p>
 <h2 id="更新方案"><a href="#更新方案" class="headerlink" title="更新方案"></a>更新方案</h2><p>修改描边Pass的vert函数：</p>
 <pre class=" language-haxe"><code class="language-haxe">v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_full v<span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
@@ -717,6 +717,7 @@
     FallBack <span class="token string">"Diffuse"</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>描边常用于一些漫画风格的游戏场景中，能够在复杂的场景中突出被绘制的物体。</p>
 
     
 
