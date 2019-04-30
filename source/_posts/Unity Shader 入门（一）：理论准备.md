@@ -20,7 +20,7 @@ shader大体上可以分为两类：
 
 我们逐一来看三个阶段：
 
-### 应用阶段
+### 3.1 应用阶段
 
 ![](https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline2.PNG?raw=true)
 
