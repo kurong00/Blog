@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html style="display: none;" lang="zh">
-    <head>
+    <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <!--
         © Material Theme
@@ -35,11 +35,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="kurong00">
-    <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" itemprop="description" content>
+    <meta name="keywords" content>
 
     <!-- Site Verification -->
-    <meta name="google-site-verification" content="oeiv6qN1PhSBfloa5ol_KJ7MfrQUrxSCAgqRBEcRIWM" />
+    <meta name="google-site-verification" content="oeiv6qN1PhSBfloa5ol_KJ7MfrQUrxSCAgqRBEcRIWM">
     
 
     <!-- Favicons -->
@@ -66,25 +66,25 @@
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Unity Shader 入门（三）：编写第一个Shader | Zero World">
-    <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content>
     
 
     
-        <meta property="article:published_time" content="Mon Nov 13 2017 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Nov 26 2017 21:11:26 GMT+0800" />
+        <meta property="article:published_time" content="Mon Nov 13 2017 00:00:00 GMT+0800">
+        <meta property="article:modified_time" content="Sun Nov 26 2017 21:11:26 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
     <meta name="twitter:title" content="Unity Shader 入门（三）：编写第一个Shader | Zero World">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content>
     <meta name="twitter:image" content="/img/favicon.png">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="http://yoursite.com" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="http://yoursite.com">
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/index.html">
     
 
     <!-- Structured-data for SEO -->
@@ -266,7 +266,7 @@
 <!-- Import Font -->
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
         <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==")</script>
@@ -320,8 +320,7 @@
     -->
 
     <!-- Left aligned menu below button -->
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
         <i class="material-icons">format_list_numbered</i>
     </button>
 
@@ -370,7 +369,7 @@
 
     <!-- Author Avatar -->
     <div id="author-avatar">
-        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar"/>
+        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar">
     </div>
     <!-- Author Name & Date -->
     <div>
@@ -400,7 +399,7 @@
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
         
-    </ul>
+    </li></ul>
     
 
     <!-- Share -->
@@ -485,7 +484,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h2 id="编写第一个Shader"><a href="#编写第一个Shader" class="headerlink" title="编写第一个Shader"></a>编写第一个Shader</h2><p>上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个【边缘发光（水晶球）】的shader来写</p>
-<p>首先来看一下效果图，如果你感兴趣的话就接下来看吧：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader.PNG?raw=true" alt=""></p>
+<p>首先来看一下效果图，如果你感兴趣的话就接下来看吧：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader.PNG?raw=true" alt></p>
 <h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#D37885">重点：向量点积运算。</font></p>
 <h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：</p>
 <pre class=" language-haxe"><code class="language-haxe">Shader "Custom<span class="token operator">/</span>Rim<span class="token comment" spellcheck="true">//RimBump" {</span>
@@ -551,7 +550,7 @@ o<span class="token punctuation">.</span>Emission <span class="token operator">=
 <code>UnpackNormal</code> 是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），<code>UnpackNormal</code>接受一个fixed4的输入，并将其转换为所对应的法线值（fixed3）。在解包得到这个值之后，将其赋给输出的Normal，接下来我们就可以来使用Normal值啦。<h4 id="有关法线贴图"><a href="#有关法线贴图" class="headerlink" title="有关法线贴图"></a>有关法线贴图</h4><blockquote>
 <p>这一点归类于扩展阅读，如果你想知道<code>UnpackNormal</code>的原理可以继续查看，如果不的话就跳过这一段吧！<br>假设你想知道原理，那首先思考一个问题<strong>为什么法线贴图看起来大多是蓝色的？</strong> </p>
 <ul>
-<li>实际上，我们通常见到的这种偏蓝色的法线纹理中，存储的是在Tangent Space中的顶点法线方向。那么，问题又来了，什么是Tangent Space。在Tangent Space中，坐标原点就是顶点的位置，其中z轴是该顶点本身的法线方向（N）。这样，另外两个坐标轴就是和该点相切的两条切线。这样的切线是有无数条，但模型一般会给定该顶点的一个tangent。（<a href="http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/" target="_blank" rel="external">给定的过程可以见这个链接</a>）</li>
+<li>实际上，我们通常见到的这种偏蓝色的法线纹理中，存储的是在Tangent Space中的顶点法线方向。那么，问题又来了，什么是Tangent Space。在Tangent Space中，坐标原点就是顶点的位置，其中z轴是该顶点本身的法线方向（N）。这样，另外两个坐标轴就是和该点相切的两条切线。这样的切线是有无数条，但模型一般会给定该顶点的一个tangent。（<a href="http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/" target="_blank" rel="noopener">给定的过程可以见这个链接</a>）</li>
 <li>通常我们所见的法线纹理是基于<strong>原法线信息构建的坐标系</strong>来构建出来的。那种偏蓝色的法线纹理其实就是存储在每个顶点各自的Tangent Space中<strong>法线的扰动方向</strong>。也就是说，如果一个顶点的法线方向不变，那么在它的Tangent Space中，新的normal值就是z轴方向，也就是说值为(0, 0, 1)。但这并不是法线纹理中存储的最终值：因为一个向量每个维度的取值范围在(-1, 1)，在法线贴图中被压缩在颜色的范围[0,1]中，所以需要转换：<pre class=" language-haxe"><code class="language-haxe">颜色 <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> 法线 <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
 线 <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token punctuation">(</span>颜色 <span class="token operator">-</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -700,8 +699,8 @@ o<span class="token punctuation">.</span>Emission <span class="token operator">=
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/02/">二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a>
-            </ul>
+                <a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/02/">二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
         </li>
         
     
@@ -718,8 +717,8 @@ o<span class="token punctuation">.</span>Emission <span class="token operator">=
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Shader/">Shader<span class="sidebar_archives-count">6</span></a>
-            </ul>
+                <a class="sidebar_archives-link" href="/categories/Shader/">Shader<span class="sidebar_archives-count">5</span></a>
+            </li></ul>
         </li>
         
     
@@ -748,7 +747,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Theme Material -->
 
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
         <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
             主题 - Material
             <span class="sidebar-badge badge-circle">i</span>

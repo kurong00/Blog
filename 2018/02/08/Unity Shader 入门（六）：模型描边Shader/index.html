@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html style="display: none;" lang="zh">
-    <head>
+    <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <!--
         © Material Theme
@@ -35,11 +35,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="kurong00">
-    <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" itemprop="description" content>
+    <meta name="keywords" content>
 
     <!-- Site Verification -->
-    <meta name="google-site-verification" content="oeiv6qN1PhSBfloa5ol_KJ7MfrQUrxSCAgqRBEcRIWM" />
+    <meta name="google-site-verification" content="oeiv6qN1PhSBfloa5ol_KJ7MfrQUrxSCAgqRBEcRIWM">
     
 
     <!-- Favicons -->
@@ -66,25 +66,25 @@
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Unity Shader 入门（六）：模型描边Shader | Zero World">
-    <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content>
     
 
     
-        <meta property="article:published_time" content="Thu Feb 08 2018 00:00:00 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Feb 10 2018 21:59:58 GMT+0800" />
+        <meta property="article:published_time" content="Thu Feb 08 2018 00:00:00 GMT+0800">
+        <meta property="article:modified_time" content="Sat Feb 10 2018 21:59:58 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
     <meta name="twitter:title" content="Unity Shader 入门（六）：模型描边Shader | Zero World">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content>
     <meta name="twitter:image" content="/img/favicon.png">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="http://yoursite.com" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="http://yoursite.com">
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html">
     
 
     <!-- Structured-data for SEO -->
@@ -266,7 +266,7 @@
 <!-- Import Font -->
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
         <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==")</script>
@@ -320,8 +320,7 @@
     -->
 
     <!-- Left aligned menu below button -->
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
         <i class="material-icons">format_list_numbered</i>
     </button>
 
@@ -370,7 +369,7 @@
 
     <!-- Author Avatar -->
     <div id="author-avatar">
-        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar"/>
+        <img src="/img/avatar1.png" width="44px" height="44px" alt="Author Avatar">
     </div>
     <!-- Author Name & Date -->
     <div>
@@ -400,7 +399,7 @@
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
         
-    </ul>
+    </li></ul>
     
 
     <!-- Share -->
@@ -486,7 +485,7 @@
     
         <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。</p>
 <p>老规矩还是来看一下效果图：</p>
-<p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLighting.PNG?raw=true" alt=""></p>
+<p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLighting.PNG?raw=true" alt></p>
 <h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>说明一下这个Shader的具体实现：</p>
 <h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>Mesh Doubling (复制网格)： </p>
 <ol>
@@ -613,7 +612,7 @@
         <span class="token punctuation">}</span>
 </code></pre>
 <p>其中的_Factor就是用来计算差值的参数，这个可以根据自己调节<code>lerp ( vnormal1, vnormal2, _Factor )</code></p>
-<p>效果是：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLightingFix.PNG?raw=true" alt=""></p>
+<p>效果是：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLightingFix.PNG?raw=true" alt></p>
 <p>最后上一个完整的修复过的Shader方案：</p>
 <pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/Rim/RimLightingFix"</span> <span class="token punctuation">{</span>
     Properties<span class="token punctuation">{</span>
@@ -737,6 +736,14 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2019/04/30/Unity Shader 入门（一）：理论准备/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
@@ -837,8 +844,8 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/02/">二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a>
-            </ul>
+                <a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/02/">二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
         </li>
         
     
@@ -855,8 +862,8 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Shader/">Shader<span class="sidebar_archives-count">6</span></a>
-            </ul>
+                <a class="sidebar_archives-link" href="/categories/Shader/">Shader<span class="sidebar_archives-count">5</span></a>
+            </li></ul>
         </li>
         
     
@@ -885,7 +892,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Theme Material -->
 
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
         <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
             主题 - Material
             <span class="sidebar-badge badge-circle">i</span>
