@@ -69,8 +69,8 @@
     
 
     
-        <meta property="article:published_time" content="Tue Apr 30 2019 09:11:33 GMT+0800">
-        <meta property="article:modified_time" content="Tue Apr 30 2019 09:19:44 GMT+0800">
+        <meta property="article:published_time" content="Tue Apr 30 2019 10:37:47 GMT+0800">
+        <meta property="article:modified_time" content="Tue Apr 30 2019 10:37:47 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -110,8 +110,8 @@
     },
     "headline": "",
     "url": "http://yoursite.com/2019/04/30/Unity Shader 入门（一）：理论准备/index.html",
-    "datePublished": "Tue Apr 30 2019 09:11:33 GMT+0800",
-    "dateModified": "Tue Apr 30 2019 09:19:44 GMT+0800",
+    "datePublished": "Tue Apr 30 2019 10:37:47 GMT+0800",
+    "dateModified": "Tue Apr 30 2019 10:37:47 GMT+0800",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -324,7 +324,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Unity-Shader-入门（一）：理论准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">Unity Shader 入门（一）：理论准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-什么是Shader？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 什么是Shader？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Shader的分类？"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. Shader的分类？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-什么是渲染流水线？"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. 什么是渲染流水线？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#应用阶段"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">应用阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#几何阶段"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">几何阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#光栅化阶段"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">光栅化阶段</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Unity-Shader-入门（一）：理论准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">Unity Shader 入门（一）：理论准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-什么是Shader？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 什么是Shader？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Shader的分类？"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. Shader的分类？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-什么是渲染流水线？"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. 什么是渲染流水线？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-应用阶段"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">3.1 应用阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#几何阶段"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">几何阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#光栅化阶段"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">光栅化阶段</span></a></li></ol></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -500,7 +500,7 @@
 <p>首先GPU上的渲染流水线任务是：<font color="#560A4A">从一个三维场景出发，把这些信息最终转换成一张二维图像。</font>我们可以将渲染流水线分成三个阶段：应用阶段-&gt;几何阶段-&gt;光栅化阶段。</p>
 <p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline.PNG?raw=true" alt></p>
 <p>我们逐一来看三个阶段：</p>
-<h3 id="应用阶段"><a href="#应用阶段" class="headerlink" title="应用阶段"></a>应用阶段</h3><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline2.PNG?raw=true" alt></p>
+<h3 id="3-1-应用阶段"><a href="#3-1-应用阶段" class="headerlink" title="3.1 应用阶段"></a>3.1 应用阶段</h3><p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader1/shader1_pipeline2.PNG?raw=true" alt></p>
 <p>这个阶段是完全由开发者主导的，主要工作是：</p>
 <ul>
 <li>准备数据：例如相机位置、模型位置、光源位置等等</li>
