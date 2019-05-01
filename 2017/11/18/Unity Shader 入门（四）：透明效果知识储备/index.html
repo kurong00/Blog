@@ -529,22 +529,22 @@
 </tbody>
 </table>
 <h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下</p>
-<pre class=" language-haxe"><code class="language-haxe"> SubShader
+<pre class="line-numbers language-haxe"><code class="language-haxe"> SubShader
     <span class="token punctuation">{</span>
         Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Transparent"</span> <span class="token punctuation">}</span>  
         Pass <span class="token punctuation">{</span> 
             ZWrite Off ······
         <span class="token punctuation">}</span> 
     <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>ZWrite Off 意味者关闭深度写入，或者可以：</p>
-<pre class=" language-haxe"><code class="language-haxe"> SubShader
+<pre class="line-numbers language-haxe"><code class="language-haxe"> SubShader
     <span class="token punctuation">{</span>
         Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Transparent"</span> <span class="token punctuation">}</span>  
         ZWrite Off ······
         Pass <span class="token punctuation">{</span> <span class="token punctuation">}</span> 
     <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这样表示这个SubShader下的所有Pass都会关闭深度写入</p>
 
         

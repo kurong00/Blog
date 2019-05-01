@@ -479,7 +479,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h2 id="查看第一个shader"><a href="#查看第一个shader" class="headerlink" title="查看第一个shader"></a>查看第一个shader</h2><p>上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（Cg，HLSL，GLSL，OpenGl，DirectX的官方Doc等等），如果不求甚解的话，那我们就通过查看第一个shader来加深理解。我们在Unity中新建一个shader（Assets-&gt;Create-&gt;shader-&gt;standard surface shader）打开看发现里面已经有很多代码了。（版本Unity 2017.2.0f3）</p>
-<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span> <span class="token punctuation">{</span>
     Properties <span class="token punctuation">{</span>
         <span class="token function">_Color</span> <span class="token punctuation">(</span><span class="token string">"Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token function">_MainTex</span> <span class="token punctuation">(</span><span class="token string">"Albedo (RGB)"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -527,30 +527,30 @@
     <span class="token punctuation">}</span>
     FallBack <span class="token string">"Diffuse"</span>
 <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>emmm…….即使你有编程的基础也可能看的一头雾水，不过没关系，我们现在来一个个拆解这段代码。</p>
 <p>首先我们来看shader的一个大体结构:  </p>
 <p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader2/Shader.png?raw=true" class="img-topic"></p>
 <p>一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。  </p>
 <h2 id="逐行代码查看"><a href="#逐行代码查看" class="headerlink" title="逐行代码查看"></a>逐行代码查看</h2><p>我们打开刚刚新建的shader代码，开始逐行来看吧：</p>
-<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span> <span class="token punctuation">{</span>
     Properties <span class="token punctuation">{</span>
         <span class="token function">_Color</span> <span class="token punctuation">(</span><span class="token string">"Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token function">_MainTex</span> <span class="token punctuation">(</span><span class="token string">"Albedo (RGB)"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
         <span class="token function">_Glossiness</span> <span class="token punctuation">(</span><span class="token string">"Smoothness"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.5</span>
         <span class="token function">_Metallic</span> <span class="token punctuation">(</span><span class="token string">"Metallic"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.0</span>
     <span class="token punctuation">}</span>
-</code></pre>
-<h3 id="首先第一行"><a href="#首先第一行" class="headerlink" title="首先第一行"></a>首先第一行</h3><pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="首先第一行"><a href="#首先第一行" class="headerlink" title="首先第一行"></a>首先第一行</h3><pre class="line-numbers language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/NewSurfaceShader"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Custom是自定义的shader默认的文件夹，如果你自己想要归类shader文件夹，就可以定义二级标题比如”Custom/MyShader/NewSurfaceShader”，这样NewSurfaceShader就归类在MyShader下啦。</p>
-<h3 id="接着一段代码块"><a href="#接着一段代码块" class="headerlink" title="接着一段代码块"></a>接着一段代码块</h3><pre class=" language-haxe"><code class="language-haxe">Properties <span class="token punctuation">{</span>
+<h3 id="接着一段代码块"><a href="#接着一段代码块" class="headerlink" title="接着一段代码块"></a>接着一段代码块</h3><pre class="line-numbers language-haxe"><code class="language-haxe">Properties <span class="token punctuation">{</span>
         <span class="token function">_Color</span> <span class="token punctuation">(</span><span class="token string">"Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token function">_MainTex</span> <span class="token punctuation">(</span><span class="token string">"Albedo (RGB)"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
         <span class="token function">_Glossiness</span> <span class="token punctuation">(</span><span class="token string">"Smoothness"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.5</span>
         <span class="token function">_Metallic</span> <span class="token punctuation">(</span><span class="token string">"Metallic"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.0</span>
     <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里是shader的属性部分：属性的格式写作如下 </p>
 <pre><code>_Name(&quot;Display Name&quot;, type) = defaultValue[{options}]
 </code></pre><ul>
@@ -606,8 +606,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="SubShader内部构造"><a href="#SubShader内部构造" class="headerlink" title="SubShader内部构造"></a>SubShader内部构造</h3><h4 id="Tags：键值对"><a href="#Tags：键值对" class="headerlink" title="Tags：键值对"></a>Tags：键值对</h4><pre class=" language-haxe"><code class="language-haxe">Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Opaque"</span> <span class="token punctuation">}</span>
-</code></pre>
+<h3 id="SubShader内部构造"><a href="#SubShader内部构造" class="headerlink" title="SubShader内部构造"></a>SubShader内部构造</h3><h4 id="Tags：键值对"><a href="#Tags：键值对" class="headerlink" title="Tags：键值对"></a>Tags：键值对</h4><pre class="line-numbers language-haxe"><code class="language-haxe">Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Opaque"</span> <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>tags用来告诉渲染器：何时以及怎样渲染这个对象。</p>
 <table>
 <thead>
@@ -655,8 +655,8 @@
 </tr>
 </tbody>
 </table>
-<h4 id="LOD：Level-of-Detail"><a href="#LOD：Level-of-Detail" class="headerlink" title="LOD：Level of Detail"></a>LOD：Level of Detail</h4><pre class=" language-haxe"><code class="language-haxe">LOD <span class="token number">200</span>
-</code></pre>
+<h4 id="LOD：Level-of-Detail"><a href="#LOD：Level-of-Detail" class="headerlink" title="LOD：Level of Detail"></a>LOD：Level of Detail</h4><pre class="line-numbers language-haxe"><code class="language-haxe">LOD <span class="token number">200</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这个数值决定了我们能用什么样的Shader。当设定的LOD小于SubShader所指定的LOD时，这个SubShader就不可以用了。Unity自定义了一组LOD的数值，我们在实现自己的Shader的时候可以参考来设定自己的LOD数值，以便控制渲染。</p>
 <table>
 <thead>
@@ -696,7 +696,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><pre class=" language-haxe"><code class="language-haxe">CGPROGRAM
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><pre class="line-numbers language-haxe"><code class="language-haxe">CGPROGRAM
         <span class="token comment" spellcheck="true">// Physically based Standard lighting model, and enable shadows on all light types</span>
         <span class="token preprocessor builtin">#pragma</span> surface surf Standard fullforwardshadows
         <span class="token comment" spellcheck="true">// Use shader model 3.0 target, to get nicer looking lighting</span>
@@ -724,10 +724,10 @@
             o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
         ENDCG
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>终于到了最重要的部分，首先<code>CGPROGRAM</code>和<code>ENDCG</code>成对出现,表示中间包裹的是一段Cg程序，接着是一个编译指令：<code>#pragma surface surf Standard fullforwardshadows</code><br>意味着我们要写一个表面Shader，并指定了光照模型，具体语法是</p>
-<pre class=" language-haxe"><code class="language-haxe"><span class="token preprocessor builtin">#pragma</span> surface surfaceFunction lightModel <span class="token punctuation">[</span>optionalparams<span class="token punctuation">]</span>
-</code></pre>
+<pre class="line-numbers language-haxe"><code class="language-haxe"><span class="token preprocessor builtin">#pragma</span> surface surfaceFunction lightModel <span class="token punctuation">[</span>optionalparams<span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>surface ： 声明的是一个表面着色器</li>
 <li>surfaceFunction ： 着色器代码的方法的名字</li>
@@ -736,12 +736,12 @@
 <p>对应上面的编译指令：我们声明了一个表面着色器，实际的代码在 surf 函数中（在下面的代码能找到该函数），使用 Standard 作为光照模型。</p>
 <p>接下来是  <code>sampler2D _MainTex;</code> 我们知道在CG中，Texture（贴图）简单来说就是一块内存存储的，使用了RGBA通道，且每个通道8bits，的数据。而具体地想知道像素与坐标的对应关系，以及获取这些数据，一次一次去计算内存地址或者偏移显然不可行，因此可以通过sampler2D来对贴图进行操作。一言以蔽之就是，sampler2D是GLSL中的2D贴图的类型，相应的，还有sampler1D，sampler3D，samplerCube等等格式。</p>
 <p>然后的重点是：为什么在这里需要一句对_MainTex的声明？首先之前我们已经在Properties里声明过它是贴图了（<code>_MainTex (&quot;Albedo (RGB)&quot;, 2D) = &quot;white&quot; {}</code>）。我们用来实例的这个shader其实是由两个相对独立的块组成的，外层的属性声明，回滚等等是Unity可以直接使用和编译的ShaderLab；而现在我们是在CGPROGRAM…ENDCG这样一个代码块中，这是一段CG程序。对于这段CG程序，要想访问在Properties中所定义的变量的话，必须使用<strong>和之前变量相同的名字进行声明</strong>。因此<code>sampler2D _MainTex;</code>做的事情就是再次声明并链接了_MainTex，使得接下来的CG程序能够使用这个变量。后面的<code>half _Glossiness;</code> <code>half _Metallic;</code>  <code>fixed4 _Color;</code>都是同样的道理。回到原来的地方，下一句是:</p>
-<pre class=" language-haxe"><code class="language-haxe">struct Input <span class="token punctuation">{</span>
+<pre class="line-numbers language-haxe"><code class="language-haxe">struct Input <span class="token punctuation">{</span>
     float2 uv_MainTex<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>如果你有编程的经历，那么结构体应该很熟悉了，这一段我们结合下面的surf一起来说</p>
-<pre class=" language-haxe"><code class="language-haxe">void <span class="token function">surf</span> <span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutputStandard o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-haxe"><code class="language-haxe">void <span class="token function">surf</span> <span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutputStandard o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">// Albedo comes from a texture tinted by color</span>
             fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
@@ -750,24 +750,24 @@
             o<span class="token punctuation">.</span>Smoothness <span class="token operator">=</span> _Glossiness<span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>刚才提到的<code>#pragma surface surf Standard fullforwardshadows</code>里面surf 函数就是对应的上面一段。我们看函数头输入的参数有Input IN。这个Input就对应上面的结构体。我们可以把所需要参与计算的数据都放到这个Input结构中，再传入surf函数使用；SurfaceOutputStandard是已经定义好了里面类型输出结构。作为输入的结构体<strong>必须命名为Input</strong>，这个结构体中定义了一个float2的变量，emmmm···你可能会感到奇怪float后面跟着数字，这是什么意思呢？其实float和vec都可以在之后加入一个2到4的数字，来表示被打包在一起的2到4个同类型数。比如：<code>float4 color;</code> <code>float3 multipliedColor = color.rgb * coordinate.x;</code>之类的。</p>
 <p>在这个例子里，我们声明了一个叫做<code>uv_MainTex</code>的包含两个浮点数的变量。UV mapping的作用是将一个2D贴图上的点按照一定规则映射到3D模型上，在CG程序中，我们有这样的约定，在一个贴图变量之前加上uv两个字母，就代表提取它的uv值。我们之后就可以在surf程序中直接通过访问uv_MainTex来取得这张贴图当前需要计算的点的坐标值。接下来我们详细看surf内部的操作：</p>
-<pre class=" language-haxe"><code class="language-haxe">fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-haxe"><code class="language-haxe">fixed4 c <span class="token operator">=</span> <span class="token function">tex2D</span> <span class="token punctuation">(</span>_MainTex<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_MainTex<span class="token punctuation">)</span> <span class="token operator">*</span> _Color<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这里用到了一个tex2d函数，这是CG程序中用来在一张贴图中对一个点进行采样的方法，返回一个float4。这个例子中用刚刚得到的float4*_Color使得这个贴图经过和颜色混合。</p>
-<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> c<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>将其颜色的rbg值赋予了输出的像素颜色</p>
-<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Metallic <span class="token operator">=</span> _Metallic<span class="token punctuation">;</span>
+<pre class="line-numbers language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Metallic <span class="token operator">=</span> _Metallic<span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Smoothness <span class="token operator">=</span> _Glossiness<span class="token punctuation">;</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>都是用到上头Properties中我们定义的变量来赋值材质中的Metallic and smoothness</p>
-<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> c<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>将a值赋予透明度。至此surf介绍完毕，这个例子中shader最重要的部分就是以上这些啦！</p>
-<h3 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h3><pre class=" language-haxe"><code class="language-haxe">FallBack <span class="token string">"Diffuse"</span>
-</code></pre>
+<h3 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h3><pre class="line-numbers language-haxe"><code class="language-haxe">FallBack <span class="token string">"Diffuse"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>当所有上面的SubShader都不可以在目标平台上运行时，Unity就会调用这个shader，当然你也可以关闭这个选项，那就意味着如果没有显卡可以跑上面的shader，那我们就不管它啦!</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这是最简单最简单的shader，看到这里的你应该可以了解一些简单的shader了，可以去Unity的Surface Shader Exampless上查看一些基础shader的编写内容，下一篇我们会开始第一个shader的编写。</p>
 

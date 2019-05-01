@@ -488,7 +488,7 @@
 <li>第二个Pass就是一个正常着色的Pass</li>
 </ol>
 <h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：</p>
-<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/Rim/RimLighting"</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/Rim/RimLighting"</span> <span class="token punctuation">{</span>
     Properties<span class="token punctuation">{</span>
         <span class="token function">_MainColor</span><span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token function">_OutlineCol</span><span class="token punctuation">(</span><span class="token string">"OutlineCol"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -586,11 +586,11 @@
     <span class="token punctuation">}</span>
     FallBack <span class="token string">"Diffuse"</span>
 <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>详细的实现，包含在注释之中了。</p>
 <h3 id="包含问题"><a href="#包含问题" class="headerlink" title="包含问题"></a>包含问题</h3><p>但是这个实现方法有一个问题：<strong>线条并不连续</strong>，在平滑表面的表现尚可（球体，胶囊体等等），但是在锐利的表面上经常会出现断层（比如立方体等等）。还是利用Mesh Doubling (复制网格)的方法，但是不再简单只通过法线方向，而是：<font color="#D37885">不严格地按照表面沿着法线的方向延展, 而是在标准化的点位置和法线方向之间取一个恰当的参数来做插值</font>。</p>
 <h2 id="更新方案"><a href="#更新方案" class="headerlink" title="更新方案"></a>更新方案</h2><p>修改描边Pass的vert函数：</p>
-<pre class=" language-haxe"><code class="language-haxe">v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_full v<span class="token punctuation">)</span>
+<pre class="line-numbers language-haxe"><code class="language-haxe">v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_full v<span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
             v2f o<span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span> <span class="token punctuation">(</span> v<span class="token punctuation">.</span>vertex <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -605,11 +605,11 @@
             o<span class="token punctuation">.</span>pos<span class="token punctuation">.</span>xy <span class="token operator">+</span><span class="token operator">=</span> offset <span class="token operator">*</span>_OutlineFactor<span class="token punctuation">;</span>
             <span class="token keyword">return</span> o<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其中的_Factor就是用来计算差值的参数，这个可以根据自己调节<code>lerp ( vnormal1, vnormal2, _Factor )</code></p>
 <p>效果是：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLightingFix.PNG?raw=true" alt></p>
 <p>最后上一个完整的修复过的Shader方案：</p>
-<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/Rim/RimLightingFix"</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/Rim/RimLightingFix"</span> <span class="token punctuation">{</span>
     Properties<span class="token punctuation">{</span>
         <span class="token function">_MainColor</span><span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token function">_OutlineCol</span><span class="token punctuation">(</span><span class="token string">"OutlineCol"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -710,7 +710,7 @@
     <span class="token punctuation">}</span>
     FallBack <span class="token string">"Diffuse"</span>
 <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>描边常用于一些漫画风格的游戏场景中，能够在复杂的场景中突出被绘制的物体。</p>
 
         
