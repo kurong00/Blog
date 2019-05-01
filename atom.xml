@@ -27,7 +27,10 @@
     
       
       
-        &lt;h1 id=&quot;Unity-Shader-入门（一）：理论准备&quot;&gt;&lt;a href=&quot;#Unity-Shader-入门（一）：理论准备&quot; class=&quot;headerlink&quot; title=&quot;Unity Shader 入门（一）：理论准备&quot;&gt;&lt;/a&gt;Unity Shader 入门（一
+        
+        
+          
+        
       
     
     </summary>
@@ -46,7 +49,10 @@
     
       
       
-        &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外
+        
+        
+          
+        
       
     
     </summary>
@@ -67,7 +73,10 @@
     
       
       
-        &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;之前我们写过一个边缘发光的Shader（&lt;a href=&quot;http://chenwenling.cn/2017/11/13/Unity%20
+        
+        
+          
+        
       
     
     </summary>
@@ -88,8 +97,10 @@
     
       
       
-        &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？&lt;/p&gt;
-&lt;h3 id=&quot;
+        
+        
+          
+        
       
     
     </summary>
@@ -110,7 +121,10 @@
     
       
       
-        &lt;h2 id=&quot;编写第一个Shader&quot;&gt;&lt;a href=&quot;#编写第一个Shader&quot; class=&quot;headerlink&quot; title=&quot;编写第一个Shader&quot;&gt;&lt;/a&gt;编写第一个Shader&lt;/h2&gt;&lt;p&gt;上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个s
+        
+        
+          
+        
       
     
     </summary>
@@ -131,7 +145,10 @@
     
       
       
-        &lt;h2 id=&quot;查看第一个shader&quot;&gt;&lt;a href=&quot;#查看第一个shader&quot; class=&quot;headerlink&quot; title=&quot;查看第一个shader&quot;&gt;&lt;/a&gt;查看第一个shader&lt;/h2&gt;&lt;p&gt;上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（C
+        
+        
+          
+        
       
     
     </summary>
