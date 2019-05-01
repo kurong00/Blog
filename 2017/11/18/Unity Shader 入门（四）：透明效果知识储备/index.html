@@ -84,6 +84,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -303,7 +308,7 @@
     <!-- Custom Head -->
     
 
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -529,22 +534,22 @@
 </tbody>
 </table>
 <h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下</p>
-<pre class="line-numbers language-haxe"><code class="language-haxe"> SubShader
+<pre class=" language-haxe"><code class="language-haxe"> SubShader
     <span class="token punctuation">{</span>
         Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Transparent"</span> <span class="token punctuation">}</span>  
         Pass <span class="token punctuation">{</span> 
             ZWrite Off ······
         <span class="token punctuation">}</span> 
     <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>ZWrite Off 意味者关闭深度写入，或者可以：</p>
-<pre class="line-numbers language-haxe"><code class="language-haxe"> SubShader
+<pre class=" language-haxe"><code class="language-haxe"> SubShader
     <span class="token punctuation">{</span>
         Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Transparent"</span> <span class="token punctuation">}</span>  
         ZWrite Off ······
         Pass <span class="token punctuation">{</span> <span class="token punctuation">}</span> 
     <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>这样表示这个SubShader下的所有Pass都会关闭深度写入</p>
 
         
@@ -896,10 +901,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
 
-    
-        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
-    
 
 
 <!-- Window Load -->
@@ -911,10 +918,13 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
-        
-        
-        HanabiBrowser.start('pre code',true);
     
 </script>
 

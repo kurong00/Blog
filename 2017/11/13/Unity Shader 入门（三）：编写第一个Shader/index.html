@@ -84,6 +84,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -303,7 +308,7 @@
     <!-- Custom Head -->
     
 
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -482,7 +487,7 @@
 <p>首先来看一下效果图，如果你感兴趣的话就接下来看吧：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader.PNG?raw=true" alt></p>
 <h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#D37885">重点：向量点积运算。</font></p>
 <h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：</p>
-<pre class="line-numbers language-haxe"><code class="language-haxe">Shader "Custom<span class="token operator">/</span>Rim<span class="token comment" spellcheck="true">//RimBump" {</span>
+<pre class=" language-haxe"><code class="language-haxe">Shader "Custom<span class="token operator">/</span>Rim<span class="token comment" spellcheck="true">//RimBump" {</span>
     Properties<span class="token punctuation">{</span>
         <span class="token function">_Color</span><span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token function">_SpecColor</span><span class="token punctuation">(</span><span class="token string">"Specular Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -521,35 +526,35 @@
             FallBack <span class="token string">"Diffuse"</span>
 <span class="token punctuation">}</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下：</p>
-<pre class="line-numbers language-haxe"><code class="language-haxe">void <span class="token function">surf</span><span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutput o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class=" language-haxe"><code class="language-haxe">void <span class="token function">surf</span><span class="token punctuation">(</span>Input IN<span class="token punctuation">,</span> inout SurfaceOutput o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>Gloss <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>Normal <span class="token operator">=</span> <span class="token function">UnpackNormal</span><span class="token punctuation">(</span><span class="token function">tex2D</span><span class="token punctuation">(</span>_BumpMap<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_BumpMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span><span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimPower<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ul>
 <li>首先这两句：</li>
 </ul>
-<pre class="line-numbers language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
+<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Albedo <span class="token operator">=</span> _Color<span class="token punctuation">.</span>rgb<span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Gloss <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <p>类比上一篇，o.Albedo 此时可以获得我们设置的颜色和贴图之间混合后的颜色，o.Gloss 我们将发光强度设置成1。</p>
 <ul>
-<li>接下来是重点：<pre class="line-numbers language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Normal <span class="token operator">=</span> <span class="token function">UnpackNormal</span><span class="token punctuation">(</span><span class="token function">tex2D</span><span class="token punctuation">(</span>_BumpMap<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_BumpMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<li>接下来是重点：<pre class=" language-haxe"><code class="language-haxe">o<span class="token punctuation">.</span>Normal <span class="token operator">=</span> <span class="token function">UnpackNormal</span><span class="token punctuation">(</span><span class="token function">tex2D</span><span class="token punctuation">(</span>_BumpMap<span class="token punctuation">,</span> IN<span class="token punctuation">.</span>uv_BumpMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <code>UnpackNormal</code> 是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），<code>UnpackNormal</code>接受一个fixed4的输入，并将其转换为所对应的法线值（fixed3）。在解包得到这个值之后，将其赋给输出的Normal，接下来我们就可以来使用Normal值啦。<h4 id="有关法线贴图"><a href="#有关法线贴图" class="headerlink" title="有关法线贴图"></a>有关法线贴图</h4><blockquote>
 <p>这一点归类于扩展阅读，如果你想知道<code>UnpackNormal</code>的原理可以继续查看，如果不的话就跳过这一段吧！<br>假设你想知道原理，那首先思考一个问题<strong>为什么法线贴图看起来大多是蓝色的？</strong> </p>
 <ul>
 <li>实际上，我们通常见到的这种偏蓝色的法线纹理中，存储的是在Tangent Space中的顶点法线方向。那么，问题又来了，什么是Tangent Space。在Tangent Space中，坐标原点就是顶点的位置，其中z轴是该顶点本身的法线方向（N）。这样，另外两个坐标轴就是和该点相切的两条切线。这样的切线是有无数条，但模型一般会给定该顶点的一个tangent。（<a href="http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/" target="_blank" rel="noopener">给定的过程可以见这个链接</a>）</li>
-<li>通常我们所见的法线纹理是基于<strong>原法线信息构建的坐标系</strong>来构建出来的。那种偏蓝色的法线纹理其实就是存储在每个顶点各自的Tangent Space中<strong>法线的扰动方向</strong>。也就是说，如果一个顶点的法线方向不变，那么在它的Tangent Space中，新的normal值就是z轴方向，也就是说值为(0, 0, 1)。但这并不是法线纹理中存储的最终值：因为一个向量每个维度的取值范围在(-1, 1)，在法线贴图中被压缩在颜色的范围[0,1]中，所以需要转换：<pre class="line-numbers language-haxe"><code class="language-haxe">颜色 <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> 法线 <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+<li>通常我们所见的法线纹理是基于<strong>原法线信息构建的坐标系</strong>来构建出来的。那种偏蓝色的法线纹理其实就是存储在每个顶点各自的Tangent Space中<strong>法线的扰动方向</strong>。也就是说，如果一个顶点的法线方向不变，那么在它的Tangent Space中，新的normal值就是z轴方向，也就是说值为(0, 0, 1)。但这并不是法线纹理中存储的最终值：因为一个向量每个维度的取值范围在(-1, 1)，在法线贴图中被压缩在颜色的范围[0,1]中，所以需要转换：<pre class=" language-haxe"><code class="language-haxe">颜色 <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> 法线 <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
 线 <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token punctuation">(</span>颜色 <span class="token operator">-</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 </li>
 <li>这样，之前的法线值(0, 0, 1)实际上对应了法线纹理中RGB的值为(0.5, 0.5, 1)，而这个颜色也就是法线纹理中那大片的蓝色。这些蓝色实际上说明<strong>顶点的大部分法线是和模型本身法线一样</strong>的，不需要改变。总结一下就是，<code>法线纹理的RGB通道存储了在每个顶点各自的Tangent Space中的法线方向的映射值。</code></li>
 <li>下一个问题：Unity编辑器中加入一张发现贴图，编辑器都会提示把法线纹理的“Texture Type”设置成“Normal Map”，这是为什么呢？是因为这样的设置可以让Unity根据不同平台对纹理进行压缩，当需要法线信息时，再通过UnpackNormal函数对法线纹理进行正确的采样，即<strong>将把颜色通道变成一个适合于实时法向映射的格式。</strong></li>
@@ -559,9 +564,9 @@ o<span class="token punctuation">.</span>Emission <span class="token operator">=
 </li>
 </ul>
 <h3 id="重点讲解"><a href="#重点讲解" class="headerlink" title="重点讲解"></a>重点讲解</h3><p>回到刚刚打断的地方，下面两句：</p>
-<pre class="line-numbers language-haxe"><code class="language-haxe">half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class=" language-haxe"><code class="language-haxe">half rim <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">saturate</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span>IN<span class="token punctuation">.</span>viewDir<span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 o<span class="token punctuation">.</span>Emission <span class="token operator">=</span> _RimColor<span class="token punctuation">.</span>rgb <span class="token operator">*</span> <span class="token function">pow</span> <span class="token punctuation">(</span>rim<span class="token punctuation">,</span> _RimStrength<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <ul>
 <li>首先我们看<code>normalize</code>函数：为了对向量进行归一化处理（这里传入IN.viewDir指的是：WorldSpace View Direction，也就是当前坐标的视角方向）。 <code>dot</code>函数：返回传入的两个参数的点积，<code>saturate</code>函数：判断传入的参数是否在0-1之间，如果小于0，返回 0；如果大于 1，返回1； </li>
 <li>接着第二句：<code>_RimColor.rgb * pow (rim, _RimStrength)</code>从_RimColor参数获取自发光颜色再和发光的强度混合，最终将颜色赋值给像素的Emission（发散颜色）</li>
@@ -918,10 +923,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
 
-    
-        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
-    
 
 
 <!-- Window Load -->
@@ -933,10 +940,13 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
-        
-        
-        HanabiBrowser.start('pre code',true);
     
 </script>
 
