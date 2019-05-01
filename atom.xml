@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Zero World</title>
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
   <subtitle>Zero World</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
+<<<<<<< HEAD
   <updated>2019-04-30T02:37:47.106Z</updated>
+=======
+  <updated>2019-05-01T01:49:24.176Z</updated>
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,6 +25,7 @@
   
   <entry>
     <title></title>
+<<<<<<< HEAD
     <link href="http://yoursite.com/2019/04/30/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87/"/>
     <id>http://yoursite.com/2019/04/30/Unity Shader 入门（一）：理论准备/</id>
     <published>2019-04-30T02:37:47.105Z</published>
@@ -25,6 +34,19 @@
     <summary type="html">
     
       &lt;h1 id=&quot;Unity-Shader-入门（一）：理论准备&quot;&gt;&lt;a href=&quot;#Unity-Shader-入门（一）：理论准备&quot; class=&quot;headerlink&quot; title=&quot;Unity Shader 入门（一）：理论准备&quot;&gt;&lt;/a&gt;Unity Shader 入门（一
+=======
+    <link href="http://yoursite.com/2019/05/01/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87/"/>
+    <id>http://yoursite.com/2019/05/01/Unity Shader 入门（一）：理论准备/</id>
+    <published>2019-05-01T01:49:24.176Z</published>
+    <updated>2019-05-01T01:49:24.176Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Unity-Shader-入门（一）：理论准备&quot;&gt;&lt;a href=&quot;#Unity-Shader-入门（一）：理论准备&quot; class=&quot;headerlink&quot; title=&quot;Unity Shader 入门（一）：理论准备&quot;&gt;&lt;/a&gt;Unity Shader 入门（一
+      
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
     
     </summary>
     
@@ -36,11 +58,22 @@
     <link href="http://yoursite.com/2018/02/08/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%8F%8F%E8%BE%B9Shader/"/>
     <id>http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/</id>
     <published>2018-02-07T16:00:00.000Z</published>
+<<<<<<< HEAD
     <updated>2019-04-30T02:37:47.153Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外
+=======
+    <updated>2019-05-01T01:49:24.177Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外
+      
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
     
     </summary>
     
@@ -54,11 +87,22 @@
     <link href="http://yoursite.com/2017/11/25/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E8%BE%B9%E7%BC%98%E5%8F%91%E5%85%89%E9%80%8F%E6%98%8E%E7%89%88/"/>
     <id>http://yoursite.com/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/</id>
     <published>2017-11-24T16:00:00.000Z</published>
+<<<<<<< HEAD
     <updated>2019-04-30T02:37:47.148Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;之前我们写过一个边缘发光的Shader（&lt;a href=&quot;http://chenwenling.cn/2017/11/13/Unity%20
+=======
+    <updated>2019-05-01T01:49:24.177Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;之前我们写过一个边缘发光的Shader（&lt;a href=&quot;http://chenwenling.cn/2017/11/13/Unity%20
+      
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
     
     </summary>
     
@@ -72,12 +116,24 @@
     <link href="http://yoursite.com/2017/11/18/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/"/>
     <id>http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/</id>
     <published>2017-11-17T16:00:00.000Z</published>
+<<<<<<< HEAD
     <updated>2019-04-30T02:37:47.158Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？&lt;/p&gt;
 &lt;h3 id=&quot;
+=======
+    <updated>2019-05-01T01:49:24.178Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？&lt;/p&gt;
+&lt;h3 id=&quot;
+      
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
     
     </summary>
     
@@ -91,11 +147,22 @@
     <link href="http://yoursite.com/2017/11/13/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E4%B8%AAShader/"/>
     <id>http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/</id>
     <published>2017-11-12T16:00:00.000Z</published>
+<<<<<<< HEAD
     <updated>2019-04-30T02:37:47.129Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;编写第一个Shader&quot;&gt;&lt;a href=&quot;#编写第一个Shader&quot; class=&quot;headerlink&quot; title=&quot;编写第一个Shader&quot;&gt;&lt;/a&gt;编写第一个Shader&lt;/h2&gt;&lt;p&gt;上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个s
+=======
+    <updated>2019-05-01T01:49:24.176Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;编写第一个Shader&quot;&gt;&lt;a href=&quot;#编写第一个Shader&quot; class=&quot;headerlink&quot; title=&quot;编写第一个Shader&quot;&gt;&lt;/a&gt;编写第一个Shader&lt;/h2&gt;&lt;p&gt;上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个s
+      
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
     
     </summary>
     
@@ -109,11 +176,22 @@
     <link href="http://yoursite.com/2017/09/12/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%9F%A5%E7%9C%8B%E7%AC%AC%E4%B8%80%E4%B8%AAShader/"/>
     <id>http://yoursite.com/2017/09/12/Unity Shader 入门（二）：查看第一个Shader/</id>
     <published>2017-09-11T16:00:00.000Z</published>
+<<<<<<< HEAD
     <updated>2019-04-30T02:37:47.144Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;查看第一个shader&quot;&gt;&lt;a href=&quot;#查看第一个shader&quot; class=&quot;headerlink&quot; title=&quot;查看第一个shader&quot;&gt;&lt;/a&gt;查看第一个shader&lt;/h2&gt;&lt;p&gt;上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（C
+=======
+    <updated>2019-05-01T01:49:24.177Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;查看第一个shader&quot;&gt;&lt;a href=&quot;#查看第一个shader&quot; class=&quot;headerlink&quot; title=&quot;查看第一个shader&quot;&gt;&lt;/a&gt;查看第一个shader&lt;/h2&gt;&lt;p&gt;上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（C
+      
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
     
     </summary>
     

@@ -2270,12 +2270,23 @@ $(document).ready(function() {
 
     'use strict';
 
+<<<<<<< HEAD
     document.querySelector('.MD-burger-icon').addEventListener(
+=======
+    var burger = document.querySelector('.MD-burger-icon');
+
+    if (burger !== null)
+    burger.addEventListener(
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
         'click',
         function() {
             var child;
 
+<<<<<<< HEAD
             child = this.childNodes[1].classList;
+=======
+            child = document.getElementById("MD-burger-id").classList;
+>>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 
             if (child.contains('MD-burger-arrow')) {
                 child.remove('MD-burger-arrow');
