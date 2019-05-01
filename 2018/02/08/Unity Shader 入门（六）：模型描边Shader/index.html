@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Unity Shader 入门（六）：模型描边Shader | 
+        
+        Zero World
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content>
+    <meta name="keywords" content>
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Zero World">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Zero World">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Unity Shader 入门（六）：模型描边Shader | Zero World">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content>
+    
+
+    
+        <meta property="article:published_time" content="Thu Feb 08 2018 00:00:00 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 01 2019 09:49:24 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html",
+    "headline": "Unity Shader 入门（六）：模型描边Shader",
+    "datePublished": "Thu Feb 08 2018 00:00:00 GMT+0800",
+    "dateModified": "Wed May 01 2019 09:49:24 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "kurong00",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Zero World",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导语"><span class="post-toc-number">1.</span> <span class="post-toc-text">导语</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#具体实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现原理："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">实现原理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体解说："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">具体解说：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包含问题"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">包含问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">更新方案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">4.</span> <span class="post-toc-text">结语</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://github.com/kurong00/blog/blob/master/thumbnail/shader6/shader6.png?raw=true)">
+    
+            <p class="article-headline-p">
+                Unity Shader 入门（六）：模型描边Shader
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>kurong00</strong>
+        <span>2月 08, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Unity Shader 入门（六）：模型描边Shader&url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Unity Shader 入门（六）：模型描边Shader&url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html&via=kurong00" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。</p>
+<p>老规矩还是来看一下效果图：</p>
+<p><img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLighting.PNG?raw=true" alt></p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>说明一下这个Shader的具体实现：</p>
+<h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>Mesh Doubling (复制网格)： </p>
+<ol>
+<li>需要一个单独的Pass来实现，重新绘制一个将所有表面都<font color="#D37885">沿着法线方向</font>延展模型，挤出一点点，然后将正面剪裁掉，只输出描边的颜色；</li>
+<li>第二个Pass就是一个正常着色的Pass</li>
+</ol>
+<h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：</p>
+<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/Rim/RimLighting"</span> <span class="token punctuation">{</span>
+    Properties<span class="token punctuation">{</span>
+        <span class="token function">_MainColor</span><span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_OutlineCol</span><span class="token punctuation">(</span><span class="token string">"OutlineCol"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_OutlineFactor</span><span class="token punctuation">(</span><span class="token string">"OutlineFactor"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.1</span>
+        <span class="token function">_MainTex</span><span class="token punctuation">(</span><span class="token string">"Base 2D"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    SubShader
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//描边使用两个Pass，第一个pass沿法线挤出一点，只输出描边的颜色</span>
+        Pass
+        <span class="token punctuation">{</span>
+            Cull Front
+            CGPROGRAM
+            <span class="token preprocessor builtin">#include</span> <span class="token string">"UnityCG.cginc"</span>
+            fixed4 _OutlineCol<span class="token punctuation">;</span>
+            float _OutlineFactor<span class="token punctuation">;</span>
+
+            struct v2f
+            <span class="token punctuation">{</span>
+                float4 pos <span class="token punctuation">:</span> SV_POSITION<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+            v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_full v<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                v2f o<span class="token punctuation">;</span>
+                o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>vertex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//将法线方向转换到视空间</span>
+                float3 vnormal <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token punctuation">(</span>float3x3<span class="token punctuation">)</span>UNITY_MATRIX_IT_MV<span class="token punctuation">,</span> v<span class="token punctuation">.</span>normal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//将视空间法线xy坐标转化到投影空间，只有xy需要，z深度不需要了</span>
+                float2 offset <span class="token operator">=</span> <span class="token function">TransformViewToProjection</span><span class="token punctuation">(</span>vnormal<span class="token punctuation">.</span>xy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//在最终投影阶段输出进行偏移操作</span>
+                o<span class="token punctuation">.</span>pos<span class="token punctuation">.</span>xy <span class="token operator">+</span><span class="token operator">=</span> offset <span class="token operator">*</span> _OutlineFactor<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            fixed4 <span class="token function">frag</span><span class="token punctuation">(</span>v2f i<span class="token punctuation">)</span> <span class="token punctuation">:</span> SV_Target
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//这个Pass直接输出描边颜色</span>
+                <span class="token keyword">return</span> _OutlineCol<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">//使用vert函数和frag函数</span>
+            <span class="token preprocessor builtin">#pragma</span> vertex vert
+            <span class="token preprocessor builtin">#pragma</span> fragment frag
+            ENDCG
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//正常着色的Pass</span>
+        Pass
+        <span class="token punctuation">{</span>
+            CGPROGRAM
+            <span class="token comment" spellcheck="true">//引入头文件</span>
+            <span class="token preprocessor builtin">#include</span> <span class="token string">"Lighting.cginc"</span>
+            <span class="token comment" spellcheck="true">//使用vert函数和frag函数</span>
+            <span class="token preprocessor builtin">#pragma</span> vertex vert
+            <span class="token preprocessor builtin">#pragma</span> fragment frag    
+            <span class="token comment" spellcheck="true">//定义Properties中的变量</span>
+            fixed4 _MainColor<span class="token punctuation">;</span>
+            sampler2D _MainTex<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//定义结构体：vertex shader阶段输出的内容</span>
+            struct v2f
+            <span class="token punctuation">{</span>
+                float4 pos <span class="token punctuation">:</span> SV_POSITION<span class="token punctuation">;</span>
+                float3 worldNormal <span class="token punctuation">:</span> TEXCOORD0<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//定义顶点shader,参数直接使用appdata_base（包含position, noramal, texcoord）</span>
+            v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_base v<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                v2f o<span class="token punctuation">;</span>
+                o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>vertex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//通过TRANSFORM_TEX宏转化纹理坐标，主要处理了Offset和Tiling的改变</span>
+                o<span class="token punctuation">.</span>worldNormal <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>normal<span class="token punctuation">,</span> <span class="token punctuation">(</span>float3x3<span class="token punctuation">)</span>unity_WorldToObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//定义片元shader</span>
+            fixed4 <span class="token function">frag</span><span class="token punctuation">(</span>v2f i<span class="token punctuation">)</span> <span class="token punctuation">:</span> SV_Target
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//unity自身的diffuse也是带了环境光，这里我们也增加一下环境光</span>
+                fixed3 ambient <span class="token operator">=</span> UNITY_LIGHTMODEL_AMBIENT<span class="token punctuation">.</span>xyz <span class="token operator">*</span> _MainColor<span class="token punctuation">.</span>xyz<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//归一化法线，即使在vert归一化也不行，从vert到frag阶段有差值处理，传入的法线方向并不是vertex shader直接传出的</span>
+                fixed3 worldNormal <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>worldNormal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//把光照方向归一化</span>
+                fixed3 worldLightDir <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>_WorldSpaceLightPos0<span class="token punctuation">.</span>xyz<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//根据半兰伯特模型计算像素的光照信息</span>
+                fixed3 lambert <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> <span class="token function">dot</span><span class="token punctuation">(</span>worldNormal<span class="token punctuation">,</span> worldLightDir<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//最终输出颜色为lambert光强*材质diffuse颜色*光颜色</span>
+                fixed3 diffuse <span class="token operator">=</span> lambert <span class="token operator">*</span> _MainColor<span class="token punctuation">.</span>xyz <span class="token operator">*</span> _LightColor0<span class="token punctuation">.</span>xyz <span class="token operator">+</span> ambient<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//进行纹理采样</span>
+                fixed4 color <span class="token operator">=</span> _MainColor<span class="token punctuation">;</span>
+                color<span class="token punctuation">.</span>rgb <span class="token operator">=</span> color<span class="token punctuation">.</span>rgb<span class="token operator">*</span> diffuse<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token function">fixed4</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            ENDCG
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    FallBack <span class="token string">"Diffuse"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>详细的实现，包含在注释之中了。</p>
+<h3 id="包含问题"><a href="#包含问题" class="headerlink" title="包含问题"></a>包含问题</h3><p>但是这个实现方法有一个问题：<strong>线条并不连续</strong>，在平滑表面的表现尚可（球体，胶囊体等等），但是在锐利的表面上经常会出现断层（比如立方体等等）。还是利用Mesh Doubling (复制网格)的方法，但是不再简单只通过法线方向，而是：<font color="#D37885">不严格地按照表面沿着法线的方向延展, 而是在标准化的点位置和法线方向之间取一个恰当的参数来做插值</font>。</p>
+<h2 id="更新方案"><a href="#更新方案" class="headerlink" title="更新方案"></a>更新方案</h2><p>修改描边Pass的vert函数：</p>
+<pre class=" language-haxe"><code class="language-haxe">v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_full v<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            v2f o<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span> <span class="token punctuation">(</span> v<span class="token punctuation">.</span>vertex <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float3 vnormal1 <span class="token operator">=</span> <span class="token function">normalize</span> <span class="token punctuation">(</span> v<span class="token punctuation">.</span>vertex<span class="token punctuation">.</span>xyz <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//将法线方向转换到视空间</span>
+            float3 vnormal2 <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token punctuation">(</span>float3x3<span class="token punctuation">)</span>UNITY_MATRIX_IT_MV<span class="token punctuation">,</span> v<span class="token punctuation">.</span>normal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            vnormal1 <span class="token operator">=</span> <span class="token function">lerp</span> <span class="token punctuation">(</span> vnormal1<span class="token punctuation">,</span> vnormal2<span class="token punctuation">,</span> _Factor <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            vnormal1 <span class="token operator">=</span> <span class="token function">mul</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span> float3x3 <span class="token punctuation">)</span> UNITY_MATRIX_IT_MV<span class="token punctuation">,</span> vnormal1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float2 offset <span class="token operator">=</span> <span class="token function">TransformViewToProjection</span> <span class="token punctuation">(</span>vnormal1<span class="token punctuation">.</span>xy <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            offset <span class="token operator">=</span> <span class="token function">normalize</span> <span class="token punctuation">(</span> offset <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float dist <span class="token operator">=</span> <span class="token function">distance</span> <span class="token punctuation">(</span> <span class="token function">mul</span> <span class="token punctuation">(</span> UNITY_MATRIX_M<span class="token punctuation">,</span> v<span class="token punctuation">.</span>vertex <span class="token punctuation">)</span><span class="token punctuation">,</span> _WorldSpaceCameraPos <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>pos<span class="token punctuation">.</span>xy <span class="token operator">+</span><span class="token operator">=</span> offset <span class="token operator">*</span>_OutlineFactor<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<p>其中的_Factor就是用来计算差值的参数，这个可以根据自己调节<code>lerp ( vnormal1, vnormal2, _Factor )</code></p>
+<p>效果是：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLightingFix.PNG?raw=true" alt></p>
+<p>最后上一个完整的修复过的Shader方案：</p>
+<pre class=" language-haxe"><code class="language-haxe">Shader <span class="token string">"Custom/Rim/RimLightingFix"</span> <span class="token punctuation">{</span>
+    Properties<span class="token punctuation">{</span>
+        <span class="token function">_MainColor</span><span class="token punctuation">(</span><span class="token string">"Main Color"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_OutlineCol</span><span class="token punctuation">(</span><span class="token string">"OutlineCol"</span><span class="token punctuation">,</span> Color<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">_OutlineFactor</span><span class="token punctuation">(</span><span class="token string">"OutlineFactor"</span><span class="token punctuation">,</span> <span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.1</span>
+        <span class="token function">_MainTex</span><span class="token punctuation">(</span><span class="token string">"Base 2D"</span><span class="token punctuation">,</span> 2D<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"white"</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token function">_Factor</span><span class="token punctuation">(</span><span class="token string">"Control Factor"</span><span class="token punctuation">,</span><span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0.1</span> 
+    <span class="token punctuation">}</span>
+    SubShader
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//描边使用两个Pass，第一个pass沿法线挤出一点，只输出描边的颜色</span>
+        Pass<span class="token punctuation">{</span>
+        Cull Front
+        CGPROGRAM
+        <span class="token preprocessor builtin">#include</span> <span class="token string">"UnityCG.cginc"</span>
+        <span class="token comment" spellcheck="true">//使用vert函数和frag函数</span>
+        <span class="token preprocessor builtin">#pragma</span> vertex vert
+        <span class="token preprocessor builtin">#pragma</span> fragment frag
+        fixed4 _OutlineCol<span class="token punctuation">;</span>
+        float _OutlineFactor<span class="token punctuation">;</span>
+        float _Factor<span class="token punctuation">;</span>    
+        struct v2f
+        <span class="token punctuation">{</span>
+            float4 pos <span class="token punctuation">:</span> SV_POSITION<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_full v<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            v2f o<span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span> <span class="token punctuation">(</span> v<span class="token punctuation">.</span>vertex <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float3 vnormal1 <span class="token operator">=</span> <span class="token function">normalize</span> <span class="token punctuation">(</span> v<span class="token punctuation">.</span>vertex<span class="token punctuation">.</span>xyz <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//将法线方向转换到视空间</span>
+            float3 vnormal2 <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token punctuation">(</span>float3x3<span class="token punctuation">)</span>UNITY_MATRIX_IT_MV<span class="token punctuation">,</span> v<span class="token punctuation">.</span>normal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            vnormal1 <span class="token operator">=</span> <span class="token function">lerp</span> <span class="token punctuation">(</span> vnormal1<span class="token punctuation">,</span> vnormal2<span class="token punctuation">,</span> _Factor <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            vnormal1 <span class="token operator">=</span> <span class="token function">mul</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span> float3x3 <span class="token punctuation">)</span> UNITY_MATRIX_IT_MV<span class="token punctuation">,</span> vnormal1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float2 offset <span class="token operator">=</span> <span class="token function">TransformViewToProjection</span> <span class="token punctuation">(</span>vnormal1<span class="token punctuation">.</span>xy <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            offset <span class="token operator">=</span> <span class="token function">normalize</span> <span class="token punctuation">(</span> offset <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            float dist <span class="token operator">=</span> <span class="token function">distance</span> <span class="token punctuation">(</span> <span class="token function">mul</span> <span class="token punctuation">(</span> UNITY_MATRIX_M<span class="token punctuation">,</span> v<span class="token punctuation">.</span>vertex <span class="token punctuation">)</span><span class="token punctuation">,</span> _WorldSpaceCameraPos <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            o<span class="token punctuation">.</span>pos<span class="token punctuation">.</span>xy <span class="token operator">+</span><span class="token operator">=</span> offset <span class="token operator">*</span>_OutlineFactor<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        fixed4 <span class="token function">frag</span><span class="token punctuation">(</span>v2f i<span class="token punctuation">)</span> <span class="token punctuation">:</span> SV_Target
+        <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//这个Pass直接输出描边颜色</span>
+            <span class="token keyword">return</span> _OutlineCol<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        ENDCG
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//正常着色的Pass</span>
+        Pass
+        <span class="token punctuation">{</span>
+            CGPROGRAM
+            <span class="token comment" spellcheck="true">//引入头文件</span>
+            <span class="token preprocessor builtin">#include</span> <span class="token string">"Lighting.cginc"</span>
+            <span class="token comment" spellcheck="true">//使用vert函数和frag函数</span>
+            <span class="token preprocessor builtin">#pragma</span> vertex vert
+            <span class="token preprocessor builtin">#pragma</span> fragment frag    
+            <span class="token comment" spellcheck="true">//定义Properties中的变量</span>
+            fixed4 _MainColor<span class="token punctuation">;</span>
+            sampler2D _MainTex<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//定义结构体：vertex shader阶段输出的内容</span>
+            struct v2f
+            <span class="token punctuation">{</span>
+                float4 pos <span class="token punctuation">:</span> SV_POSITION<span class="token punctuation">;</span>
+                float3 worldNormal <span class="token punctuation">:</span> TEXCOORD0<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//定义顶点shader,参数直接使用appdata_base（包含position, noramal, texcoord）</span>
+            v2f <span class="token function">vert</span><span class="token punctuation">(</span>appdata_base v<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                v2f o<span class="token punctuation">;</span>
+                o<span class="token punctuation">.</span>pos <span class="token operator">=</span> <span class="token function">UnityObjectToClipPos</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>vertex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//通过TRANSFORM_TEX宏转化纹理坐标，主要处理了Offset和Tiling的改变</span>
+                o<span class="token punctuation">.</span>worldNormal <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>normal<span class="token punctuation">,</span> <span class="token punctuation">(</span>float3x3<span class="token punctuation">)</span>unity_WorldToObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">//定义片元shader</span>
+            fixed4 <span class="token function">frag</span><span class="token punctuation">(</span>v2f i<span class="token punctuation">)</span> <span class="token punctuation">:</span> SV_Target
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//unity自身的diffuse也是带了环境光，这里我们也增加一下环境光</span>
+                fixed3 ambient <span class="token operator">=</span> UNITY_LIGHTMODEL_AMBIENT<span class="token punctuation">.</span>xyz <span class="token operator">*</span> _MainColor<span class="token punctuation">.</span>xyz<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//归一化法线，即使在vert归一化也不行，从vert到frag阶段有差值处理，传入的法线方向并不是vertex shader直接传出的</span>
+                fixed3 worldNormal <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>worldNormal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//把光照方向归一化</span>
+                fixed3 worldLightDir <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>_WorldSpaceLightPos0<span class="token punctuation">.</span>xyz<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//根据半兰伯特模型计算像素的光照信息</span>
+                fixed3 lambert <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">*</span> <span class="token function">dot</span><span class="token punctuation">(</span>worldNormal<span class="token punctuation">,</span> worldLightDir<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//最终输出颜色为lambert光强*材质diffuse颜色*光颜色</span>
+                fixed3 diffuse <span class="token operator">=</span> lambert <span class="token operator">*</span> _MainColor<span class="token punctuation">.</span>xyz <span class="token operator">*</span> _LightColor0<span class="token punctuation">.</span>xyz <span class="token operator">+</span> ambient<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//进行纹理采样</span>
+                fixed4 color <span class="token operator">=</span> _MainColor<span class="token punctuation">;</span>
+                color<span class="token punctuation">.</span>rgb <span class="token operator">=</span> color<span class="token punctuation">.</span>rgb<span class="token operator">*</span> diffuse<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token function">fixed4</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            ENDCG
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    FallBack <span class="token string">"Diffuse"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>描边常用于一些漫画风格的游戏场景中，能够在复杂的场景中突出被绘制的物体。</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2019/05/01/Unity Shader 入门（一）：理论准备/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="kurong00's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/02/">二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Zero World
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?LT4t6iE6m8TO1BLGGiNJqA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
