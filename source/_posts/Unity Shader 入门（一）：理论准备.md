@@ -1,12 +1,18 @@
-# Unity Shader 入门（一）：理论准备
+---
+title: Unity Shader 入门（一）：理论准备
+date: 2019/4/30
+thumbnail: https://github.com/kurong00/EditGraphics/blob/master/blog/BlogPictures/Shader1/Shader1?raw=true
+categories: Shader
+---
 
 ## 1. 什么是Shader？
 
-shader（着色器）是<font color=#560A4A>GPU的渲染流水线上的一小段程序</font>，它负责将输入的Mesh（网格）以指定的方式，和输入的贴图或者颜色等组合作用后输出。绘图单元可以依据这个输出来将图像绘制到屏幕上。
+shader（着色器）是GPU的渲染流水线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式，和输入的贴图或者颜色等组合作用后输出。绘图单元可以依据这个输出来将图像绘制到屏幕上。
 
 ## 2. Shader的分类？
 
 shader大体上可以分为两类：
+
 - 表面着色器（Surface Shader）：已经为你做了大部分的工作，只需要简单的编写就可以实现很多不错的效果。
 - 片元着色器（Fragment Shader）：可以做的事情更多，相应的难度也会加大。可以在比较低的层级上进行更复杂（或者针对目标设备更高效）的开发。 
 
