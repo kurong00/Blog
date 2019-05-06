@@ -14,12 +14,12 @@
 <meta property="og:site_name" content="Zero World">
 <meta property="og:description" content="导语首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？ 深度缓冲实际上，由于深度缓存（z-buffer）的存在,不透明的物体在不考虑渲染顺序的情况下也可以正确的被渲染。深度缓冲是用来解决物体可见性的问题，基本思想是：根据深度缓存里的值判断这个物体距离摄像机的距离。开始渲染一个片元的时候，需要把它的深度值和已存在于深度缓存中的值作比较，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://github.com/kurong00/blog/blob/master/thumbnail/shader4/shader4.png?raw=true">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="og:updated_time" content="2019-05-01T01:49:24.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（四）：透明效果知识储备">
 <meta name="twitter:description" content="导语首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？ 深度缓冲实际上，由于深度缓存（z-buffer）的存在,不透明的物体在不考虑渲染顺序的情况下也可以正确的被渲染。深度缓冲是用来解决物体可见性的问题，基本思想是：根据深度缓存里的值判断这个物体距离摄像机的距离。开始渲染一个片元的时候，需要把它的深度值和已存在于深度缓存中的值作比较，">
-<meta name="twitter:image" content="https://github.com/kurong00/blog/blob/master/thumbnail/shader4/shader4.png?raw=true">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
 
@@ -138,12 +138,6 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail" src="https://github.com/kurong00/blog/blob/master/thumbnail/shader4/shader4.png?raw=true" alt="Unity Shader 入门（四）：透明效果知识储备">
-        </span>
-    </div>
-    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -221,8 +215,23 @@
 </tr>
 </tbody>
 </table>
-<h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       Pass &#123; </span><br><span class="line">	    ZWrite Off ······</span><br><span class="line">       &#125; </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>ZWrite Off 意味者关闭深度写入，或者可以：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       ZWrite Off ······</span><br><span class="line">       Pass &#123; &#125; </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下</p>
+<pre class=" language-haxe"><code class="language-haxe"> SubShader
+    <span class="token punctuation">{</span>
+        Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Transparent"</span> <span class="token punctuation">}</span>  
+        Pass <span class="token punctuation">{</span> 
+            ZWrite Off ······
+        <span class="token punctuation">}</span> 
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>ZWrite Off 意味者关闭深度写入，或者可以：</p>
+<pre class=" language-haxe"><code class="language-haxe"> SubShader
+    <span class="token punctuation">{</span>
+        Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Transparent"</span> <span class="token punctuation">}</span>  
+        ZWrite Off ······
+        Pass <span class="token punctuation">{</span> <span class="token punctuation">}</span> 
+    <span class="token punctuation">}</span>
+</code></pre>
 <p>这样表示这个SubShader下的所有Pass都会关闭深度写入</p>
 
         </div>
@@ -439,12 +448,6 @@
         
         <article class="media">
             
-            <a href="/2019/04/30/Unity Shader 入门（一）：理论准备/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://github.com/kurong00/EditGraphics/blob/master/blog/BlogPictures/Shader1/Shader1?raw=true" alt="Unity Shader 入门（一）：理论准备">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T16:00:00.000Z">2019-04-30</time></div>
@@ -457,12 +460,6 @@
         </article>
         
         <article class="media">
-            
-            <a href="/2018/02/08/Unity Shader 入门（六）：模型描边Shader/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://github.com/kurong00/blog/blob/master/thumbnail/shader6/shader6.png?raw=true" alt="Unity Shader 入门（六）：模型描边Shader">
-                </p>
-            </a>
             
             <div class="media-content">
                 <div class="content">
@@ -477,12 +474,6 @@
         
         <article class="media">
             
-            <a href="/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://github.com/kurong00/blog/blob/master/thumbnail/shader5/shader5.png?raw=true" alt="Unity Shader 入门（五）：边缘发光透明版">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-24T16:00:00.000Z">2017-11-25</time></div>
@@ -496,12 +487,6 @@
         
         <article class="media">
             
-            <a href="/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://github.com/kurong00/blog/blob/master/thumbnail/shader4/shader4.png?raw=true" alt="Unity Shader 入门（四）：透明效果知识储备">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-17T16:00:00.000Z">2017-11-18</time></div>
@@ -514,12 +499,6 @@
         </article>
         
         <article class="media">
-            
-            <a href="/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader3.png?raw=true" alt="Unity Shader 入门（三）：编写第一个Shader">
-                </p>
-            </a>
             
             <div class="media-content">
                 <div class="content">
