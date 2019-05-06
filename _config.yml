@@ -7,7 +7,7 @@ title: Zero World
 subtitle: Zero World
 description:
 author: kurong00
-language: zh-CN
+language: en
 timezone:
 
 # URL
@@ -38,7 +38,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: false
   tab_replace:
