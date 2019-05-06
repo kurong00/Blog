@@ -10,10 +10,14 @@
   
   <link href="http://yoursite.com/"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <updated>2019-04-30T02:37:47.106Z</updated>
 =======
   <updated>2019-05-01T01:49:24.176Z</updated>
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
+=======
+  <updated>2019-05-06T06:13:59.401Z</updated>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
   <id>http://yoursite.com/</id>
   
   <author>
@@ -24,6 +28,7 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+<<<<<<< HEAD
     <title></title>
 <<<<<<< HEAD
     <link href="http://yoursite.com/2019/04/30/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87/"/>
@@ -39,6 +44,13 @@
     <id>http://yoursite.com/2019/05/01/Unity Shader 入门（一）：理论准备/</id>
     <published>2019-05-01T01:49:24.176Z</published>
     <updated>2019-05-01T01:49:24.176Z</updated>
+=======
+    <title>Unity Shader 入门（一）：理论准备</title>
+    <link href="http://yoursite.com/2019/04/30/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87/"/>
+    <id>http://yoursite.com/2019/04/30/Unity Shader 入门（一）：理论准备/</id>
+    <published>2019-04-29T16:00:00.000Z</published>
+    <updated>2019-05-06T06:13:59.401Z</updated>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
     <summary type="html">
     
@@ -52,6 +64,8 @@
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
     
     </summary>
+    
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
     
     
   </entry>

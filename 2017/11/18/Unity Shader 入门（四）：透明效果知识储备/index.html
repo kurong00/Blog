@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html style="display: none;" lang="zh">
-    <head><meta name="generator" content="Hexo 3.8.0">
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
+<<<<<<< HEAD
     <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
@@ -140,31 +141,42 @@
             '1.5.5'
         ]
     </script>
-
-    <!-- dns prefetch -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-
-
-
+=======
+<title>Unity Shader 入门（四）：透明效果知识储备 - Zero World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
 
 
+    <meta name="description" content="导语首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？ 深度缓冲实际上，由于深度缓存（z-buffer）的存在,不透明的物体在不考虑渲染顺序的情况下也可以正确的被渲染。深度缓冲是用来解决物体可见性的问题，基本思想是：根据深度缓存里的值判断这个物体距离摄像机的距离。开始渲染一个片元的时候，需要把它的深度值和已存在于深度缓存中的值作比较，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity Shader 入门（四）：透明效果知识储备">
+<meta property="og:url" content="http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/index.html">
+<meta property="og:site_name" content="Zero World">
+<meta property="og:description" content="导语首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？ 深度缓冲实际上，由于深度缓存（z-buffer）的存在,不透明的物体在不考虑渲染顺序的情况下也可以正确的被渲染。深度缓冲是用来解决物体可见性的问题，基本思想是：根据深度缓存里的值判断这个物体距离摄像机的距离。开始渲染一个片元的时候，需要把它的深度值和已存在于深度缓存中的值作比较，">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-01T01:49:24.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity Shader 入门（四）：透明效果知识储备">
+<meta name="twitter:description" content="导语首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？ 深度缓冲实际上，由于深度缓存（z-buffer）的存在,不透明的物体在不考虑渲染顺序的情况下也可以正确的被渲染。深度缓冲是用来解决物体可见性的问题，基本思想是：根据深度缓存里的值判断这个物体距离摄像机的距离。开始渲染一个片元的时候，需要把它的深度值和已存在于深度缓存中的值作比较，">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
 
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
 
 
 
 
-    <!-- Meta & Info -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/ocean.css">
 
-    <!-- Title -->
+
     
+<<<<<<< HEAD
     <title>
         
             Unity Shader 入门（四）：透明效果知识储备 | 
@@ -231,21 +243,14 @@
     <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
 
     <!-- Import CSS -->
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
-        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-
-        
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
-
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
     
 
-    
-
+<<<<<<< HEAD
     <!-- Config CSS -->
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 
@@ -389,98 +394,27 @@
 
 
     <!-- Import jQuery -->
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
-        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
     
-
-    <!-- WebAPP Icons -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Zero World">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/">
-    <meta name="msapplication-navbutton-color" content="#0097A7">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Zero World">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
-
-    <!-- Site Verification -->
-    <meta name="google-site-verification" content="google2fea35a74d5b6936.html">
     
-
-    <!-- RSS -->
-    
-        
-            <link rel="alternate" type="application/atom+xml" href="https://github.com/kurong00/kurong00.github.io/atom.xml">
-        
-    
-
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Unity Shader 入门（四）：透明效果知识储备 | Zero World">
-    <meta property="og:image" content="/img/favicon.png">
-    <meta property="og:description" content>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
     
 
     
-        <meta property="article:published_time" content="Sat Nov 18 2017 00:00:00 GMT+0800">
-        <meta property="article:modified_time" content="Wed May 01 2019 09:49:24 GMT+0800">
     
 
-    <!-- The Twitter Card protocol -->
-    <meta name="twitter:card" content="summary_large_image">
-
-    <!-- Add canonical link for SEO -->
-    
-        <link rel="canonical" href="http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/index.html">
-    
-
-    <!-- Structured-data for SEO -->
-    
-        
-
-
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/index.html",
-    "headline": "Unity Shader 入门（四）：透明效果知识储备",
-    "datePublished": "Sat Nov 18 2017 00:00:00 GMT+0800",
-    "dateModified": "Wed May 01 2019 09:49:24 GMT+0800",
-    "author": {
-        "@type": "Person",
-        "name": "kurong00",
-        "image": {
-            "@type": "ImageObject",
-            "url": "/img/avatar.png"
-        },
-        "description": "Hi, nice to meet you"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "Zero World",
-        "logo": {
-            "@type":"ImageObject",
-            "url": "/img/favicon.png"
-        }
-    },
-    "keywords": "",
-    "description": "",
-}
-</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
 
 
     
-
-    <!-- Analytics -->
     
     
     
 
-    <!-- Custom Head -->
-    
-
+<<<<<<< HEAD
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
@@ -509,23 +443,15 @@
 
                     <!-- Post TOC -->
 
-    
-    <!-- Back Button -->
-    <!--
-    <div class="material-back" id="backhome-div" tabindex="0">
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-           href="#" onclick="window.history.back();return false;"
-           target="_self"
-           role="button"
-           data-upgraded=",MaterialButton,MaterialRipple">
-            <i class="material-icons" role="presentation">arrow_back</i>
-            <span class="mdl-button__ripple-container">
-                <span class="mdl-ripple"></span>
-            </span>
-        </a>
-    </div>
-    -->
+=======
+<link rel="stylesheet" href="/css/back-to-top.css">
 
+
+    
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
+    
+
+<<<<<<< HEAD
 <<<<<<< HEAD
     <!-- Left aligned menu below button -->
 =======
@@ -572,16 +498,14 @@
                 <!-- Post Header(Thumbnail & Title) -->
                 
     <!-- Paradox Post Header -->
+=======
     
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://github.com/kurong00/blog/blob/master/thumbnail/shader4/shader4.png?raw=true)">
     
-            <p class="article-headline-p">
-                Unity Shader 入门（四）：透明效果知识储备
-            </p>
-        </div>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
+    
+    
 
-
+<<<<<<< HEAD
 
 
 
@@ -614,10 +538,11 @@
     -->
 
     <!-- Qrcode -->
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
-
-    <!-- Tags (bookmark) -->
     
+<<<<<<< HEAD
 <<<<<<< HEAD
     <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
         <i class="material-icons" role="presentation">bookmark</i>
@@ -632,21 +557,26 @@
     <!-- Share -->
     <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
 =======
+=======
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
-    <!-- Share -->
     
+<<<<<<< HEAD
         <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
     <i class="material-icons" role="presentation">share</i>
     <span class="visuallyhidden">share</span>
 </button>
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
+    
     
 
     
-
-    <!-- Share Weibo -->
-    
+<<<<<<< HEAD
 <<<<<<< HEAD
         <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Unity Shader 入门（四）：透明效果知识储备&url=http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/index.html&pic=&searchPic=false&style=simple" target="_blank">
 =======
@@ -656,26 +586,13 @@
                 分享到微博
             </li>
         </a>
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
+    
     
 
-    <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Unity Shader 入门（四）：透明效果知识储备&url=http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/index.html&via=kurong00" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Twitter
-            </li>
-        </a>
-    
 
-    <!-- Share Facebook -->
-    
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Facebook
-            </li>
-        </a>
-    
-
+<<<<<<< HEAD
     <!-- Share Google+ -->
     
         <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/index.html" target="_blank">
@@ -720,19 +637,97 @@
     
 
     <!-- Share Telegram -->
+=======
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logoMe.png" alt="Unity Shader 入门（四）：透明效果知识储备" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/kurong00">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
-</ul>
-
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
     
+<<<<<<< HEAD
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 </div>
 
+=======
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-11-17T16:00:00.000Z">2017-11-18</time>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
                 
-
-                <!-- Post Content -->
-                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-    
-        <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？</p>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 952 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Unity Shader 入门（四）：透明效果知识储备
+            
+        </h1>
+        <div class="content">
+            <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？</p>
 <h3 id="深度缓冲"><a href="#深度缓冲" class="headerlink" title="深度缓冲"></a>深度缓冲</h3><p>实际上，由于深度缓存（z-buffer）的存在,不透明的物体在不考虑渲染顺序的情况下也可以正确的被渲染。深度缓冲是用来解决物体可见性的问题，基本思想是：根据深度缓存里的值判断这个物体距离摄像机的距离。开始渲染一个片元的时候，需要把它的深度值和已存在于深度缓存中的值作比较，如果它的值距离摄像机更远那么就不会被渲染到屏幕上。否则更新片元的深度值到深度缓存中。</p>
 <h2 id="透明效果"><a href="#透明效果" class="headerlink" title="透明效果"></a>透明效果</h2><p>我们可以不关心不透明物体的渲染顺序，因为在深度测试中就可以测试出物体离摄像机的距离再判断是否写入颜色缓冲。但是对于不透明物体，就没这么简单了。想要达到半透明的效果，我们要利用透明度混合。</p>
 <h3 id="透明度混合"><a href="#透明度混合" class="headerlink" title="透明度混合"></a>透明度混合</h3><p>透明度混合要关闭深度写入。这是因为：假如一个半透明物体在一个不透明物体的前面，如果开启深度写入的话，距离摄像机更远的不透明物体就会被剔除，但是依照常理我们是可以透过半透明的物体看到不透明的物体。但是这就破坏了深度缓冲的机制，这是非常不好但是不得不做的折中方法，也因此使得渲染顺序变得非常重要。（注意：关闭深度写入，但是没有关闭深度测试）</p>
@@ -782,25 +777,11 @@
 </tr>
 </tbody>
 </table>
-<h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下</p>
-<pre class=" language-haxe"><code class="language-haxe"> SubShader
-    <span class="token punctuation">{</span>
-        Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Transparent"</span> <span class="token punctuation">}</span>  
-        Pass <span class="token punctuation">{</span> 
-            ZWrite Off ······
-        <span class="token punctuation">}</span> 
-    <span class="token punctuation">}</span>
-</code></pre>
-<p>ZWrite Off 意味者关闭深度写入，或者可以：</p>
-<pre class=" language-haxe"><code class="language-haxe"> SubShader
-    <span class="token punctuation">{</span>
-        Tags <span class="token punctuation">{</span> <span class="token string">"RenderType"</span><span class="token operator">=</span><span class="token string">"Transparent"</span> <span class="token punctuation">}</span>  
-        ZWrite Off ······
-        Pass <span class="token punctuation">{</span> <span class="token punctuation">}</span> 
-    <span class="token punctuation">}</span>
-</code></pre>
+<h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       Pass &#123; </span><br><span class="line">	    ZWrite Off ······</span><br><span class="line">       &#125; </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>ZWrite Off 意味者关闭深度写入，或者可以：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       ZWrite Off ······</span><br><span class="line">       Pass &#123; &#125; </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样表示这个SubShader下的所有Pass都会关闭深度写入</p>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         
@@ -808,47 +789,50 @@
     
 
     
+=======
+        </div>
+        
+        
+        
+    </div>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 </div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
                 
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
 
-                <!-- Post Comments -->
                 
-                    
                 
-            </div>
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
 
-            <!-- Post Prev & Next Nav -->
-            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-    <!-- Prev Nav -->
-    
-        <a href="/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
 
-    <!-- Section Spacer -->
-    <div class="section-spacer"></div>
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
 
-    <!-- Next Nav -->
-    
-        <a href="/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
-    
-</nav>
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
 
+                
         </div>
     </div>
+<<<<<<< HEAD
 
 
 
@@ -919,18 +903,23 @@
             
         </ul>
     </li>
+=======
+</div>
 
-    <!-- Homepage -->
-    
-        <li id="sidebar-first-li">
-            <a href="/">
-                
-                    <i class="material-icons sidebar-material-icons">home</i>
-                
-                主页
-            </a>
-        </li>
+
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Unity Shader 入门（五）：边缘发光透明版</span>
+            </a>
+        </div>
+        
+<<<<<<< HEAD
 <<<<<<< HEAD
             <li class="divider"></li>
         
@@ -994,71 +983,164 @@
 I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
 If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
 It will not impact the appearance and can give developers a lot of support :)
+=======
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/">
+                <span class="level-item">Unity Shader 入门（三）：编写第一个Shader</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
-很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
-如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
-它不会影响美观并可以给开发者很大的支持和动力。 :)
--->
 
-<!-- Sidebar Divider -->
+</div>
+                
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     <div class="sidebar-divider"></div>
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 
-<!-- Theme Material -->
 
-    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
-
-
-<!-- Help & Support -->
-<!--
-
--->
-
-<!-- Feedback -->
-<!--
-
--->
-
-<!-- About Theme -->
-<!--
-
--->
-
-    </div>
-
-    <!-- Sidebar Image -->
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
     
-
-</aside>
-
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
                     
-
+                        <img class="image is-128x128 has-mb-6" src="/images/logoMe.png" alt="Kurong00">
                     
-                        <!-- Footer Top Button -->
-                        <div id="back-to-top" class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
+                    
+                    <p class="is-size-4 is-block">
+                        Kurong00
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Category
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/kurong00" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Email</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
 </div>
 
-                    
 
-                    <!--Footer-->
-<footer class="mdl-mini-footer" id="bottom">
     
-        <!-- Paradox Footer Left Section -->
-        <div class="mdl-mini-footer--left-section sns-list">
-    <!-- Twitter -->
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Shader/">
+            <span class="level-start">
+                <span class="level-item">Shader</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
     
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     <!-- Facebook -->
@@ -1072,38 +1154,230 @@ It will not impact the appearance and can give developers a lot of support :)
                 <span class="visuallyhidden">Twitter</span>
             </button><!--
      --></a>
+=======
+        
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T16:00:00.000Z">2019-04-30</time></div>
+                    <a href="/2019/04/30/Unity Shader 入门（一）：理论准备/" class="has-link-black-ter is-size-6">Unity Shader 入门（一）：理论准备</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-07T16:00:00.000Z">2018-02-08</time></div>
+                    <a href="/2018/02/08/Unity Shader 入门（六）：模型描边Shader/" class="has-link-black-ter is-size-6">Unity Shader 入门（六）：模型描边Shader</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-24T16:00:00.000Z">2017-11-25</time></div>
+                    <a href="/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/" class="has-link-black-ter is-size-6">Unity Shader 入门（五）：边缘发光透明版</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-17T16:00:00.000Z">2017-11-18</time></div>
+                    <a href="/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/" class="has-link-black-ter is-size-6">Unity Shader 入门（四）：透明效果知识储备</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-12T16:00:00.000Z">2017-11-13</time></div>
+                    <a href="/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/" class="has-link-black-ter is-size-6">Unity Shader 入门（三）：编写第一个Shader</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
 
-    <!-- Facebook -->
     
-        <a href="https://www.facebook.com/facebook" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
-                <span class="visuallyhidden">Facebook</span>
-            </button><!--
-     --></a>
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
     
-
-    <!-- Google + -->
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
     
-        <a href="https://www.google.com/" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
-                <span class="visuallyhidden">Google Plus</span>
-            </button><!--
-     --></a>
     
+<<<<<<< HEAD
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 
     <!-- Weibo -->
+=======
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
+</div>
 
-    <!-- Instagram -->
-    
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logoMe.png" alt="Unity Shader 入门（四）：透明效果知识储备" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 kurong00&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
 
-    <!-- Tumblr -->
-    
 
-    <!-- Github -->
     
+<<<<<<< HEAD
 <<<<<<< HEAD
         <a href="https://github.com/kurong00" target="_blank">
             <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
@@ -1115,24 +1389,24 @@ It will not impact the appearance and can give developers a lot of support :)
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 
     <!-- LinkedIn -->
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
+    
+    
+    <script src="/js/animation.js"></script>
     
 
-    <!-- Zhihu -->
     
-
-    <!-- Bilibili -->
-    
-
-    <!-- Telegram -->
-    
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
     <!-- V2EX -->
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
-
-    <!-- Segmentfault -->
     
+<<<<<<< HEAD
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 </div>
 
@@ -1190,63 +1464,77 @@ It will not impact the appearance and can give developers a lot of support :)
 
     <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
+=======
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
+    
+    
 
-<script type="text/ls-javascript" id="NProgress-script">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-    $('#nprogress .bar').css({
-        'background': '#29d'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '#29d',
-        'border-left-color': '#29d'
-    });
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, 800);
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- UC Browser Compatible -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
 <script>
-	var agent = navigator.userAgent.toLowerCase();
-	if(agent.indexOf('ucbrowser')>0) {
-		document.write('<link rel="stylesheet" href="/css/uc.css">');
-	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-	}
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
 </script>
 
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 <!-- Window Load-->
 =======
 <!-- Import prettify js  -->
 
+=======
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
     
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
     
 
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
 
 
+<<<<<<< HEAD
 <!-- Window Load -->
 <!-- add class for prettify -->
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
@@ -1257,16 +1545,15 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 <<<<<<< HEAD
 =======
+=======
+    
+    
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
     
+<<<<<<< HEAD
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 </script>
 
@@ -1286,15 +1573,20 @@ It will not impact the appearance and can give developers a lot of support :)
             effect : 'show'
         });
     });
+=======
+    
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
-    // Start Queue
-    $(document).ready(function(){
-        setInterval(function(){
-            queue.execNext();
-        },200);
-    });
-</script>
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <!-- Bing Background -->
 
@@ -1302,10 +1594,29 @@ It will not impact the appearance and can give developers a lot of support :)
 <script>
 =======
 <!-- Custom Footer -->
+=======
+    
+    
+    
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
 
+<script src="/js/main.js" defer></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
 <script>
+<<<<<<< HEAD
     var copyrightNow = new Date().getFullYear();
     var textContent = document.querySelector('span[year]')
 
@@ -1330,10 +1641,25 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 =======
 console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
+=======
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+>>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 </script>
-
-                </main>
-            </div>
-        </body>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
     
+</body>
 </html>
