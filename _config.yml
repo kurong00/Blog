@@ -103,3 +103,6 @@ qrcode: true
 search:
     use: local
     swiftype_key:
+
+toc:
+  maxDepth: 3

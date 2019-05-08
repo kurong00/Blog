@@ -61,12 +61,6 @@ Shader "Custom/NewSurfaceShader" {
 ```
 emmm.......即使你有编程的基础也可能看的一头雾水，不过没关系，我们现在来一个个拆解这段代码。
 
-首先我们来看shader的一个大体结构:  
-
-<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader2/Shader.png?raw=true" class="img-topic" />
-
-一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。  
-
 ## 逐行代码查看
 我们打开刚刚新建的shader代码，开始逐行来看吧：
 
