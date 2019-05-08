@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-08T08:54:24.439Z</updated>
+  <updated>2019-05-08T14:11:07.165Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Unity Shader 入门（一）：理论准备（二）</title>
-    <link href="http://yoursite.com/2019/04/29/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>http://yoursite.com/2019/04/29/Unity Shader 入门（一）：理论准备（二）/</id>
+    <title>Unity Shader 入门（二）：Shader介绍</title>
+    <link href="http://yoursite.com/2019/04/29/shader-learning2/"/>
+    <id>http://yoursite.com/2019/04/29/shader-learning2/</id>
     <published>2019-04-28T16:00:00.000Z</published>
-    <updated>2019-05-08T08:54:24.439Z</updated>
+    <updated>2019-05-08T14:11:07.165Z</updated>
     
     <summary type="html">
     
@@ -36,25 +36,29 @@
       <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
     
     
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
   </entry>
   
   <entry>
-    <title>Unity Shader 入门（一）：理论准备（一）</title>
-    <link href="http://yoursite.com/2019/04/28/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://yoursite.com/2019/04/28/Unity Shader 入门（一）：理论准备（一）/</id>
+    <title>Unity Shader 入门（一）：渲染管线</title>
+    <link href="http://yoursite.com/2019/04/28/shader-learning1/"/>
+    <id>http://yoursite.com/2019/04/28/shader-learning1/</id>
     <published>2019-04-27T16:00:00.000Z</published>
-    <updated>2019-05-08T10:18:44.823Z</updated>
+    <updated>2019-05-08T14:10:03.407Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;什么是渲染管线？&quot;&gt;&lt;a href=&quot;#什么是渲染管线？&quot; class=&quot;headerlink&quot; title=&quot;什么是渲染管线？&quot;&gt;&lt;/a&gt;什么是渲染管线？&lt;/h2&gt;&lt;p&gt;Shader（着色器）：是渲染管线上的一小段程序，要了解Shader首先要明白渲染管线是什么呢？&lt;/p&gt;
 &lt;p&gt;渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多&lt;br&gt;条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://github.com/kurong00/EditGraphics/blob/master/BlogPictures/Shader1/1.png?raw=true&quot; alt=&quot;Figure 1.1 在左图中，虚拟相机放在棱椎的顶端黑点（四条线段的交汇点），右图显示的就是此时渲染的图像，只有可视体内部的图元会被渲染。&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2019/04/28/shader-learning1/1.png&quot; alt=&quot;在左图中，虚拟相机放在棱椎的顶端黑点（四条线段的交汇点），右图显示的就是此时渲染的图像，只有可视体内部的图元会被渲染。&quot;&gt;&lt;/p&gt;
     
     </summary>
     
       <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
     
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
   </entry>
   
