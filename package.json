@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "hexo": "^3.8.0",
+    "hexo-asset-image": "0.0.3",
     "hexo-deployer-git": "^1.0.0",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-category": "^0.1.3",
@@ -15,7 +16,6 @@
     "hexo-generator-search": "^2.3.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-helper-qrcode": "^1.0.2",
-    "hexo-material": "^1.5.0",
     "hexo-prism-plugin": "^2.1.2",
     "hexo-renderer-ejs": "^0.3.0",
     "hexo-renderer-marked": "^0.3.0",

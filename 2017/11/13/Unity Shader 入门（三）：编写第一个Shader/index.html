@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
 <<<<<<< HEAD
@@ -154,7 +154,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/index.html">
 <meta property="og:site_name" content="Zero World">
 <meta property="og:description" content="编写第一个Shader上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个【边缘发光（水晶球）】的shader来写 首先来看一下效果图，如果你感兴趣的话就接下来看吧： 实现原理：根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。重点：向量点积运算。 具体解说：先放一段实现的代码：12">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="og:updated_time" content="2019-05-01T01:49:24.176Z">
 <meta name="twitter:card" content="summary">
@@ -739,7 +739,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -751,7 +751,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
 <<<<<<< HEAD
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
@@ -773,7 +773,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1688 words)
+                    11 分钟 读完 (大约 1688 个字)
                 </span>
                 
                 
@@ -786,8 +786,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="编写第一个Shader"><a href="#编写第一个Shader" class="headerlink" title="编写第一个Shader"></a>编写第一个Shader</h2><p>上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个【边缘发光（水晶球）】的shader来写</p>
+            <h2><span id="编写第一个shader">编写第一个Shader</span></h2><p>上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个【边缘发光（水晶球）】的shader来写</p>
 <p>首先来看一下效果图，如果你感兴趣的话就接下来看吧：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader.PNG?raw=true" alt></p>
+<<<<<<< HEAD
 <h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#D37885">重点：向量点积运算。</font></p>
 <<<<<<< HEAD
 <h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：</p>
@@ -845,6 +846,10 @@
 </code></pre>
 =======
 <h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Custom/Rim//RimBump"</span> &#123;</span><br><span class="line">	Properties&#123;</span><br><span class="line">		_Color(<span class="hljs-string">"Main Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">		_SpecColor(<span class="hljs-string">"Specular Color"</span>, Color) = (<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>)</span><br><span class="line">		_BumpMap(<span class="hljs-string">"Normalmap"</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">"bump"</span> &#123;&#125;</span><br><span class="line">		_RimColor(<span class="hljs-string">"Rim Color"</span>, Color) = (<span class="hljs-number">0.26</span>,<span class="hljs-number">0.19</span>,<span class="hljs-number">0.16</span>,<span class="hljs-number">0.0</span>)</span><br><span class="line">		_RimPower(<span class="hljs-string">"Rim Power"</span>, Range(<span class="hljs-number">0.5</span>,<span class="hljs-number">8.0</span>)) = <span class="hljs-number">2.0</span></span><br><span class="line">	&#125;</span><br><span class="line">		SubShader&#123;</span><br><span class="line">			Tags &#123; <span class="hljs-string">"RenderType"</span> = <span class="hljs-string">"Opaque"</span> &#125;</span><br><span class="line">			LOD <span class="hljs-number">400</span></span><br><span class="line"></span><br><span class="line">		CGPROGRAM</span><br><span class="line">		<span class="hljs-meta">#pragma surface surf BlinnPhong</span></span><br><span class="line">		<span class="hljs-meta">#pragma target 3.0</span></span><br><span class="line"></span><br><span class="line">		sampler2D _BumpMap;</span><br><span class="line">		fixed4 _Color;</span><br><span class="line">		float4 _RimColor;</span><br><span class="line">		float _RimPower;</span><br><span class="line"></span><br><span class="line">		struct Input &#123;</span><br><span class="line">			float2 uv_MainTex;</span><br><span class="line">			float2 uv_BumpMap;</span><br><span class="line">			float3 viewDir;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		void surf(Input IN, inout SurfaceOutput o) &#123;</span><br><span class="line">			o.Albedo = _Color.rgb;</span><br><span class="line">			o.Gloss = <span class="hljs-number">1</span>;</span><br><span class="line">			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));</span><br><span class="line">			half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">			o.Emission = _RimColor.rgb * pow(rim, _RimPower);</span><br><span class="line">		&#125;</span><br><span class="line">		ENDCG</span><br><span class="line">		&#125;</span><br><span class="line">			FallBack <span class="hljs-string">"Diffuse"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+=======
+<h3><span id="实现原理">实现原理：</span></h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#D37885">重点：向量点积运算。</font></p>
+<h3><span id="具体解说">具体解说：</span></h3><p>先放一段实现的代码：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Custom/Rim//RimBump"</span> &#123;</span><br><span class="line">	Properties&#123;</span><br><span class="line">		_Color(<span class="hljs-string">"Main Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">		_SpecColor(<span class="hljs-string">"Specular Color"</span>, Color) = (<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>)</span><br><span class="line">		_BumpMap(<span class="hljs-string">"Normalmap"</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">"bump"</span> &#123;&#125;</span><br><span class="line">		_RimColor(<span class="hljs-string">"Rim Color"</span>, Color) = (<span class="hljs-number">0.26</span>,<span class="hljs-number">0.19</span>,<span class="hljs-number">0.16</span>,<span class="hljs-number">0.0</span>)</span><br><span class="line">		_RimPower(<span class="hljs-string">"Rim Power"</span>, Range(<span class="hljs-number">0.5</span>,<span class="hljs-number">8.0</span>)) = <span class="hljs-number">2.0</span></span><br><span class="line">	&#125;</span><br><span class="line">		SubShader&#123;</span><br><span class="line">			Tags &#123; <span class="hljs-string">"RenderType"</span> = <span class="hljs-string">"Opaque"</span> &#125;</span><br><span class="line">			LOD <span class="hljs-number">400</span></span><br><span class="line"></span><br><span class="line">		CGPROGRAM</span><br><span class="line">		<span class="hljs-meta">#pragma surface surf BlinnPhong</span></span><br><span class="line">		<span class="hljs-meta">#pragma target 3.0</span></span><br><span class="line"></span><br><span class="line">		sampler2D _BumpMap;</span><br><span class="line">		fixed4 _Color;</span><br><span class="line">		float4 _RimColor;</span><br><span class="line">		float _RimPower;</span><br><span class="line"></span><br><span class="line">		struct Input &#123;</span><br><span class="line">			float2 uv_MainTex;</span><br><span class="line">			float2 uv_BumpMap;</span><br><span class="line">			float3 viewDir;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		void surf(Input IN, inout SurfaceOutput o) &#123;</span><br><span class="line">			o.Albedo = _Color.rgb;</span><br><span class="line">			o.Gloss = <span class="hljs-number">1</span>;</span><br><span class="line">			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));</span><br><span class="line">			half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">			o.Emission = _RimColor.rgb * pow(rim, _RimPower);</span><br><span class="line">		&#125;</span><br><span class="line">		ENDCG</span><br><span class="line">		&#125;</span><br><span class="line">			FallBack <span class="hljs-string">"Diffuse"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+>>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
 <p>如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void surf(Input IN, inout SurfaceOutput o) &#123;</span><br><span class="line">			o.Albedo = _Color.rgb;</span><br><span class="line">			o.Gloss = <span class="hljs-number">1</span>;</span><br><span class="line">			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));</span><br><span class="line">			half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">			o.Emission = _RimColor.rgb * pow(rim, _RimPower);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></p>
 >>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 <ul>
@@ -857,7 +862,7 @@
 </li>
 </ul>
 <p><code>UnpackNormal</code> 是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），<code>UnpackNormal</code>接受一个fixed4的输入，并将其转换为所对应的法线值（fixed3）。在解包得到这个值之后，将其赋给输出的Normal，接下来我们就可以来使用Normal值啦。</p>
-<h4 id="有关法线贴图"><a href="#有关法线贴图" class="headerlink" title="有关法线贴图"></a>有关法线贴图</h4><blockquote>
+<h4><span id="有关法线贴图">有关法线贴图</span></h4><blockquote>
 <p>这一点归类于扩展阅读，如果你想知道<code>UnpackNormal</code>的原理可以继续查看，如果不的话就跳过这一段吧！<br>假设你想知道原理，那首先思考一个问题<strong>为什么法线贴图看起来大多是蓝色的？</strong> </p>
 <ul>
 <li>实际上，我们通常见到的这种偏蓝色的法线纹理中，存储的是在Tangent Space中的顶点法线方向。那么，问题又来了，什么是Tangent Space。在Tangent Space中，坐标原点就是顶点的位置，其中z轴是该顶点本身的法线方向（N）。这样，另外两个坐标轴就是和该点相切的两条切线。这样的切线是有无数条，但模型一般会给定该顶点的一个tangent。（<a href="http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/" target="_blank" rel="noopener">给定的过程可以见这个链接</a>）</li>
@@ -882,13 +887,13 @@
 <li>再下一个问题：压缩的内容又是什么呢？其实法线贴图只有两个通道是真正必不可少的，因为第三个通道的值可以用另外两个推导出来（法线是单位向量）法线（x,y,z）是一条单位向量。所以知道了x,y,z里的任意两个，剩下的那个就可以通过计算得出。所以我们就可以使用2个通道的图储存x,y,z里的两个值，将xyz里剩余的值省略，通过计算得出。而压缩后的法线贴图，大小只有原来的1/4左右，故可以使用更大或者更多的贴图来提升画面品质。</li>
 </ul>
 </blockquote>
-<h3 id="重点讲解"><a href="#重点讲解" class="headerlink" title="重点讲解"></a>重点讲解</h3><p>回到刚刚打断的地方，下面两句：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">o.Emission = _RimColor.rgb * pow (rim, _RimStrength);</span><br></pre></td></tr></table></figure></p>
+<h3><span id="重点讲解">重点讲解</span></h3><p>回到刚刚打断的地方，下面两句：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">o.Emission = _RimColor.rgb * pow (rim, _RimStrength);</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>首先我们看<code>normalize</code>函数：为了对向量进行归一化处理（这里传入IN.viewDir指的是：WorldSpace View Direction，也就是当前坐标的视角方向）。 <code>dot</code>函数：返回传入的两个参数的点积，<code>saturate</code>函数：判断传入的参数是否在0-1之间，如果小于0，返回 0；如果大于 1，返回1； </li>
 <li>接着第二句：<code>_RimColor.rgb * pow (rim, _RimStrength)</code>从_RimColor参数获取自发光颜色再和发光的强度混合，最终将颜色赋值给像素的Emission（发散颜色）</li>
 <li>以上就是边缘发光效果的实现。</li>
 </ul>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>下一次的shader我们将来写【半透明】的边缘发光效果。为此在下一篇我们将会梳理一下Unity shader透明效果的知识储配</p>
+<h2><span id="结语">结语</span></h2><p>下一次的shader我们将来写【半透明】的边缘发光效果。为此在下一篇我们将会梳理一下Unity shader透明效果的知识储配</p>
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -911,32 +916,51 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
                 
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/donate/alipay.png" alt="支付宝"></div>
+</a>
 
                 
                 
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/donate/wechat.jpg" alt="微信"></div>
+</a>
 
                 
                 <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
 
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations">
+    <input type="hidden" name="business" value="https://www.paypal.com/c2/home">
+    <input type="hidden" name="currency_code" value="USD">
+</form>
 
                 
                 
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
+<a class="button is-danger donate" href="https://www.patreon.com/" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
 
                 
         </div>
@@ -1106,6 +1130,30 @@ It will not impact the appearance and can give developers a lot of support :)
 >>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/';
+        this.page.identifier = '2017/11/13/Unity Shader 入门（三）：编写第一个Shader/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'Kurong00' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
@@ -1119,7 +1167,9 @@ It will not impact the appearance and can give developers a lot of support :)
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 
 
-<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
     
         
 <div class="card widget">
@@ -1149,17 +1199,17 @@ It will not impact the appearance and can give developers a lot of support :)
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        7
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Category
+                        分类
                     </p>
                     <p class="title has-text-weight-normal">
                         1
@@ -1169,17 +1219,17 @@ It will not impact the appearance and can give developers a lot of support :)
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/kurong00" target="_blank">
-                Follow</a>
+                关注我</a>
         </div>
         
         
@@ -1187,43 +1237,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </div>
     
         
-    
-        
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Links
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Email</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Github</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">github.com</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
 
 
     
@@ -1232,7 +1245,7 @@ It will not impact the appearance and can give developers a lot of support :)
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                分类
             </h3>
             <ul class="menu-list">
             <li>
@@ -1241,7 +1254,7 @@ It will not impact the appearance and can give developers a lot of support :)
                 <span class="level-item">Shader</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li>
             </ul>
@@ -1265,21 +1278,46 @@ It will not impact the appearance and can give developers a lot of support :)
      --></a>
 =======
         
+<<<<<<< HEAD
 >>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
+=======
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Shader、图形学/" style="font-size: 10px;">Shader、图形学</a>
+    </div>
+</div>
+
+>>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
     
         
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            最新文章
         </h3>
         
         <article class="media">
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T16:00:00.000Z">2019-04-30</time></div>
-                    <a href="/2019/04/30/Unity Shader 入门（一）：理论准备/" class="has-link-black-ter is-size-6">Unity Shader 入门（一）：理论准备</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T16:00:00.000Z">2019-04-29</time></div>
+                    <a href="/2019/04/29/shader-learning2/" class="has-link-black-ter is-size-6">Unity Shader 入门（二）：Shader介绍</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-27T16:00:00.000Z">2019-04-28</time></div>
+                    <a href="/2019/04/28/shader-learning1/" class="has-link-black-ter is-size-6">Unity Shader 入门（一）：渲染管线</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
                     </p>
@@ -1326,19 +1364,6 @@ It will not impact the appearance and can give developers a lot of support :)
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-12T16:00:00.000Z">2017-11-13</time></div>
-                    <a href="/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/" class="has-link-black-ter is-size-6">Unity Shader 入门（三）：编写第一个Shader</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1347,17 +1372,17 @@ It will not impact the appearance and can give developers a lot of support :)
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            归档
         </h3>
         <ul class="menu-list">
         
         <li>
             <a class="level is-marginless" href="/archives/2019/04/">
                 <span class="level-start">
-                    <span class="level-item">April 2019</span>
+                    <span class="level-item">四月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1365,7 +1390,7 @@ It will not impact the appearance and can give developers a lot of support :)
         <li>
             <a class="level is-marginless" href="/archives/2018/02/">
                 <span class="level-start">
-                    <span class="level-item">February 2018</span>
+                    <span class="level-item">二月 2018</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -1376,7 +1401,7 @@ It will not impact the appearance and can give developers a lot of support :)
         <li>
             <a class="level is-marginless" href="/archives/2017/11/">
                 <span class="level-start">
-                    <span class="level-item">November 2017</span>
+                    <span class="level-item">十一月 2017</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">3</span>
@@ -1387,7 +1412,7 @@ It will not impact the appearance and can give developers a lot of support :)
         <li>
             <a class="level is-marginless" href="/archives/2017/09/">
                 <span class="level-start">
-                    <span class="level-item">September 2017</span>
+                    <span class="level-item">九月 2017</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -1404,9 +1429,16 @@ It will not impact the appearance and can give developers a lot of support :)
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Shader、图形学/">
+                        <span class="tag">Shader、图形学</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -1415,11 +1447,15 @@ It will not impact the appearance and can give developers a lot of support :)
     
     
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
 
     <!-- Weibo -->
 =======
         <div class="column-right-shadow is-hidden-widescreen ">
+=======
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+>>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
         
         </div>
 >>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
@@ -1482,7 +1518,7 @@ It will not impact the appearance and can give developers a lot of support :)
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("en");</script>
+<script>moment.locale("zh-CN");</script>
 
 
     
@@ -1637,7 +1673,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1716,7 +1752,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1754,11 +1790,11 @@ console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viose
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };
