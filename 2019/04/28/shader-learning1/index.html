@@ -16,7 +16,7 @@
 <meta property="og:description" content="什么是渲染管线？Shader（着色器）：是渲染管线上的一小段程序，要了解Shader首先要明白渲染管线是什么呢？ 渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-09T13:55:49.508Z">
+<meta property="og:updated_time" content="2019-05-09T14:01:29.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（一）：渲染管线">
 <meta name="twitter:description" content="什么是渲染管线？Shader（着色器）：是渲染管线上的一小段程序，要了解Shader首先要明白渲染管线是什么呢？ 渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。">
@@ -124,6 +124,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -145,7 +149,7 @@
             <div class="level-left">
                     <time class="level-item has-text-grey" datetime="2019-04-27T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-28</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-09T13:55:49.508Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-09</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-09T14:01:29.927Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-09</time>
                     
                 
                 <div class="level-item">
@@ -391,8 +395,6 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
-    
-        
 <div class="card widget">
     <div class="card-content">
         <nav class="level">
@@ -456,6 +458,75 @@
         
     </div>
 </div>
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1</span>
+        <span>什么是渲染管线？</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">2</span>
+        <span>应用程序阶段 The Application Stage</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">3</span>
+        <span>几何阶段 The Geometry Stage</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">3.1</span>
+        <span>顶点着色 Vertex Shading</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">3.2</span>
+        <span>投影 Projection</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">3.3</span>
+        <span>可选择的顶点处理</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">3.4</span>
+        <span>裁剪 Clipping</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">3.5</span>
+        <span>屏幕映射 Screen Mapping</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">4</span>
+        <span>光栅化阶段 The Rasterizer Stage</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">4.1</span>
+        <span>三角形设定 Triangle Setup</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">4.2</span>
+        <span>三角形遍历 Triangle Traversal</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">5</span>
+        <span>像素处理 Pixel Processing</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">5.1</span>
+        <span>像素着色 Pixel Shading</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">5.2</span>
+        <span>融合 Merging</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow  ">
