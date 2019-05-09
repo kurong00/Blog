@@ -9,6 +9,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
+  <updated>2019-05-09T13:24:17.879Z</updated>
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -20,8 +21,7 @@
   <updated>2019-05-06T06:13:59.401Z</updated>
 >>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 =======
-  <updated>2019-05-08T14:11:07.165Z</updated>
->>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
+  <updated>2019-05-08T14:11:07.165Z</updated>>>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
   <id>http://yoursite.com/</id>
   
   <author>
@@ -72,7 +72,7 @@
     <link href="http://yoursite.com/2019/04/29/shader-learning2/"/>
     <id>http://yoursite.com/2019/04/29/shader-learning2/</id>
     <published>2019-04-28T16:00:00.000Z</published>
-    <updated>2019-05-08T14:11:07.165Z</updated>
+    <updated>2019-05-09T13:24:17.879Z</updated>
     
     <summary type="html">
     
@@ -80,7 +80,7 @@
 &lt;p&gt;shader大体上可以分为两类：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;顶点着色器（Vertex Shader）&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;片元着色器（Fragment Shader）&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;li&gt;片元着色器（Fragment Shader）&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -96,7 +96,7 @@
     <link href="http://yoursite.com/2019/04/28/shader-learning1/"/>
     <id>http://yoursite.com/2019/04/28/shader-learning1/</id>
     <published>2019-04-27T16:00:00.000Z</published>
-    <updated>2019-05-08T14:10:03.407Z</updated>
+    <updated>2019-05-09T13:38:19.626Z</updated>
     
     <summary type="html">
     

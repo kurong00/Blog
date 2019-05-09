@@ -37,17 +37,25 @@ select,
 textarea {
   font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1472px) {
   .is-1-column .container,
   .is-2-column .container {
     max-width: 960px;
     width: 960px;
   }
+  .is-3-column .container {
+    max-width: 1408px;
+    width: 1408px;
+  }
 }
 @media screen and (min-width: 1472px) {
+  .is-3-column .container {
+    max-width: 1344px;
+    width: 1344px;
+  }
   .is-2-column .container {
-    max-width: 1152px;
-    width: 1152px;
+    max-width: 1344px;
+    width: 1344px;
   }
   .is-1-column .container {
     max-width: 960px;
@@ -1331,4 +1339,31 @@ margin: auto;
   all: initial;
 >>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 }
+<<<<<<< HEAD
 >>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
+=======
+.article {
+  counter-reset: section;
+}
+.article h2 {
+  counter-reset: sub-section;
+}
+.article h3 {
+  counter-reset: composite;
+}
+.article h4 {
+  counter-reset: detail;
+}
+.article h2:before {
+  content: counter(section) " ";
+  counter-increment: section;
+}
+.article h3:before {
+  content: counter(section) "." counter(sub-section) " ";
+  counter-increment: sub-section;
+}
+.article h4:before {
+  content: counter(section) "." counter(sub-section) "." counter(composite) " ";
+  counter-increment: composite;
+}
+>>>>>>> 11dac79511d98b68c6154efdf1bc12a2a7530198

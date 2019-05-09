@@ -514,7 +514,7 @@
 <meta property="og:description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。 shader大体上可以分为两类：  顶点着色器（Vertex Shader） 片元着色器（Fragment Shader）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-08T14:11:07.165Z">
+<meta property="og:updated_time" content="2019-05-09T13:24:17.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（二）：Shader介绍">
 <meta name="twitter:description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。 shader大体上可以分为两类：  顶点着色器（Vertex Shader） 片元着色器（Fragment Shader）">
@@ -622,10 +622,6 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -639,13 +635,16 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-28T16:00:00.000Z">2019-04-29</time>
+                    <time class="level-item has-text-grey" datetime="2019-04-28T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-29</time>
+                    
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-09T13:24:17.879Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-09</time>
+                    
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
@@ -688,16 +687,16 @@
 >>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb:2019/04/29/shader-learning2/index.html
 <ul>
 <li>顶点着色器（Vertex Shader）</li>
-<li><p>片元着色器（Fragment Shader）</p>
-<a id="more"></a>
+<li>片元着色器（Fragment Shader）<a id="more"></a>
+</li>
+</ul>
 <p>而在Unity Shader中分为三类：</p>
-</li>
-<li><p>Surface Shaders （表面着色器）：是Unity对Vertex/Fragment Shader的一层包装，可以以极少的代码来完成不同的光照模型与不同平台下需要考虑的事情；缺点是能够实现的效果不如片段着色器来的多。</p>
-</li>
+<ul>
+<li>Surface Shaders （表面着色器）：是Unity对Vertex/Fragment Shader的一层包装，可以以极少的代码来完成不同的光照模型与不同平台下需要考虑的事情；缺点是能够实现的效果不如片段着色器来的多。</li>
 <li>Vertex/Fragment Shaders （顶点/片断着色器）</li>
 <li>Fixed Function Shaders （固定管线着色器）：已被淘汰</li>
 </ul>
-<h2><span id="什么是shaderlab">什么是ShaderLab？</span></h2><p>在Unity中，所有的Shader都是使用ShaderLab来编写的，从结构上来说，它定义了显示一个材质所需要的所有东西，而不仅仅是着色器代码，我们先来看一下ShaderLab的解构</p>
+<h2><span id="什么是shaderlab">什么是ShaderLab？</span></h2><p>在Unity中，所有的Shader都是使用ShaderLab来编写的，从结构上来说，它定义了显示一个材质所需要的所有东西，而不仅仅是着色器代码，我们先来看一下ShaderLab的结构</p>
 <p><img src="/2019/04/29/shader-learning2/1.png" alt="Figure 1"></p>
 <p>一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。</p>
 
@@ -1199,28 +1198,9 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1</span>
-        <span>什么是Shader？</span>
-        </a></li><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2</span>
-        <span>什么是ShaderLab？</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
     
         
 <div class="card widget">
@@ -1287,204 +1267,14 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
     </div>
 </div>
     
-        
-
-
     
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Shader/">
-            <span class="level-start">
-                <span class="level-item">Shader</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Shader、图形学/" style="font-size: 10px;">Shader、图形学</a>
-    </div>
-</div>
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T16:00:00.000Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/shader-learning2/" class="has-link-black-ter is-size-6">Unity Shader 入门（二）：Shader介绍</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-27T16:00:00.000Z">2019-04-28</time></div>
-                    <a href="/2019/04/28/shader-learning1/" class="has-link-black-ter is-size-6">Unity Shader 入门（一）：渲染管线</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-07T16:00:00.000Z">2018-02-08</time></div>
-                    <a href="/2018/02/08/Unity Shader 入门（六）：模型描边Shader/" class="has-link-black-ter is-size-6">Unity Shader 入门（六）：模型描边Shader</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-24T16:00:00.000Z">2017-11-25</time></div>
-                    <a href="/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/" class="has-link-black-ter is-size-6">Unity Shader 入门（五）：边缘发光透明版</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-17T16:00:00.000Z">2017-11-18</time></div>
-                    <a href="/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/" class="has-link-black-ter is-size-6">Unity Shader 入门（四）：透明效果知识储备</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/09/">
-                <span class="level-start">
-                    <span class="level-item">九月 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Shader、图形学/">
-                        <span class="tag">Shader、图形学</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        <div class="column-right-shadow  ">
         
         </div>
     
 </div>
 
-                
+            
             </div>
         </div>
     </section>
