@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-10T03:32:07.323Z</updated>
+  <updated>2019-05-10T13:31:45.190Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity Shader 入门（三）：查看Shader</title>
+    <link href="http://yoursite.com/2019/05/21/shader-learning3/"/>
+    <id>http://yoursite.com/2019/05/21/shader-learning3/</id>
+    <published>2019-05-20T16:00:00.000Z</published>
+    <updated>2019-05-10T13:31:45.190Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;新建Shader&quot;&gt;&lt;a href=&quot;#新建Shader&quot; class=&quot;headerlink&quot; title=&quot;新建Shader&quot;&gt;&lt;/a&gt;新建Shader&lt;/h2&gt;&lt;p&gt;首先我们新建一个Shader，这里以 Standard Surface Shader 为例，新建之后我们打开Shader文件应该会出现如下代码：&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>Unity Shader 入门（二）：Shader介绍</title>
