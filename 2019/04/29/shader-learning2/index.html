@@ -514,7 +514,7 @@
 <meta property="og:description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。 shader大体上可以分为两类：  顶点着色器（Vertex Shader） 片元着色器（Fragment Shader）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-09T13:24:17.879Z">
+<meta property="og:updated_time" content="2019-05-09T14:01:03.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（二）：Shader介绍">
 <meta name="twitter:description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。 shader大体上可以分为两类：  顶点着色器（Vertex Shader） 片元着色器（Fragment Shader）">
@@ -622,6 +622,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -643,7 +647,7 @@
             <div class="level-left">
                     <time class="level-item has-text-grey" datetime="2019-04-28T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-29</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-09T13:24:17.879Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-09</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-09T14:01:03.047Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-09</time>
                     
                 
                 <div class="level-item">
@@ -667,6 +671,7 @@
             
         </h1>
         <div class="content">
+<<<<<<< HEAD
 <<<<<<< HEAD:2019/04/30/Unity Shader 入门（一）：理论准备/index.html
             <h2 id="1-什么是Shader？"><a href="#1-什么是Shader？" class="headerlink" title="1. 什么是Shader？"></a>1. 什么是Shader？</h2><p>shader（着色器）是GPU的渲染流水线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式，和输入的贴图或者颜色等组合作用后输出。绘图单元可以依据这个输出来将图像绘制到屏幕上。</p>
 >>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
@@ -683,6 +688,9 @@
 <p>这个阶段是完全由开发者主导的，主要工作是：</p>
 =======
             <h2><span id="什么是shader">什么是Shader？</span></h2><p>Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。</p>
+=======
+            <h2 id="什么是Shader？"><a href="#什么是Shader？" class="headerlink" title="什么是Shader？"></a>什么是Shader？</h2><p>Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。</p>
+>>>>>>> 4024136f960a92478bab432f0a5f382e14512e93
 <p>shader大体上可以分为两类：</p>
 >>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb:2019/04/29/shader-learning2/index.html
 <ul>
@@ -696,9 +704,9 @@
 <li>Vertex/Fragment Shaders （顶点/片断着色器）</li>
 <li>Fixed Function Shaders （固定管线着色器）：已被淘汰</li>
 </ul>
-<h2><span id="什么是shaderlab">什么是ShaderLab？</span></h2><p>在Unity中，所有的Shader都是使用ShaderLab来编写的，从结构上来说，它定义了显示一个材质所需要的所有东西，而不仅仅是着色器代码，我们先来看一下ShaderLab的结构</p>
+<h2 id="什么是ShaderLab？"><a href="#什么是ShaderLab？" class="headerlink" title="什么是ShaderLab？"></a>什么是ShaderLab？</h2><p>在Unity中，所有的Shader都是使用ShaderLab来编写的，从结构上来说，它定义了显示一个材质所需要的所有东西，而不仅仅是着色器代码，我们先来看一下ShaderLab的结构</p>
 <p><img src="/2019/04/29/shader-learning2/1.png" alt="Figure 1"></p>
-<p>一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。</p>
+<p>一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。  </p>
 
 <<<<<<< HEAD
     
@@ -1201,8 +1209,6 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
-    
-        
 <div class="card widget">
     <div class="card-content">
         <nav class="level">
@@ -1266,6 +1272,27 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
         
     </div>
 </div>
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是Shader？">
+        <span class="has-mr-6">1</span>
+        <span>什么是Shader？</span>
+        </a></li><li>
+        <a class="is-flex" href="#什么是ShaderLab？">
+        <span class="has-mr-6">2</span>
+        <span>什么是ShaderLab？</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow  ">

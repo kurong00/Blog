@@ -738,6 +738,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -793,8 +797,9 @@
             
         </h1>
         <div class="content">
-            <h2><span id="编写第一个shader">编写第一个Shader</span></h2><p>上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个【边缘发光（水晶球）】的shader来写</p>
+            <h2 id="编写第一个Shader"><a href="#编写第一个Shader" class="headerlink" title="编写第一个Shader"></a>编写第一个Shader</h2><p>上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个【边缘发光（水晶球）】的shader来写</p>
 <p>首先来看一下效果图，如果你感兴趣的话就接下来看吧：<img src="https://github.com/kurong00/blog/blob/master/thumbnail/shader3/shader.PNG?raw=true" alt></p>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#D37885">重点：向量点积运算。</font></p>
 <<<<<<< HEAD
@@ -857,6 +862,10 @@
 <h3><span id="实现原理">实现原理：</span></h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#D37885">重点：向量点积运算。</font></p>
 <h3><span id="具体解说">具体解说：</span></h3><p>先放一段实现的代码：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Custom/Rim//RimBump"</span> &#123;</span><br><span class="line">	Properties&#123;</span><br><span class="line">		_Color(<span class="hljs-string">"Main Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">		_SpecColor(<span class="hljs-string">"Specular Color"</span>, Color) = (<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>)</span><br><span class="line">		_BumpMap(<span class="hljs-string">"Normalmap"</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">"bump"</span> &#123;&#125;</span><br><span class="line">		_RimColor(<span class="hljs-string">"Rim Color"</span>, Color) = (<span class="hljs-number">0.26</span>,<span class="hljs-number">0.19</span>,<span class="hljs-number">0.16</span>,<span class="hljs-number">0.0</span>)</span><br><span class="line">		_RimPower(<span class="hljs-string">"Rim Power"</span>, Range(<span class="hljs-number">0.5</span>,<span class="hljs-number">8.0</span>)) = <span class="hljs-number">2.0</span></span><br><span class="line">	&#125;</span><br><span class="line">		SubShader&#123;</span><br><span class="line">			Tags &#123; <span class="hljs-string">"RenderType"</span> = <span class="hljs-string">"Opaque"</span> &#125;</span><br><span class="line">			LOD <span class="hljs-number">400</span></span><br><span class="line"></span><br><span class="line">		CGPROGRAM</span><br><span class="line">		<span class="hljs-meta">#pragma surface surf BlinnPhong</span></span><br><span class="line">		<span class="hljs-meta">#pragma target 3.0</span></span><br><span class="line"></span><br><span class="line">		sampler2D _BumpMap;</span><br><span class="line">		fixed4 _Color;</span><br><span class="line">		float4 _RimColor;</span><br><span class="line">		float _RimPower;</span><br><span class="line"></span><br><span class="line">		struct Input &#123;</span><br><span class="line">			float2 uv_MainTex;</span><br><span class="line">			float2 uv_BumpMap;</span><br><span class="line">			float3 viewDir;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		void surf(Input IN, inout SurfaceOutput o) &#123;</span><br><span class="line">			o.Albedo = _Color.rgb;</span><br><span class="line">			o.Gloss = <span class="hljs-number">1</span>;</span><br><span class="line">			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));</span><br><span class="line">			half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">			o.Emission = _RimColor.rgb * pow(rim, _RimPower);</span><br><span class="line">		&#125;</span><br><span class="line">		ENDCG</span><br><span class="line">		&#125;</span><br><span class="line">			FallBack <span class="hljs-string">"Diffuse"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 >>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
+=======
+<h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分。<font color="#D37885">重点：向量点积运算。</font></p>
+<h3 id="具体解说："><a href="#具体解说：" class="headerlink" title="具体解说："></a>具体解说：</h3><p>先放一段实现的代码：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Custom/Rim//RimBump"</span> &#123;</span><br><span class="line">	Properties&#123;</span><br><span class="line">		_Color(<span class="hljs-string">"Main Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">		_SpecColor(<span class="hljs-string">"Specular Color"</span>, Color) = (<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>)</span><br><span class="line">		_BumpMap(<span class="hljs-string">"Normalmap"</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">"bump"</span> &#123;&#125;</span><br><span class="line">		_RimColor(<span class="hljs-string">"Rim Color"</span>, Color) = (<span class="hljs-number">0.26</span>,<span class="hljs-number">0.19</span>,<span class="hljs-number">0.16</span>,<span class="hljs-number">0.0</span>)</span><br><span class="line">		_RimPower(<span class="hljs-string">"Rim Power"</span>, Range(<span class="hljs-number">0.5</span>,<span class="hljs-number">8.0</span>)) = <span class="hljs-number">2.0</span></span><br><span class="line">	&#125;</span><br><span class="line">		SubShader&#123;</span><br><span class="line">			Tags &#123; <span class="hljs-string">"RenderType"</span> = <span class="hljs-string">"Opaque"</span> &#125;</span><br><span class="line">			LOD <span class="hljs-number">400</span></span><br><span class="line"></span><br><span class="line">		CGPROGRAM</span><br><span class="line">		<span class="hljs-meta">#pragma surface surf BlinnPhong</span></span><br><span class="line">		<span class="hljs-meta">#pragma target 3.0</span></span><br><span class="line"></span><br><span class="line">		sampler2D _BumpMap;</span><br><span class="line">		fixed4 _Color;</span><br><span class="line">		float4 _RimColor;</span><br><span class="line">		float _RimPower;</span><br><span class="line"></span><br><span class="line">		struct Input &#123;</span><br><span class="line">			float2 uv_MainTex;</span><br><span class="line">			float2 uv_BumpMap;</span><br><span class="line">			float3 viewDir;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		void surf(Input IN, inout SurfaceOutput o) &#123;</span><br><span class="line">			o.Albedo = _Color.rgb;</span><br><span class="line">			o.Gloss = <span class="hljs-number">1</span>;</span><br><span class="line">			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));</span><br><span class="line">			half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">			o.Emission = _RimColor.rgb * pow(rim, _RimPower);</span><br><span class="line">		&#125;</span><br><span class="line">		ENDCG</span><br><span class="line">		&#125;</span><br><span class="line">			FallBack <span class="hljs-string">"Diffuse"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+>>>>>>> 4024136f960a92478bab432f0a5f382e14512e93
 <p>如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void surf(Input IN, inout SurfaceOutput o) &#123;</span><br><span class="line">			o.Albedo = _Color.rgb;</span><br><span class="line">			o.Gloss = <span class="hljs-number">1</span>;</span><br><span class="line">			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));</span><br><span class="line">			half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">			o.Emission = _RimColor.rgb * pow(rim, _RimPower);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></p>
 >>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
 <ul>
@@ -869,7 +878,7 @@
 </li>
 </ul>
 <p><code>UnpackNormal</code> 是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），<code>UnpackNormal</code>接受一个fixed4的输入，并将其转换为所对应的法线值（fixed3）。在解包得到这个值之后，将其赋给输出的Normal，接下来我们就可以来使用Normal值啦。</p>
-<h4><span id="有关法线贴图">有关法线贴图</span></h4><blockquote>
+<h4 id="有关法线贴图"><a href="#有关法线贴图" class="headerlink" title="有关法线贴图"></a>有关法线贴图</h4><blockquote>
 <p>这一点归类于扩展阅读，如果你想知道<code>UnpackNormal</code>的原理可以继续查看，如果不的话就跳过这一段吧！<br>假设你想知道原理，那首先思考一个问题<strong>为什么法线贴图看起来大多是蓝色的？</strong> </p>
 <ul>
 <li>实际上，我们通常见到的这种偏蓝色的法线纹理中，存储的是在Tangent Space中的顶点法线方向。那么，问题又来了，什么是Tangent Space。在Tangent Space中，坐标原点就是顶点的位置，其中z轴是该顶点本身的法线方向（N）。这样，另外两个坐标轴就是和该点相切的两条切线。这样的切线是有无数条，但模型一般会给定该顶点的一个tangent。（<a href="http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/" target="_blank" rel="noopener">给定的过程可以见这个链接</a>）</li>
@@ -894,13 +903,13 @@
 <li>再下一个问题：压缩的内容又是什么呢？其实法线贴图只有两个通道是真正必不可少的，因为第三个通道的值可以用另外两个推导出来（法线是单位向量）法线（x,y,z）是一条单位向量。所以知道了x,y,z里的任意两个，剩下的那个就可以通过计算得出。所以我们就可以使用2个通道的图储存x,y,z里的两个值，将xyz里剩余的值省略，通过计算得出。而压缩后的法线贴图，大小只有原来的1/4左右，故可以使用更大或者更多的贴图来提升画面品质。</li>
 </ul>
 </blockquote>
-<h3><span id="重点讲解">重点讲解</span></h3><p>回到刚刚打断的地方，下面两句：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">o.Emission = _RimColor.rgb * pow (rim, _RimStrength);</span><br></pre></td></tr></table></figure></p>
+<h3 id="重点讲解"><a href="#重点讲解" class="headerlink" title="重点讲解"></a>重点讲解</h3><p>回到刚刚打断的地方，下面两句：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">half rim = <span class="hljs-number">1</span> - saturate(dot(normalize(IN.viewDir), o.Normal));</span><br><span class="line">o.Emission = _RimColor.rgb * pow (rim, _RimStrength);</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>首先我们看<code>normalize</code>函数：为了对向量进行归一化处理（这里传入IN.viewDir指的是：WorldSpace View Direction，也就是当前坐标的视角方向）。 <code>dot</code>函数：返回传入的两个参数的点积，<code>saturate</code>函数：判断传入的参数是否在0-1之间，如果小于0，返回 0；如果大于 1，返回1； </li>
 <li>接着第二句：<code>_RimColor.rgb * pow (rim, _RimStrength)</code>从_RimColor参数获取自发光颜色再和发光的强度混合，最终将颜色赋值给像素的Emission（发散颜色）</li>
 <li>以上就是边缘发光效果的实现。</li>
 </ul>
-<h2><span id="结语">结语</span></h2><p>下一次的shader我们将来写【半透明】的边缘发光效果。为此在下一篇我们将会梳理一下Unity shader透明效果的知识储配</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>下一次的shader我们将来写【半透明】的边缘发光效果。为此在下一篇我们将会梳理一下Unity shader透明效果的知识储配</p>
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1177,8 +1186,6 @@ It will not impact the appearance and can give developers a lot of support :)
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
-    
-        
 <div class="card widget">
     <div class="card-content">
         <nav class="level">
@@ -1242,6 +1249,43 @@ It will not impact the appearance and can give developers a lot of support :)
         
     </div>
 </div>
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#编写第一个Shader">
+        <span class="has-mr-6">1</span>
+        <span>编写第一个Shader</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#实现原理：">
+        <span class="has-mr-6">1.1</span>
+        <span>实现原理：</span>
+        </a></li><li>
+        <a class="is-flex" href="#具体解说：">
+        <span class="has-mr-6">1.2</span>
+        <span>具体解说：</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#有关法线贴图">
+        <span class="has-mr-6">1.2.1</span>
+        <span>有关法线贴图</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#重点讲解">
+        <span class="has-mr-6">1.3</span>
+        <span>重点讲解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#结语">
+        <span class="has-mr-6">2</span>
+        <span>结语</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow  ">
