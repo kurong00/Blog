@@ -11,7 +11,7 @@ categories: Shader
 前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。
 
 老规矩还是来看一下效果图：
-
+<!-- more -->
 ![](https://github.com/kurong00/blog/blob/master/thumbnail/shader6/RimLighting.PNG?raw=true)
 
 ## 具体实现
@@ -23,7 +23,7 @@ Mesh Doubling (复制网格)：
 
 ### 具体解说：
 先放一段实现的代码：
-```haxe
+```C++
 Shader "Custom/Rim/RimLighting" {
 	Properties{
 		_MainColor("Main Color", Color) = (1,1,1,1)
