@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-10T14:01:43.055Z</updated>
+  <updated>2019-05-10T14:02:45.359Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,12 @@
     <link href="http://yoursite.com/2019/05/02/shader-learning4/"/>
     <id>http://yoursite.com/2019/05/02/shader-learning4/</id>
     <published>2019-05-01T16:00:00.000Z</published>
-    <updated>2019-05-10T14:01:43.055Z</updated>
+    <updated>2019-05-10T14:02:45.359Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个【边缘发光（水晶球）】的shader来写&lt;/p&gt;
+&lt;p&gt;首先来看一下效果图，如果你感兴趣的话就接下来看吧：&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
