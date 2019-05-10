@@ -9,22 +9,6 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-<<<<<<< HEAD
-  <updated>2019-05-09T13:24:17.879Z</updated>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <updated>2019-04-30T02:37:47.106Z</updated>
-=======
-  <updated>2019-05-01T01:49:24.176Z</updated>
->>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
-=======
-  <updated>2019-05-06T06:13:59.401Z</updated>
->>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
-=======
-  <updated>2019-05-08T14:11:07.165Z</updated>>>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
-=======
-  <updated>2019-05-09T14:01:03.047Z</updated>
 >>>>>>> 4024136f960a92478bab432f0a5f382e14512e93
   <id>http://yoursite.com/</id>
   
@@ -36,55 +20,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <title></title>
-<<<<<<< HEAD
-    <link href="http://yoursite.com/2019/04/30/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87/"/>
-    <id>http://yoursite.com/2019/04/30/Unity Shader 入门（一）：理论准备/</id>
-    <published>2019-04-30T02:37:47.105Z</published>
-    <updated>2019-04-30T02:37:47.106Z</updated>
+    <title>Unity Shader 入门（三）：查看Shader</title>
+    <link href="http://yoursite.com/2019/05/21/shader-learning3/"/>
+    <id>http://yoursite.com/2019/05/21/shader-learning3/</id>
+    <published>2019-05-20T16:00:00.000Z</published>
+    <updated>2019-05-10T13:31:45.190Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Unity-Shader-入门（一）：理论准备&quot;&gt;&lt;a href=&quot;#Unity-Shader-入门（一）：理论准备&quot; class=&quot;headerlink&quot; title=&quot;Unity Shader 入门（一）：理论准备&quot;&gt;&lt;/a&gt;Unity Shader 入门（一
-=======
-    <link href="http://yoursite.com/2019/05/01/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87/"/>
-    <id>http://yoursite.com/2019/05/01/Unity Shader 入门（一）：理论准备/</id>
-    <published>2019-05-01T01:49:24.176Z</published>
-    <updated>2019-05-01T01:49:24.176Z</updated>
-=======
-    <title>Unity Shader 入门（一）：理论准备</title>
-    <link href="http://yoursite.com/2019/04/30/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87/"/>
-    <id>http://yoursite.com/2019/04/30/Unity Shader 入门（一）：理论准备/</id>
-    <published>2019-04-29T16:00:00.000Z</published>
-    <updated>2019-05-06T06:13:59.401Z</updated>
->>>>>>> 80f1222c4181d37c90be6af06b9c04e3d98c9327
+      &lt;h2 id=&quot;新建Shader&quot;&gt;&lt;a href=&quot;#新建Shader&quot; class=&quot;headerlink&quot; title=&quot;新建Shader&quot;&gt;&lt;/a&gt;新建Shader&lt;/h2&gt;&lt;p&gt;首先我们新建一个Shader，这里以 Standard Surface Shader 为例，新建之后我们打开Shader文件应该会出现如下代码：&lt;br&gt;&lt;/p&gt;
     
-    <summary type="html">
+    </summary>
     
-      
-      
-        
-        
-          
-        
-      
->>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
-=======
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <title>Unity Shader 入门（二）：Shader介绍</title>
     <link href="http://yoursite.com/2019/04/29/shader-learning2/"/>
     <id>http://yoursite.com/2019/04/29/shader-learning2/</id>
     <published>2019-04-28T16:00:00.000Z</published>
-    <updated>2019-05-09T14:01:03.047Z</updated>
+    <updated>2019-05-10T03:32:07.323Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;什么是Shader？&quot;&gt;&lt;a href=&quot;#什么是Shader？&quot; class=&quot;headerlink&quot; title=&quot;什么是Shader？&quot;&gt;&lt;/a&gt;什么是Shader？&lt;/h2&gt;&lt;p&gt;Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。&lt;/p&gt;
-&lt;p&gt;shader大体上可以分为两类：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;顶点着色器（Vertex Shader）&lt;/li&gt;
-&lt;li&gt;片元着色器（Fragment Shader）&lt;/li&gt;&lt;/ul&gt;
+      &lt;h2 id=&quot;什么是Shader？&quot;&gt;&lt;a href=&quot;#什么是Shader？&quot; class=&quot;headerlink&quot; title=&quot;什么是Shader？&quot;&gt;&lt;/a&gt;什么是Shader？&lt;/h2&gt;&lt;p&gt;Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -100,13 +79,12 @@
     <link href="http://yoursite.com/2019/04/28/shader-learning1/"/>
     <id>http://yoursite.com/2019/04/28/shader-learning1/</id>
     <published>2019-04-27T16:00:00.000Z</published>
-    <updated>2019-05-09T14:01:29.927Z</updated>
+    <updated>2019-05-10T03:32:50.449Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;什么是渲染管线？&quot;&gt;&lt;a href=&quot;#什么是渲染管线？&quot; class=&quot;headerlink&quot; title=&quot;什么是渲染管线？&quot;&gt;&lt;/a&gt;什么是渲染管线？&lt;/h2&gt;&lt;p&gt;Shader（着色器）：是渲染管线上的一小段程序，要了解Shader首先要明白渲染管线是什么呢？&lt;/p&gt;
-&lt;p&gt;渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多&lt;br&gt;条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2019/04/28/shader-learning1/1.png&quot; alt=&quot;在左图中，虚拟相机放在棱椎的顶端黑点（四条线段的交汇点），右图显示的就是此时渲染的图像，只有可视体内部的图元会被渲染。&quot;&gt;&lt;/p&gt;
+&lt;p&gt;渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多&lt;br&gt;条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。&lt;br&gt;&lt;/p&gt;
 >>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
     
     </summary>
@@ -123,26 +101,12 @@
     <link href="http://yoursite.com/2018/02/08/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%8F%8F%E8%BE%B9Shader/"/>
     <id>http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/</id>
     <published>2018-02-07T16:00:00.000Z</published>
-<<<<<<< HEAD
-    <updated>2019-04-30T02:37:47.153Z</updated>
-    
+    <updated>2019-05-01T01:49:24.177Z</updated>    
     <summary type="html">
     
-      &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外
-=======
-    <updated>2019-05-01T01:49:24.177Z</updated>
-    
-    <summary type="html">
-    
+      &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。&lt;/p&gt;
+&lt;p&gt;老规矩还是来看一下效果图：&lt;br&gt;&lt;/p&gt;
       
-      
-        
-        
-          
-        
-      
->>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
-    
     </summary>
     
       <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
