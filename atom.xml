@@ -211,44 +211,4 @@
     
   </entry>
   
-  <entry>
-    <title>Unity Shader 入门（二）：查看第一个Shader</title>
-    <link href="http://yoursite.com/2017/09/12/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%9F%A5%E7%9C%8B%E7%AC%AC%E4%B8%80%E4%B8%AAShader/"/>
-    <id>http://yoursite.com/2017/09/12/Unity Shader 入门（二）：查看第一个Shader/</id>
-    <published>2017-09-11T16:00:00.000Z</published>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <updated>2019-04-30T02:37:47.144Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;查看第一个shader&quot;&gt;&lt;a href=&quot;#查看第一个shader&quot; class=&quot;headerlink&quot; title=&quot;查看第一个shader&quot;&gt;&lt;/a&gt;查看第一个shader&lt;/h2&gt;&lt;p&gt;上一节是理论知识的储备，如果你对细节部分感兴趣可以阅读更多的资料（C
-=======
-    <updated>2019-05-01T01:49:24.177Z</updated>
-=======
-    <updated>2019-05-08T06:51:37.256Z</updated>
->>>>>>> 5a816616ebf74eb2054f09a67ff9fdf655bff8bb
-=======
-    <updated>2019-05-09T13:49:06.997Z</updated>
->>>>>>> 4024136f960a92478bab432f0a5f382e14512e93
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
->>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
-    
-    </summary>
-    
-      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
-    
-    
-  </entry>
-  
 </feed>
