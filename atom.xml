@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-10T13:48:32.216Z</updated>
+  <updated>2019-05-10T14:01:43.055Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>shader-learning4</title>
+    <title>Unity Shader 入门（四）：编写第一个Shader</title>
     <link href="http://yoursite.com/2019/05/02/shader-learning4/"/>
     <id>http://yoursite.com/2019/05/02/shader-learning4/</id>
     <published>2019-05-01T16:00:00.000Z</published>
-    <updated>2019-05-10T13:48:32.216Z</updated>
+    <updated>2019-05-10T14:01:43.055Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          
+        
+      
+    
     </summary>
     
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
   </entry>
   
@@ -35,7 +47,7 @@
     <link href="http://yoursite.com/2019/05/01/shader-learning3/"/>
     <id>http://yoursite.com/2019/05/01/shader-learning3/</id>
     <published>2019-04-30T16:00:00.000Z</published>
-    <updated>2019-05-10T13:48:23.216Z</updated>
+    <updated>2019-05-10T13:49:23.300Z</updated>
     
     <summary type="html">
     
