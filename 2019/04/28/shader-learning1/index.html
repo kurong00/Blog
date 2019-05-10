@@ -16,7 +16,7 @@
 <meta property="og:description" content="什么是渲染管线？Shader（着色器）：是渲染管线上的一小段程序，要了解Shader首先要明白渲染管线是什么呢？ 渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-09T14:01:29.927Z">
+<meta property="og:updated_time" content="2019-05-10T03:32:50.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（一）：渲染管线">
 <meta name="twitter:description" content="什么是渲染管线？Shader（着色器）：是渲染管线上的一小段程序，要了解Shader首先要明白渲染管线是什么呢？ 渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。">
@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/ocean.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
 
 
     
@@ -149,7 +149,7 @@
             <div class="level-left">
                     <time class="level-item has-text-grey" datetime="2019-04-27T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-28</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-09T14:01:29.927Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-09</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-10T03:32:50.449Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-10</time>
                     
                 
                 <div class="level-item">
@@ -174,9 +174,7 @@
         </h1>
         <div class="content">
             <h2 id="什么是渲染管线？"><a href="#什么是渲染管线？" class="headerlink" title="什么是渲染管线？"></a>什么是渲染管线？</h2><p>Shader（着色器）：是渲染管线上的一小段程序，要了解Shader首先要明白渲染管线是什么呢？</p>
-<p>渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多<br>条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。</p>
-<p><img src="/2019/04/28/shader-learning1/1.png" alt="在左图中，虚拟相机放在棱椎的顶端黑点（四条线段的交汇点），右图显示的就是此时渲染的图像，只有可视体内部的图元会被渲染。"></p>
-<a id="more"></a>
+<p>渲染管线的主要功能是在给定虚拟相机、三维物体、光源、照明模式，以及纹理等诸多<br>条件的情况下，生成或绘制一幅二维图像的过程。对于实时渲染来说，渲染管线就是基础，可以说渲染管线是实时渲染的底层工具。<br><a id="more"></a><br><img src="/2019/04/28/shader-learning1/1.png" alt="在左图中，虚拟相机放在棱椎的顶端黑点（四条线段的交汇点），右图显示的就是此时渲染的图像，只有可视体内部的图元会被渲染。"></p>
 <p>在概念上可以将图形渲染管线分为四个阶段：</p>
 <ul>
 <li>应用程序阶段（The Application）</li>
