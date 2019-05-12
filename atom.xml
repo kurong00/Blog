@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-12T08:42:56.948Z</updated>
+  <updated>2019-05-12T08:45:51.980Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Unity Shader 入门（四）：编写第一个Shader</title>
+    <title>Unity Shader 入门（四）：边缘发光效果</title>
     <link href="http://yoursite.com/2019/05/02/shader-learning4/"/>
     <id>http://yoursite.com/2019/05/02/shader-learning4/</id>
     <published>2019-05-01T16:00:00.000Z</published>
-    <updated>2019-05-12T08:42:56.948Z</updated>
+    <updated>2019-05-12T08:45:51.980Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上一节我们学习了第一个简单的Shader，现在我们可以开始写第一个shader练练手了（搓搓手）。首先我们挑一个：&lt;strong&gt;边缘发光效果&lt;/strong&gt; 的shader来写&lt;/p&gt;
-&lt;p&gt;首先来看一下效果图，如果你感兴趣的话就接下来看吧：&lt;br&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上一节我们学习查看了第一个模板Shader，现在我们开始写第一个Shader练练手。首先我们挑一个：&lt;strong&gt;边缘发光效果&lt;/strong&gt; 的shader来写，先来看一下效果图：&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -147,30 +146,6 @@
     <id>http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/</id>
     <published>2017-11-17T16:00:00.000Z</published>
     <updated>2019-05-01T01:49:24.178Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Unity Shader 入门（三）：编写第一个Shader</title>
-    <link href="http://yoursite.com/2017/11/13/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E4%B8%AAShader/"/>
-    <id>http://yoursite.com/2017/11/13/Unity Shader 入门（三）：编写第一个Shader/</id>
-    <published>2017-11-12T16:00:00.000Z</published>
-    <updated>2019-05-01T01:49:24.176Z</updated>
     
     <summary type="html">
     
