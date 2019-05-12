@@ -11,12 +11,12 @@
 <meta name="keywords" content="Shader、图形学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity Shader 入门（三）：查看Shader">
-<meta property="og:url" content="http://yoursite.com/2019/05/21/shader-learning3/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/05/01/shader-learning3/index.html">
 <meta property="og:site_name" content="Zero World">
 <meta property="og:description" content="新建Shader首先我们新建一个Shader，这里以 Standard Surface Shader 为例，新建之后我们打开Shader文件应该会出现如下代码：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-10T13:31:45.190Z">
+<meta property="og:updated_time" content="2019-05-10T13:49:23.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（三）：查看Shader">
 <meta name="twitter:description" content="新建Shader首先我们新建一个Shader，这里以 Standard Surface Shader 为例，新建之后我们打开Shader文件应该会出现如下代码：">
@@ -147,7 +147,9 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                    <time class="level-item has-text-grey" datetime="2019-05-20T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-21</time>
+                    <time class="level-item has-text-grey" datetime="2019-04-30T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-01</time>
+                    
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-10T13:49:23.300Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-10</time>
                     
                 
                 <div class="level-item">
@@ -177,7 +179,7 @@
 <h3 id="Shader名称路径"><a href="#Shader名称路径" class="headerlink" title="Shader名称路径"></a>Shader名称路径</h3><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Custom/NewSurfaceShader"</span></span><br></pre></td></tr></table></figure>
 <p>首先这里标注了Shader的名字和路径，符号 “/“ 表示的是创建子层级，我们可以进行修改，例如这里修改为</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"MyShader/FirstShader"</span></span><br></pre></td></tr></table></figure>
-<p>我们用这个Shader新建一个材质，可以看见Shader的层级就像我们设置的这样<br><img src="/2019/05/21/shader-learning3/1.png" alt="Figure 1"><br>这里有一个注意点：如果我们把路径名称放在 Hidden下面的话，比如：</p>
+<p>我们用这个Shader新建一个材质，可以看见Shader的层级就像我们设置的这样<br><img src="/2019/05/01/shader-learning3/1.png" alt="Figure 1"><br>这里有一个注意点：如果我们把路径名称放在 Hidden下面的话，比如：</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Hidden/MyShader/FirstShader"</span></span><br></pre></td></tr></table></figure>
 <p>则表示在材质面板中隐藏此Shader，你将无法通过材质下拉列表中找到它。这在做一些不需暴露的Shader时很有用处，可以使Shader下拉列表更精简整洁。</p>
 <h3 id="Shader属性"><a href="#Shader属性" class="headerlink" title="Shader属性"></a>Shader属性</h3><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Properties</span><br><span class="line">&#123;</span><br><span class="line">    _Color (<span class="hljs-string">"Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">    _MainTex (<span class="hljs-string">"Albedo (RGB)"</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">"white"</span> &#123;&#125;</span><br><span class="line">    _Glossiness (<span class="hljs-string">"Smoothness"</span>, Range(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)) = <span class="hljs-number">0.5</span></span><br><span class="line">    _Metallic (<span class="hljs-string">"Metallic"</span>, Range(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)) = <span class="hljs-number">0.0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -507,6 +509,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/02/shader-learning4/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Unity Shader 入门（四）：边缘发光效果</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/29/shader-learning2/">
@@ -526,8 +535,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/05/21/shader-learning3/';
-        this.page.identifier = '2019/05/21/shader-learning3/';
+        this.page.url = 'http://yoursite.com/2019/05/01/shader-learning3/';
+        this.page.identifier = '2019/05/01/shader-learning3/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
