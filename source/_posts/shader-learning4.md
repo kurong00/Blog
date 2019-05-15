@@ -10,7 +10,7 @@ tags: Shader、图形学
 
 上一节我们学习查看了第一个模板Shader，现在我们开始写第一个Shader练练手。首先我们挑一个：**边缘发光效果** 的shader来写，先来看一下效果图：
 <!-- more -->
-![Figure 1 边缘发光效果图](rim.png)
+![Figure 1 边缘发光效果图](1.png)
 
 ## 实现原理
 
@@ -21,80 +21,72 @@ tags: Shader、图形学
 先放一段实现的代码：
 
 ```C++
-Shader "MyShader/Rim/RimBump"
+Shader "Kurong/Rim/RimLightingOpaque"
 {
     Properties
     {
-        _Color("Main Color", Color) = (1,1,1,1)
-        _SpecColor("Specular Color", Color) = (0.5, 0.5, 0.5, 1)
-        _BumpMap("Normalmap", 2D) = "bump" {}
-        _RimColor("Rim Color", Color) = (0.26,0.19,0.16,0.0)
-        _RimPower("Rim Power", Range(0.5,8.0)) = 2.0
+        _Color("Color", Color) = (1,1,1,1)
+        [Normal]_NormalMap("Normal Map", 2D) = "bump" {}
+        _RimColor("Rim Color", Color) = (1,1,1,0.0)
+        _RimPower("Rim Power", Range(0.5,6.0)) = 1.0
     }
     SubShader
     {
-        Tags { "RenderType" = "Opaque"  }
-        LOD 400
+        Tags { "RenderType" = "Opaque" }
+        LOD 200
 
         CGPROGRAM
-        #pragma surface surf BlinnPhong
+
+        #pragma surface surf Standard fullforwardshadows
+
         #pragma target 3.0
 
-        sampler2D _BumpMap;
         fixed4 _Color;
+        sampler2D _NormalMap;
         float4 _RimColor;
         float _RimPower;
 
-        struct Input {
-        float2 uv_MainTex;
-        float2 uv_BumpMap;
-        float3 viewDir;
+        struct Input
+        {
+            float2 uv_NormalMap;
+            float3 viewDir;
         };
 
-        void surf(Input IN, inout SurfaceOutput o) {
-              o.Albedo = _Color.rgb;
-              o.Gloss = 1;
-              o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
-              half rim = 1 - saturate(dot(normalize(IN.viewDir), o.Normal));
-              o.Emission = _RimColor.rgb * pow(rim, _RimPower);
+        void surf(Input IN, inout SurfaceOutputStandard o)
+        {
+            o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
+            o.Albedo = _Color;
+            half rim = 1 - saturate(dot(o.Normal,normalize(IN.viewDir)));
+            o.Emission = _RimColor.rgb * pow(rim,_RimPower);
         }
         ENDCG
-      }
-      FallBack "Diffuse"
+        }
+            FallBack "Diffuse"
 }
 ```
 
-如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下：
-
 ### 表面着色器
 
+如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下：
+
 ```C++
-        void surf(Input IN, inout SurfaceOutput o) {
-              o.Albedo = _Color.rgb;
-              o.Gloss = 1;
-              o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
-              half rim = 1 - saturate(dot(normalize(IN.viewDir), o.Normal));
-              o.Emission = _RimColor.rgb * pow(rim, _RimPower);
+        void surf(Input IN, inout SurfaceOutputStandard o)
+        {
+            o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
+            o.Albedo = _Color;
+            half rim = 1 - saturate(dot(o.Normal,normalize(IN.viewDir)));
+            o.Emission = _RimColor.rgb * pow(rim,_RimPower);
         }
 ```
 
-首先这两句：
-
 ```C++
-o.Albedo = _Color.rgb;
-o.Gloss = 1;
+o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
 ```
 
-类比上一篇，o.Albedo 此时可以获得我们设置的颜色和贴图之间混合后的颜色，o.Gloss 我们将发光强度设置成1。接下来是重点：
+UnpackNormal：是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），接受一个fixed4的输入，并将其转换为所对应的法线值。在解包得到这个值之后，将其赋给输出的Normal，这里如果有疑惑的话可以跳转下面的[拓展知识](#拓展知识)。
 
 ```C++
-o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
-```
-
-UnpackNormal：是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），接受一个fixed4的输入，并将其转换为所对应的法线值。在解包得到这个值之后，将其赋给输出的Normal，这里如果有疑惑的话可以跳转下面的拓展知识。
-
-```C++
-half rim = 1 - saturate(dot(normalize(IN.viewDir), o.Normal));
+half rim = 1 - saturate(dot(o.Normal,normalize(IN.viewDir)));
 ```
 
 - normalize 函数：为了对向量进行归一化处理（这里传入 IN.viewDir 指的是 WorldSpace View Direction，也就是当前坐标的视角方向）
@@ -102,7 +94,7 @@ half rim = 1 - saturate(dot(normalize(IN.viewDir), o.Normal));
 - saturate 函数：判断传入的参数是否在 0-1 之间，如果小于0，返回 0；如果大于 1，返回1
 
 ```C++
-o.Emission = _RimColor.rgb * pow (rim, _RimStrength);
+o.Emission = _RimColor.rgb * pow(rim,_RimPower);
 ```
 
 - 从 _RimColor 参数获取自发光颜色再和发光的强度混合，最终将颜色赋值给像素的Emission（发散颜色）
