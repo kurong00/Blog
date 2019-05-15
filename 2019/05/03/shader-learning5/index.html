@@ -2,24 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Unity Shader 入门（二）：Shader介绍 - Zero World</title>
+<title>Unity Shader 入门（五）：透明效果知识储备 - Zero World</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
+    <meta name="description" content="前言透明渲染是是图形学里面的常见问题之一，对于渲染算法，可以大致分为基于光和基于视图的效果。基于光的效果是指物体使得灯光衰减或改变方向，从而导致场景中的其他物体以不同方式被照明和渲染的效果。基于视图的效果是指在其中渲染半透明对象本身的效果。">
 <meta name="keywords" content="Shader、图形学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity Shader 入门（二）：Shader介绍">
-<meta property="og:url" content="http://yoursite.com/2019/04/29/shader-learning2/index.html">
+<meta property="og:title" content="Unity Shader 入门（五）：透明效果知识储备">
+<meta property="og:url" content="http://yoursite.com/2019/05/03/shader-learning5/index.html">
 <meta property="og:site_name" content="Zero World">
-<meta property="og:description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
+<meta property="og:description" content="前言透明渲染是是图形学里面的常见问题之一，对于渲染算法，可以大致分为基于光和基于视图的效果。基于光的效果是指物体使得灯光衰减或改变方向，从而导致场景中的其他物体以不同方式被照明和渲染的效果。基于视图的效果是指在其中渲染半透明对象本身的效果。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-10T03:32:07.323Z">
+<meta property="og:updated_time" content="2019-05-15T11:13:01.286Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity Shader 入门（二）：Shader介绍">
-<meta name="twitter:description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
+<meta name="twitter:title" content="Unity Shader 入门（五）：透明效果知识储备">
+<meta name="twitter:description" content="前言透明渲染是是图形学里面的常见问题之一，对于渲染算法，可以大致分为基于光和基于视图的效果。基于光的效果是指物体使得灯光衰减或改变方向，从而导致场景中的其他物体以不同方式被照明和渲染的效果。基于视图的效果是指在其中渲染半透明对象本身的效果。">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -92,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logoMe.png" alt="Unity Shader 入门（二）：Shader介绍" height="28">
+                <img src="/images/logoMe.png" alt="Unity Shader 入门（五）：透明效果知识储备" height="28">
             
             </a>
         </div>
@@ -147,9 +147,9 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                    <time class="level-item has-text-grey" datetime="2019-04-28T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-29</time>
+                    <time class="level-item has-text-grey" datetime="2019-05-02T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-03</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-10T03:32:07.323Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-10</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-15T11:13:01.286Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-15</time>
                     
                 
                 <div class="level-item">
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1642 个字)
+                    15 分钟 读完 (大约 2277 个字)
                 </span>
                 
                 
@@ -169,74 +169,74 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Unity Shader 入门（二）：Shader介绍
+                Unity Shader 入门（五）：透明效果知识储备
             
         </h1>
         <div class="content">
-            <h2 id="什么是Shader？"><a href="#什么是Shader？" class="headerlink" title="什么是Shader？"></a>什么是Shader？</h2><p>Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：<br><a id="more"></a></p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>透明渲染是是图形学里面的常见问题之一，对于渲染算法，可以大致分为基于光和基于视图的效果。基于光的效果是指物体使得灯光衰减或改变方向，从而导致场景中的其他物体以不同方式被照明和渲染的效果。基于视图的效果是指在其中渲染半透明对象本身的效果。<br><a id="more"></a></p>
+<h2 id="透明渲染方法"><a href="#透明渲染方法" class="headerlink" title="透明渲染方法"></a>透明渲染方法</h2><p>以下两种方法是比较常用的透明渲染方法：</p>
+<h3 id="Screen-Door-Transparency-方法"><a href="#Screen-Door-Transparency-方法" class="headerlink" title="Screen-Door Transparency 方法"></a>Screen-Door Transparency 方法</h3><p>基本思想是用棋盘格填充模式来绘制透明多边形；也就是说，以每隔一个像素绘制一点方式的来绘制一个多边形，这样会使在其后面的物体部分可见，通常情况下，屏幕上的像素比较紧凑，所以这种棋盘格的绘制方式并不会露馅。同样的想法也用于剪切纹理的抗锯齿边缘，但是在子像素级别中的，这是一种称为 alpha 覆盖（alpha to coverage）的特征。screen-door transparency 方法的优点就是简单，可以在任何时间任何顺序绘制透明物体，并不需要特殊的硬件支<br>持（只要支持填充模式）。缺点是透明度效果仅在 <strong>50%</strong> 时最好，且屏幕的每个区域中只能绘制一个透明物体。</p>
+<h3 id="Alpha-混合（Alpha-Blending）方法"><a href="#Alpha-混合（Alpha-Blending）方法" class="headerlink" title="Alpha 混合（Alpha Blending）方法"></a>Alpha 混合（Alpha Blending）方法</h3><p>这个方法比较常见，其实就是按照 Alpha 混合向量的值来混合源像素和目标像素。当在屏幕上绘制某个物体时，与每个像素相关联的值有 RGB 颜色、Z 缓冲深度值，以及另外一个成分 alpha 分量，这个 alpha 值也可以根据需要生成并存储，它描述的是给定像素的对象片段的不透明度的值。alpha 为 1.0 表示对象不透明，完全覆盖像素所在区域；0.0 表示像素完全透明。为了使对象透明，在现有场景的上方，以小于 1 的透明度进行绘制即可。每个像素将从渲染管线接收到一个 RGBA 结果，并将这个值和原始像素颜色相混合。注意透明度混合要关闭深度写入。这是因为：假如一个半透明物体在一个不透明物体的前面，如果开启深度写入的话，距离摄像机更远的不透明物体就会被剔除，但是依照常理我们是可以透过半透明的物体看到不透明的物体。但是这就破坏了深度缓冲的机制，这是非常不好但是不得不做的折中方法，也因此使得渲染顺序变得非常重要。（注意：关闭深度写入，但是没有关闭深度测试）用公式来表明即：<br>$$c_0 = \alpha_s c_s + (1 - \alpha_s)c_d$$</p>
+<p>其中 $c_s$ 是透明物体的颜色；$\alpha_s$ 是物体的透明度；$c_d$ 是混合之前的颜色；$c_0$ 是最终的结果颜色。</p>
+<h2 id="透明排序"><a href="#透明排序" class="headerlink" title="透明排序"></a>透明排序</h2><p>我们可以不关心不透明物体的渲染顺序，因为在深度测试中就可以测试出物体离摄像机的距离再判断是否写入颜色缓冲。但是对于不透明物体，就没这么简单了，一个很自然的问题就是：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，要将半透明物体正确地渲染到场景中，通常需要对物体进行排序。下面介绍几种常用的透明排序方法。</p>
+<h3 id="深度缓存（Z-Buffer）"><a href="#深度缓存（Z-Buffer）" class="headerlink" title="深度缓存（Z-Buffer）"></a>深度缓存（Z-Buffer）</h3><p>Z-Buffer 也称深度缓冲。在计算机图形学中，深度缓冲是在三维图形中处理图像深度坐标的过程，这个过程通常在硬件中完成，它也可以在软件中完成，它是可见性问题的一个解决方法（可见性问题是确定渲染场景中哪部分可见、哪部分不可见的问题）。</p>
+<p>Z-buffer 的限制是每像素只存储一个对象，如果一些透明对象与同一个像素重叠，那么单独的 Z-buffer 就不能存储。这个问题可以通过改变加速器架构来解决的，比如用 A-buffer。A-buffer 具有 深度像素（deep pixels），其可以在单个像素中存储一系列呈现在所有对象之后被解析为单个像素颜色的多个片段。但需注意，Z-buffer 是市场的主流选择。</p>
+<h3 id="画家算法（Painter’s-Algorithm）"><a href="#画家算法（Painter’s-Algorithm）" class="headerlink" title="画家算法（Painter’s Algorithm）"></a>画家算法（Painter’s Algorithm）</h3><p>画家算法也称优先填充算法，效率虽然较低，但还是可以有效处理透明排序的问题。其基本思想是按照画家在绘制一幅画作时，首先绘制距离较远的场景，然后用绘制距离较近的场景覆盖较远的部分的思想。画家算法首先将场景中的多边形根据深度进行排序，然后按照顺序进行描绘。这种方法通常会将不可见的部分覆盖，这样就可以解决可见性问题。</p>
+<h3 id="加权平均值算法（Weighted-Average）"><a href="#加权平均值算法（Weighted-Average）" class="headerlink" title="加权平均值算法（Weighted Average）"></a>加权平均值算法（Weighted Average）</h3><p>使用简单的透明混合公式来实现无序透明渲染的算法，它通过扩展透明混合公式，来实现无序透明物件的渲染，从而得到一定程度上逼真的结果。</p>
+<h3 id="深度剥离算法（Depth-Peeling）"><a href="#深度剥离算法（Depth-Peeling）" class="headerlink" title="深度剥离算法（Depth Peeling）"></a>深度剥离算法（Depth Peeling）</h3><p>深度剥离是一种对深度值进行排序的技术。它的原理比较直观，标准的深度检测使场景中的 Z 值最小的点输出到屏幕上，就是离我们最近的顶点。但还有离我们第二近的顶点，第三近的顶点存在。要想显示它们，可以用多遍渲染的方法。第一遍渲染时，按照正常方式处理，这样就得到了离我们最近的表面中的每个顶点的 z 值。在第二遍渲染时，把现在每个顶点深度值和刚才的那个深度值进行比较，凡是小于等于第一遍得到的 z 值，把它们剥离，后面的过程依次类推即可。<br><img src="/2019/05/03/shader-learning5/1.png" alt="Figure 1 每个深度剥离通道渲染特定的一层透明通道。左侧是第一个 Pass，直接显示眼睛可见的层，中间的图显示了第二层，显示了每个像素处第二靠近透明表面的像素。右边的图是第三层，每个像素处第三靠近透明表面的像素。"></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>我们考虑两种情况：</p>
 <ul>
-<li>顶点着色器（Vertex Shader）</li>
-<li>片元着色器（Fragment Shader）</li>
+<li>既有半透明物体也有不透明物体：我们先渲染所有的不透明物体再渲染半透明物体</li>
+<li>全是半透明物体：开启深度测试，关闭深度写入的情况下将半透明物体按照距离摄像机的远近从后往前渲染。<ul>
+<li>这里有一个小问题，深度缓冲中的值是像素级别的，而一个半透明物体很可能有非常多个像素，这么一来每一个像素的深度值都可能不一样，以此会产生<strong>循环遮挡</strong>的情况。</li>
+<li>为了规避上面的问题，常常会把大的模型分割成小的几块，这样即使出现渲染错误，也不会出现太出格的结果。</li>
 </ul>
-<p>而在Unity Shader中分为三类：</p>
-<ul>
-<li>Surface Shaders （表面着色器）：是Unity对Vertex/Fragment Shader的一层包装，可以以极少的代码来完成不同的光照模型与不同平台下需要考虑的事情；缺点是能够实现的效果不如片段着色器来的多。</li>
-<li>Vertex/Fragment Shaders （顶点/片断着色器）</li>
-<li>Fixed Function Shaders （固定管线着色器）：已被淘汰</li>
+</li>
 </ul>
-<h2 id="什么是着色语言HLSL、GLSL、Cg？"><a href="#什么是着色语言HLSL、GLSL、Cg？" class="headerlink" title="什么是着色语言HLSL、GLSL、Cg？"></a>什么是着色语言HLSL、GLSL、Cg？</h2><p>上一篇讲到了很多可编程的着色阶段（例如顶点着色器、片元着色器等等）。之所以称为可编程的着色阶段就是因为可以用一种特定的语言来编写程序，也就是着色语言（Shading language），以下几种常见的着色语言：</p>
+<h2 id="Unity设置的渲染序列"><a href="#Unity设置的渲染序列" class="headerlink" title="Unity设置的渲染序列"></a>Unity设置的渲染序列</h2><p>之前的查看 shader 我们曾经见过这样的语句</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Opaque"</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以用Queue标签来决定我们的模型是怎么渲染的。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">名称</th>
-<th style="text-align:left">API</th>
-<th style="text-align:left">优点</th>
-<th style="text-align:left">缺点</th>
+<th style="text-align:center">队列名称</th>
+<th style="text-align:center">队列索引</th>
+<th style="text-align:center">索引描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">HLSL（High Level Shading Language）</td>
-<td style="text-align:left">Direct3D</td>
-<td style="text-align:left">因为是由微软控制的着色器编译，因此即使是使用了不同的硬件，同一个着色器编译下的结果也都一样</td>
-<td style="text-align:left">支持HLSL的平台有限，几乎都是微软的产品（因为别的平台上没有相应的编译器）</td>
+<td style="text-align:center">Background</td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">最早被渲染的队列，一般绘制背景元素</td>
 </tr>
 <tr>
-<td style="text-align:center">GLSL（OpenGL Shading Language）</td>
-<td style="text-align:left">OpenGL</td>
-<td style="text-align:left">因为没有提供着色编译器，而是由显卡驱动来完成着色器的编译工作，因此具有优秀的跨平台性</td>
-<td style="text-align:left">编译的结果取决于硬件提供商（GLSL是依赖硬件而不是操作系统层次的）</td>
+<td style="text-align:center">Geometry</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">默认渲染队列，不透明物体渲染队列</td>
 </tr>
 <tr>
-<td style="text-align:center">Cg（C for Graphic）</td>
-<td style="text-align:left">/</td>
-<td style="text-align:left">Cg语言是 OpenGL和 DirectX 的上层，会根据平台的不同编译成不同的中间语言，即 Cg 程序是运行在 OpenGL 和 DirectX 标准顶点和像素着色的基础上的，因此具有真正的跨平台性。因为NVIDIA和微软的合作使得 Cg 和 HLSL 语法非常相像</td>
-<td style="text-align:left">可能无法发挥出 OpenGL 的最新特性</td>
+<td style="text-align:center">AlphaTest</td>
+<td style="text-align:center">2450</td>
+<td style="text-align:center">需要透明度测试的物体在这个队列渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">Transparent</td>
+<td style="text-align:center">3000</td>
+<td style="text-align:center">使用透明度混合的物体在这个队列渲染</td>
+</tr>
+<tr>
+<td style="text-align:center">Overlay</td>
+<td style="text-align:center">4000</td>
+<td style="text-align:center">最后被渲染的物体在这个队列，一般用于叠加效果</td>
 </tr>
 </tbody>
 </table>
-<h2 id="什么是ShaderLab？"><a href="#什么是ShaderLab？" class="headerlink" title="什么是ShaderLab？"></a>什么是ShaderLab？</h2><p>在Unity中，所有的Shader都是使用ShaderLab来编写的，从结构上来说，它定义了显示一个材质所需要的所有东西，而不仅仅是着色器代码，我们先来看一下ShaderLab的结构</p>
-<p><img src="/2019/04/29/shader-learning2/1.png" alt="Figure 1"></p>
-<p>一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。</p>
-<h3 id="ShaderLab和着色语言的关系"><a href="#ShaderLab和着色语言的关系" class="headerlink" title="ShaderLab和着色语言的关系"></a>ShaderLab和着色语言的关系</h3><p>对于表面着色器和顶点着色器我们可以在 ShaderLab 的 Pass 中的 CGPROGRAM 和 ENDCG 之间嵌套Cg/HLSL。或者在 GLSLPROGRAM 和 ENDGLSL 之间嵌套 GLSL。</p>
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Pass &#123;</span><br><span class="line">    CGPROGRAM</span><br><span class="line">    <span class="hljs-comment">//一些编译指令，例如：</span></span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> vertex vert</span></span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> fragment frag</span></span><br><span class="line">    <span class="hljs-comment">//Cg代码</span></span><br><span class="line">    ENDCG</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ShaderLab的模板"><a href="#ShaderLab的模板" class="headerlink" title="ShaderLab的模板"></a>ShaderLab的模板</h3><p>当我们打开Unity，然后在Project面板点击右键，依次从中选择Create/Shader/…发现会有很多的可选项</p>
-<p><img src="/2019/04/29/shader-learning2/2.png" alt="Figure 1"></p>
-<ul>
-<li>Standard Surface Shader：标准表面着色器，是一种基于物理的着色系统（使用了Physically Based Rendering（简称PBR）技术，即基于物理的渲染技术），以模拟现实真实的方式来模拟材质与灯光之间的关系，可以很轻易的表现出各种金属反光效果，同时此种Shader的书写逻辑也更符合人类的思维模式。</li>
-<li>Unlit Shader：Vertex/Fragment Shader,也就是最基本的顶点片断着色器，不受光照影响的Shader，多用于特效、UI上的效果制作。</li>
-<li>Image Effect Shader：也是顶点片断着色器，只不过是针对后处理而定制的模版，例如调色、景深、模糊等，这些基于最终整个屏幕画面而进行再处理的Shader就是后处理。</li>
-<li>Compute Shader：Compute Shader是运行在图形显卡上的一段程序，独立于常规渲染管线之外的，它可以直接将GPU作为并行处理器加以利用，从而使GPU不仅具有3D渲染能力，还具有其他的运算能力。</li>
-<li>Shader Variant Collection：Shader变体收集器，在上面创建的时候，你会发现Shader Variant Collection与以上四个是被隔开的，就是因为这个与它们不一样，它不是制作Shader的模版，而只是对Shader变体进行打包用的容器。</li>
-</ul>
-<p>注：以上的Standard Surface Shader、Unlit Shader、Image Effect Shader仅仅只是Unity为了方便我们书写而内置的几个模版，你完全可以建一个Unlit Shader，然后将其改成Surface Shader,同样也可以将一个Standard Surface Shader改成顶点片断着色器。</p>
-<h2 id="Shader和Material的关系"><a href="#Shader和Material的关系" class="headerlink" title="Shader和Material的关系"></a>Shader和Material的关系</h2><p>由于在Unity中Shader就是运行在图形显卡上的一段包含指令的代码，所以我们需要再创建一个材质来关联它，这样才能把材质赋给场景中的物体来实现我们想要的效果。总结一下Shader与材质的关系：</p>
-<ul>
-<li>一个Shader可以与无数个材质关联。</li>
-<li>一个材质同一时刻只能关联于一个Shader。（但是我们可以通过代码去动态改变材质所关联的Shader）</li>
-<li>材质可以赋与模型，但是Shader不行。</li>
-<li>材质就像是Shader的实例，每个材质都可以参数不一样呈现不同的效果，但是当Shader改变时，关联它的所有材质都会相应的改变。</li>
-</ul>
+<h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       Pass &#123;</span><br><span class="line">           ZWrite Off ······</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>ZWrite Off 意味者关闭深度写入，或者可以：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       ZWrite Off ······</span><br><span class="line">       Pass &#123; &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>这样表示这个SubShader下的所有Pass都会关闭深度写入</p>
 
         </div>
         
@@ -314,17 +314,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/01/shader-learning3/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Unity Shader 入门（三）：查看Shader</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/28/shader-learning1/">
-                <span class="level-item">Unity Shader 入门（一）：渲染管线</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/02/shader-learning4/">
+                <span class="level-item">Unity Shader 入门（四）：边缘发光效果</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -340,8 +333,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/04/29/shader-learning2/';
-        this.page.identifier = '2019/04/29/shader-learning2/';
+        this.page.url = 'http://yoursite.com/2019/05/03/shader-learning5/';
+        this.page.identifier = '2019/05/03/shader-learning5/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -438,30 +431,54 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#什么是Shader？">
+        <a class="is-flex" href="#前言">
         <span class="has-mr-6">1</span>
-        <span>什么是Shader？</span>
+        <span>前言</span>
         </a></li><li>
-        <a class="is-flex" href="#什么是着色语言HLSL、GLSL、Cg？">
+        <a class="is-flex" href="#透明渲染方法">
         <span class="has-mr-6">2</span>
-        <span>什么是着色语言HLSL、GLSL、Cg？</span>
-        </a></li><li>
-        <a class="is-flex" href="#什么是ShaderLab？">
-        <span class="has-mr-6">3</span>
-        <span>什么是ShaderLab？</span>
+        <span>透明渲染方法</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#ShaderLab和着色语言的关系">
-        <span class="has-mr-6">3.1</span>
-        <span>ShaderLab和着色语言的关系</span>
+        <a class="is-flex" href="#Screen-Door-Transparency-方法">
+        <span class="has-mr-6">2.1</span>
+        <span>Screen-Door Transparency 方法</span>
         </a></li><li>
-        <a class="is-flex" href="#ShaderLab的模板">
-        <span class="has-mr-6">3.2</span>
-        <span>ShaderLab的模板</span>
+        <a class="is-flex" href="#Alpha-混合（Alpha-Blending）方法">
+        <span class="has-mr-6">2.2</span>
+        <span>Alpha 混合（Alpha Blending）方法</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#Shader和Material的关系">
+        <a class="is-flex" href="#透明排序">
+        <span class="has-mr-6">3</span>
+        <span>透明排序</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#深度缓存（Z-Buffer）">
+        <span class="has-mr-6">3.1</span>
+        <span>深度缓存（Z-Buffer）</span>
+        </a></li><li>
+        <a class="is-flex" href="#画家算法（Painter’s-Algorithm）">
+        <span class="has-mr-6">3.2</span>
+        <span>画家算法（Painter’s Algorithm）</span>
+        </a></li><li>
+        <a class="is-flex" href="#加权平均值算法（Weighted-Average）">
+        <span class="has-mr-6">3.3</span>
+        <span>加权平均值算法（Weighted Average）</span>
+        </a></li><li>
+        <a class="is-flex" href="#深度剥离算法（Depth-Peeling）">
+        <span class="has-mr-6">3.4</span>
+        <span>深度剥离算法（Depth Peeling）</span>
+        </a></li><li>
+        <a class="is-flex" href="#解决方案">
+        <span class="has-mr-6">3.5</span>
+        <span>解决方案</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Unity设置的渲染序列">
         <span class="has-mr-6">4</span>
-        <span>Shader和Material的关系</span>
-        </a></li></ul>
+        <span>Unity设置的渲染序列</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#代码设置">
+        <span class="has-mr-6">4.1</span>
+        <span>代码设置</span>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
@@ -484,7 +501,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logoMe.png" alt="Unity Shader 入门（二）：Shader介绍" height="28">
+                    <img src="/images/logoMe.png" alt="Unity Shader 入门（五）：透明效果知识储备" height="28">
                 
                 </a>
                 <p class="is-size-7">

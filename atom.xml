@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-15T02:09:26.429Z</updated>
+  <updated>2019-05-15T11:13:01.286Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Unity Shader 入门（五）：透明效果知识储备</title>
+    <link href="http://yoursite.com/2019/05/03/shader-learning5/"/>
+    <id>http://yoursite.com/2019/05/03/shader-learning5/</id>
+    <published>2019-05-02T16:00:00.000Z</published>
+    <updated>2019-05-15T11:13:01.286Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;透明渲染是是图形学里面的常见问题之一，对于渲染算法，可以大致分为基于光和基于视图的效果。基于光的效果是指物体使得灯光衰减或改变方向，从而导致场景中的其他物体以不同方式被照明和渲染的效果。基于视图的效果是指在其中渲染半透明对象本身的效果。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Unity Shader 入门（四）：边缘发光效果</title>
     <link href="http://yoursite.com/2019/05/02/shader-learning4/"/>
     <id>http://yoursite.com/2019/05/02/shader-learning4/</id>
     <published>2019-05-01T16:00:00.000Z</published>
-    <updated>2019-05-15T02:09:26.429Z</updated>
+    <updated>2019-05-15T02:28:18.341Z</updated>
     
     <summary type="html">
     
