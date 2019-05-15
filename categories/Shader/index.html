@@ -647,106 +647,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                    <time class="level-item has-text-grey" datetime="2017-11-17T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2017-11-18</time>
-                    
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-01T01:49:24.178Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-01</time>
-                    
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 952 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/">Unity Shader 入门（四）：透明效果知识储备</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？</p>
-<h3 id="深度缓冲"><a href="#深度缓冲" class="headerlink" title="深度缓冲"></a>深度缓冲</h3><p>实际上，由于深度缓存（z-buffer）的存在,不透明的物体在不考虑渲染顺序的情况下也可以正确的被渲染。深度缓冲是用来解决物体可见性的问题，基本思想是：根据深度缓存里的值判断这个物体距离摄像机的距离。开始渲染一个片元的时候，需要把它的深度值和已存在于深度缓存中的值作比较，如果它的值距离摄像机更远那么就不会被渲染到屏幕上。否则更新片元的深度值到深度缓存中。</p>
-<h2 id="透明效果"><a href="#透明效果" class="headerlink" title="透明效果"></a>透明效果</h2><p>我们可以不关心不透明物体的渲染顺序，因为在深度测试中就可以测试出物体离摄像机的距离再判断是否写入颜色缓冲。但是对于不透明物体，就没这么简单了。想要达到半透明的效果，我们要利用透明度混合。</p>
-<h3 id="透明度混合"><a href="#透明度混合" class="headerlink" title="透明度混合"></a>透明度混合</h3><p>透明度混合要关闭深度写入。这是因为：假如一个半透明物体在一个不透明物体的前面，如果开启深度写入的话，距离摄像机更远的不透明物体就会被剔除，但是依照常理我们是可以透过半透明的物体看到不透明的物体。但是这就破坏了深度缓冲的机制，这是非常不好但是不得不做的折中方法，也因此使得渲染顺序变得非常重要。（注意：关闭深度写入，但是没有关闭深度测试）</p>
-<h3 id="渲染顺序"><a href="#渲染顺序" class="headerlink" title="渲染顺序"></a>渲染顺序</h3><p>我们考虑两种情况：</p>
-<ol>
-<li>既有半透明物体也有不透明物体：我们先渲染所有的不透明物体再渲染半透明物体</li>
-<li>全是半透明物体：开启深度测试，关闭深度写入的情况下将半透明物体按照距离摄像机的远近从后往前渲染。<ul>
-<li>这里有一个小问题，深度缓冲中的值是像素级别的，而一个半透明物体很可能有非常多个像素，这么一来每一个像素的深度值都可能不一样，以此会产生<font color="#D37885"> 循环遮挡</font>的情况。</li>
-<li>为了规避上面的问题，常常会把大的模型分割成小的几块，这样即使出现渲染错误，也不会出现太出格的结果。</li>
-</ul>
-</li>
-</ol>
-<h3 id="Unity设置的渲染序列"><a href="#Unity设置的渲染序列" class="headerlink" title="Unity设置的渲染序列"></a>Unity设置的渲染序列</h3><p>类似之前<code>Tags { &quot;RenderType&quot;=&quot;Opaque&quot; }</code>,我们可以用Queue标签来决定我们的模型是怎么渲染的。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">队列名称</th>
-<th style="text-align:center">队列索引</th>
-<th style="text-align:center">索引描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Background</td>
-<td style="text-align:center">1000</td>
-<td style="text-align:center">最早被渲染的队列，一般绘制背景元素</td>
-</tr>
-<tr>
-<td style="text-align:center">Geometry</td>
-<td style="text-align:center">2000</td>
-<td style="text-align:center">默认渲染队列，不透明物体渲染队列</td>
-</tr>
-<tr>
-<td style="text-align:center">AlphaTest</td>
-<td style="text-align:center">2450</td>
-<td style="text-align:center">需要透明度测试的物体在这个队列渲染</td>
-</tr>
-<tr>
-<td style="text-align:center">Transparent</td>
-<td style="text-align:center">3000</td>
-<td style="text-align:center">使用透明度混合的物体在这个队列渲染</td>
-</tr>
-<tr>
-<td style="text-align:center">Overlay</td>
-<td style="text-align:center">4000</td>
-<td style="text-align:center">最后被渲染的物体在这个队列，一般用于叠加效果</td>
-</tr>
-</tbody>
-</table>
-<h3 id="代码设置"><a href="#代码设置" class="headerlink" title="代码设置"></a>代码设置</h3><p>如果我们想要通过透明度混合来实现半透明效果，代码如下<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       Pass &#123; </span><br><span class="line">	    ZWrite Off ······</span><br><span class="line">       &#125; </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>ZWrite Off 意味者关闭深度写入，或者可以：<br><figure class="highlight haxe hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       ZWrite Off ······</span><br><span class="line">       Pass &#123; &#125; </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样表示这个SubShader下的所有Pass都会关闭深度写入</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -786,7 +686,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        7
                     </p>
                 </div>
             </div>
@@ -840,7 +740,7 @@
                 <span class="level-item">Shader</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li>
             </ul>
@@ -895,7 +795,7 @@
                     <span class="level-item">十一月 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
