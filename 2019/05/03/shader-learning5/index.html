@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言透明渲染是是图形学里面的常见问题之一，对于渲染算法，可以大致分为基于光和基于视图的效果。基于光的效果是指物体使得灯光衰减或改变方向，从而导致场景中的其他物体以不同方式被照明和渲染的效果。基于视图的效果是指在其中渲染半透明对象本身的效果。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-15T11:13:01.286Z">
+<meta property="og:updated_time" content="2019-05-16T02:41:59.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（五）：透明效果知识储备">
 <meta name="twitter:description" content="前言透明渲染是是图形学里面的常见问题之一，对于渲染算法，可以大致分为基于光和基于视图的效果。基于光的效果是指物体使得灯光衰减或改变方向，从而导致场景中的其他物体以不同方式被照明和渲染的效果。基于视图的效果是指在其中渲染半透明对象本身的效果。">
@@ -149,7 +149,7 @@
             <div class="level-left">
                     <time class="level-item has-text-grey" datetime="2019-05-02T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-03</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-15T11:13:01.286Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-15</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-16T02:41:59.513Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-16</time>
                     
                 
                 <div class="level-item">
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2277 个字)
+                    15 分钟 读完 (大约 2302 个字)
                 </span>
                 
                 
@@ -237,6 +237,7 @@
 <p>ZWrite Off 意味者关闭深度写入，或者可以：</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SubShader</span><br><span class="line">   &#123;</span><br><span class="line">       Tags &#123; <span class="hljs-string">"RenderType"</span>=<span class="hljs-string">"Transparent"</span> &#125;  </span><br><span class="line">       ZWrite Off ······</span><br><span class="line">       Pass &#123; &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>这样表示这个SubShader下的所有Pass都会关闭深度写入</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>下一篇我们就运用这些理论开始写第一个半透明的shader</p>
 
         </div>
         
@@ -313,6 +314,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/04/shader-learning6/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Unity Shader 入门（六）：边缘发光透明版</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -478,7 +486,11 @@
         <a class="is-flex" href="#代码设置">
         <span class="has-mr-6">4.1</span>
         <span>代码设置</span>
-        </a></li></ul></li></ul>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#结语">
+        <span class="has-mr-6">5</span>
+        <span>结语</span>
+        </a></li></ul>
         </div>
     </div>
 </div>

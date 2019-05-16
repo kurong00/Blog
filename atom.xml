@@ -9,7 +9,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <id>http://yoursite.com/</id>  
+<updated>2019-05-16T03:26:50.886Z</updated>  <id>http://yoursite.com/</id>  
   <author>
     <name>kurong00</name>
     
@@ -18,11 +18,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Unity Shader 入门（七）：模型描边Shader</title>
+    <link href="http://yoursite.com/2019/05/05/shader-learning7/"/>
+    <id>http://yoursite.com/2019/05/05/shader-learning7/</id>
+    <published>2019-05-04T16:00:00.000Z</published>
+    <updated>2019-05-16T03:26:50.886Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。&lt;/p&gt;
+&lt;p&gt;老规矩还是来看一下效果图：&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity Shader 入门（六）：边缘发光透明版</title>
+    <link href="http://yoursite.com/2019/05/04/shader-learning6/"/>
+    <id>http://yoursite.com/2019/05/04/shader-learning6/</id>
+    <published>2019-05-03T16:00:00.000Z</published>
+    <updated>2019-05-16T02:43:18.410Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前我们写过一个&lt;a href=&quot;https://chenwenling.cn/2019/05/02/shader-learning4/#more&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;边缘发光&lt;/a&gt;的Shader，这一次我们来写这个的升级版：透明物体的边缘发光。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Unity Shader 入门（五）：透明效果知识储备</title>
     <link href="http://yoursite.com/2019/05/03/shader-learning5/"/>
     <id>http://yoursite.com/2019/05/03/shader-learning5/</id>
     <published>2019-05-02T16:00:00.000Z</published>
-    <updated>2019-05-15T11:13:01.286Z</updated>
+    <updated>2019-05-16T02:41:59.513Z</updated>
     
     <summary type="html">
     
@@ -135,11 +176,11 @@
   </entry>
   
   <entry>
-    <title>Unity Shader 入门（六）：模型描边Shader</title>
+    <title>Unity Shader 入门（七）：模型描边Shader</title>
     <link href="http://yoursite.com/2018/02/08/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%8F%8F%E8%BE%B9Shader/"/>
     <id>http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/</id>
     <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2019-05-01T01:49:24.177Z</updated>    
+    <updated>2019-05-16T02:37:54.940Z</updated>
     <summary type="html">
     
       &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。&lt;/p&gt;
@@ -152,71 +193,70 @@
     
   </entry>
   
-  <entry>
-    <title>Unity Shader 入门（五）：边缘发光透明版</title>
-    <link href="http://yoursite.com/2017/11/25/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E8%BE%B9%E7%BC%98%E5%8F%91%E5%85%89%E9%80%8F%E6%98%8E%E7%89%88/"/>
-    <id>http://yoursite.com/2017/11/25/Unity Shader 入门（五）：边缘发光透明版/</id>
-    <published>2017-11-24T16:00:00.000Z</published>
-<<<<<<< HEAD
-    <updated>2019-04-30T02:37:47.148Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;之前我们写过一个边缘发光的Shader（&lt;a href=&quot;http://chenwenling.cn/2017/11/13/Unity%20
-=======
-    <updated>2019-05-01T01:49:24.177Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
->>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
-    
-    </summary>
-    
-      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Unity Shader 入门（四）：透明效果知识储备</title>
-    <link href="http://yoursite.com/2017/11/18/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/"/>
-    <id>http://yoursite.com/2017/11/18/Unity Shader 入门（四）：透明效果知识储备/</id>
-    <published>2017-11-17T16:00:00.000Z</published>
-<<<<<<< HEAD
-    <updated>2019-04-30T02:37:47.158Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;首先一个问题：如果场景中有非常多的物体，彼此之间有互相遮挡的情况，那么这些物体是按照什么样的渲染顺序进行渲染的呢？&lt;/p&gt;
-&lt;h3 id=&quot;
-=======
-    <updated>2019-05-01T01:49:24.178Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
->>>>>>> 9e62def5d865150fae5440cc55e3c06c4faf11a3
-    
-    </summary>
-    
-      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
-    
-    
-  </entry>
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
