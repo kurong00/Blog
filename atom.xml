@@ -175,24 +175,6 @@
     
   </entry>
   
-  <entry>
-    <title>Unity Shader 入门（七）：模型描边Shader</title>
-    <link href="http://yoursite.com/2018/02/08/Unity%20Shader%20%E5%85%A5%E9%97%A8%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%8F%8F%E8%BE%B9Shader/"/>
-    <id>http://yoursite.com/2018/02/08/Unity Shader 入门（六）：模型描边Shader/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2019-05-16T02:37:54.940Z</updated>
-    <summary type="html">
-    
-      &lt;h2 id=&quot;导语&quot;&gt;&lt;a href=&quot;#导语&quot; class=&quot;headerlink&quot; title=&quot;导语&quot;&gt;&lt;/a&gt;导语&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。&lt;/p&gt;
-&lt;p&gt;老规矩还是来看一下效果图：&lt;br&gt;&lt;/p&gt;
-      
-    </summary>
-    
-      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
-    
-    
-  </entry>
-  
 
 
 
