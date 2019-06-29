@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-21T12:42:39.265Z</updated>
+  <updated>2019-06-29T02:53:03.748Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity Shader 入门（九）：卡通高光shader</title>
+    <link href="http://yoursite.com/2019/05/23/shader-learning9/"/>
+    <id>http://yoursite.com/2019/05/23/shader-learning9/</id>
+    <published>2019-05-23T13:22:15.000Z</published>
+    <updated>2019-06-29T02:53:03.748Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;前一篇介绍了非真实渲染的理论知识，现在来写一个卡通高光效果，效果图如下：&lt;br&gt;&lt;img src=&quot;/2019/05/23/shader-learning9/1.png&quot; alt=&quot;效果图&quot;&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>Unity Shader 入门（八）：非真实感渲染知识准备</title>

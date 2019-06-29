@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>Unity Shader 入门（九）：卡通高光shader - Zero World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="前言前一篇介绍了非真实渲染的理论知识，现在来写一个卡通高光效果，效果图如下：">
+<meta name="keywords" content="Shader、图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity Shader 入门（九）：卡通高光shader">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/shader-learning9/index.html">
+<meta property="og:site_name" content="Zero World">
+<meta property="og:description" content="前言前一篇介绍了非真实渲染的理论知识，现在来写一个卡通高光效果，效果图如下：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-06-29T02:53:03.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity Shader 入门（九）：卡通高光shader">
+<meta name="twitter:description" content="前言前一篇介绍了非真实渲染的理论知识，现在来写一个卡通高光效果，效果图如下：">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logoMe.png" alt="Unity Shader 入门（九）：卡通高光shader" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/kurong00">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                    <time class="level-item has-text-grey" datetime="2019-05-23T13:22:15.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-23</time>
+                    
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-29T02:53:03.748Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-29</time>
+                    
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1355 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Unity Shader 入门（九）：卡通高光shader
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前一篇介绍了非真实渲染的理论知识，现在来写一个卡通高光效果，效果图如下：<br><img src="/2019/05/23/shader-learning9/1.png" alt="效果图"><br><a id="more"></a></p>
+<p>照例我们还是先放上完整的代码</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Kurong/NPR/ToonShaer"</span></span><br><span class="line">&#123;</span><br><span class="line">    Properties</span><br><span class="line">    &#123;</span><br><span class="line">        _Color (<span class="hljs-string">"Color"</span>, Color) = (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)</span><br><span class="line">        [HDR]_AmbientColor(<span class="hljs-string">"Ambient Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">        _MainTex(<span class="hljs-string">"Main Texture"</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">"white"</span> &#123;&#125;</span><br><span class="line">        [HDR]_SpecularColor(<span class="hljs-string">"Specular Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">        _Glossiness(<span class="hljs-string">"Glossiness"</span>, Float) = <span class="hljs-number">32</span></span><br><span class="line">        [HDR]_RimColor(<span class="hljs-string">"Rim Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">        _RimAmount(<span class="hljs-string">"Rim Amount"</span>, Range(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)) = <span class="hljs-number">0.716</span></span><br><span class="line">        _RimThreshold(<span class="hljs-string">"Rim Threshold"</span>, Range(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)) = <span class="hljs-number">0.1</span></span><br><span class="line">    &#125;</span><br><span class="line">    SubShader</span><br><span class="line">    &#123;</span><br><span class="line">        Tags &#123; <span class="hljs-string">"LightMode"</span> = <span class="hljs-string">"ForwardBase"</span> <span class="hljs-string">"PassFlags"</span> = <span class="hljs-string">"OnlyDirectional"</span> &#125;</span><br><span class="line">        LOD <span class="hljs-number">200</span></span><br><span class="line">        Pass</span><br><span class="line">        &#123;</span><br><span class="line">            CGPROGRAM</span><br><span class="line">            #pragma vertex vert</span><br><span class="line">            #pragma fragment frag</span><br><span class="line">            #include <span class="hljs-string">"UnityCG.cginc"</span></span><br><span class="line">            #include <span class="hljs-string">"Lighting.cginc"</span></span><br><span class="line"></span><br><span class="line">            sampler2D _MainTex;</span><br><span class="line">            float4 _MainTex_ST;</span><br><span class="line">            float4 _Color;</span><br><span class="line">            float4 _AmbientColor;</span><br><span class="line">            <span class="hljs-keyword">float</span> _Glossiness;</span><br><span class="line">            float4 _SpecularColor;</span><br><span class="line">            float4 _RimColor;</span><br><span class="line">            <span class="hljs-keyword">float</span> _RimAmount;</span><br><span class="line">            <span class="hljs-keyword">float</span> _RimThreshold;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">a2f</span></span></span><br><span class="line"><span class="hljs-class">            &#123;</span></span><br><span class="line">                float4 vertex : POSITION;</span><br><span class="line">                float4 uv : TEXCOORD0;</span><br><span class="line">                float3 normal : NORMAL;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">v2f</span></span></span><br><span class="line"><span class="hljs-class">            &#123;</span></span><br><span class="line">                float4 pos : SV_POSITION;</span><br><span class="line">                float2 uv : TEXCOORD0;</span><br><span class="line">                float3 worldNormal : NORMAL;</span><br><span class="line">                float3 viewDir : TEXCOORD1;</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="hljs-function">v2f <span class="hljs-title">vert</span> <span class="hljs-params">(a2f v)</span></span></span><br><span class="line"><span class="hljs-function">            </span>&#123;</span><br><span class="line">                v2f o;</span><br><span class="line">                o.pos = UnityObjectToClipPos(v.vertex);</span><br><span class="line">                o.uv = TRANSFORM_TEX(v.uv,_MainTex);</span><br><span class="line">                o.worldNormal = UnityObjectToWorldNormal(v.normal);</span><br><span class="line">                o.viewDir = WorldSpaceViewDir(v.vertex);</span><br><span class="line">                <span class="hljs-keyword">return</span> o;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            float4 frag (v2f v) : SV_Target</span><br><span class="line">            &#123;</span><br><span class="line">                float3 normal = normalize(v.worldNormal);</span><br><span class="line">                <span class="hljs-keyword">float</span> dotL = dot(normal,_WorldSpaceLightPos0);</span><br><span class="line">                <span class="hljs-keyword">float</span> lightIntensity = smoothstep(<span class="hljs-number">0</span>, <span class="hljs-number">0.01</span>, dotL);;</span><br><span class="line">                float4 light = lightIntensity * _LightColor0;</span><br><span class="line">                float3 viewDir = normalize(v.viewDir);</span><br><span class="line">                float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);</span><br><span class="line">                <span class="hljs-keyword">float</span> dotH = dot(normal, halfVector);</span><br><span class="line">                <span class="hljs-keyword">float</span> specularIntensity = <span class="hljs-built_in">pow</span>(dotH * lightIntensity, _Glossiness * _Glossiness);</span><br><span class="line">                <span class="hljs-keyword">float</span> specularIntensitySmooth = smoothstep(<span class="hljs-number">0.005</span>, <span class="hljs-number">0.01</span>, specularIntensity);</span><br><span class="line">                float4 specular = specularIntensitySmooth * _SpecularColor;</span><br><span class="line">                float4 rimDot = <span class="hljs-number">1</span> - dot(viewDir, normal);</span><br><span class="line">                <span class="hljs-keyword">float</span> rimIntensity = smoothstep(_RimAmount - <span class="hljs-number">0.01</span>, _RimAmount + <span class="hljs-number">0.01</span>, rimDot);</span><br><span class="line">                float4 rim = rimIntensity * _RimColor;</span><br><span class="line">                float4 sample = tex2D(_MainTex, v.uv);</span><br><span class="line">                <span class="hljs-keyword">return</span> _Color * (_AmbientColor + light + specular + rim);</span><br><span class="line">            &#125;</span><br><span class="line">            ENDCG</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    FallBack <span class="hljs-string">"Diffuse"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>首先我们准备一个非常简单的Shader，去掉默认的光照，直接输出一个单一的颜色<br><img src="/2019/05/23/shader-learning9/2.png" alt="单一颜色效果图"></p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Kurong/NPR/MainColor"</span></span><br><span class="line">&#123;</span><br><span class="line">    Properties</span><br><span class="line">    &#123;</span><br><span class="line">        _Color (<span class="hljs-string">"Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">        _MainTex (<span class="hljs-string">"Albedo (RGB)"</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">"white"</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    SubShader</span><br><span class="line">    &#123;</span><br><span class="line">        Pass</span><br><span class="line">        &#123;</span><br><span class="line">            Tags &#123; <span class="hljs-string">"LightMode"</span>=<span class="hljs-string">"ForwardBase"</span> &#125;</span><br><span class="line">            LOD <span class="hljs-number">200</span></span><br><span class="line">            CGPROGRAM</span><br><span class="line">            #pragma vertex vert</span><br><span class="line">            #pragma fragment frag</span><br><span class="line">            #include <span class="hljs-string">"UnityCG.cginc"</span></span><br><span class="line">            #include <span class="hljs-string">"Lighting.cginc"</span></span><br><span class="line"></span><br><span class="line">            sampler2D _MainTex;</span><br><span class="line">            float4 _Color;</span><br><span class="line">            float4 _MainTex_ST;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">a2f</span></span></span><br><span class="line"><span class="hljs-class">            &#123;</span></span><br><span class="line">                float4 vertex : POSITION;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">v2f</span></span></span><br><span class="line"><span class="hljs-class">            &#123;</span></span><br><span class="line">                float4 pos : SV_POSITION;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-function">v2f <span class="hljs-title">vert</span> <span class="hljs-params">(a2f v)</span></span></span><br><span class="line"><span class="hljs-function">            </span>&#123;</span><br><span class="line">                v2f o;</span><br><span class="line">                o.pos = UnityObjectToClipPos(v.vertex);</span><br><span class="line">                <span class="hljs-keyword">return</span> o;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            float4 frag (v2f v) : SV_Target</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> _Color;</span><br><span class="line">            &#125;</span><br><span class="line">            ENDCG</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    FallBack <span class="hljs-string">"Diffuse"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="单一光源"><a href="#单一光源" class="headerlink" title="单一光源"></a>单一光源</h2><p>我们之前常用的表面着色器里面包含了光照效果，例如我们在查看第一个Shader的时候看见：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> surface surf Standard fullforwardshadows</span></span><br></pre></td></tr></table></figure>
+<p>但有的时候我们希望这个材质只受单一的光源影响（在卡通渲染中经常用到），因此在Shader代码中我们进行设置：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tags &#123; <span class="hljs-string">"LightMode"</span> = <span class="hljs-string">"ForwardBase"</span> <span class="hljs-string">"PassFlags"</span> = <span class="hljs-string">"OnlyDirectional"</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>更多的tag可以查看<a href="https://docs.unity3d.com/Manual/SL-PassTags.html" target="_blank" rel="noopener">传送门</a>，这里我们采用的光照模型是 <strong>Blinn-Phong</strong></p>
+<h3 id="Blinn-Phong-光照模型"><a href="#Blinn-Phong-光照模型" class="headerlink" title="Blinn-Phong 光照模型"></a>Blinn-Phong 光照模型</h3><p><img src="/2019/05/23/shader-learning9/3.png" alt="左边为Phong模型，右边为Blinn-Phong模型"></p>
+<p>可以看到共有的条件有：</p>
+<ul>
+<li>光源方向 L</li>
+<li>法线方向 N</li>
+<li>视线方向 V</li>
+<li>反射方向 R</li>
+</ul>
+<p>而 Blinn-Phong 模型引入一个新的矢量 H ，通过视角方向和光源方向相加得到，然后使用 $\vec N$ 和 $\vec H$ 的夹角进行计算：</p>
+<p>$$ H = \frac{\vec V + \vec L}{|\vec V+\vec L|}$$</p>
+<p>总结一下Blinn模型的公式是：</p>
+<p>$$ C_{specular} = (C_{light} · M_{specular})max(0,\vec N · \vec H)$$</p>
+<p>这里我们加入法线信息：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">a2f</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    float4 vertex : POSITION;</span><br><span class="line">    float3 normal : NORMAL;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">v2f</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    float4 pos : SV_POSITION;</span><br><span class="line">    float3 worldNormal : NORMAL;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">v2f <span class="hljs-title">vert</span> <span class="hljs-params">(a2f v)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    v2f o;</span><br><span class="line">    o.pos = UnityObjectToClipPos(v.vertex);</span><br><span class="line">    o.worldNormal = UnityObjectToWorldNormal(v.normal);</span><br><span class="line">    <span class="hljs-keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float4 frag (v2f v) : SV_Target</span><br><span class="line">&#123;</span><br><span class="line">    float3 normal = normalize(v.worldNormal);</span><br><span class="line">    <span class="hljs-keyword">float</span> NdotL = dot(_WorldSpaceLightPos0 , normal);</span><br><span class="line">    <span class="hljs-keyword">return</span> _Color * NdotL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意 <strong>_WorldSpaceLightPos0</strong> 表示的是当前光源的位置。这样看起来是比较真实感的渲染，卡通渲染的一大特点就是明暗交界线十分明显，因此我们做一点小小的调整：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">float4 frag (v2f v) : SV_Target</span><br><span class="line">&#123;</span><br><span class="line">    float3 normal = normalize(v.worldNormal);</span><br><span class="line">    <span class="hljs-keyword">float</span> NdotL = dot(_WorldSpaceLightPos0 , normal);</span><br><span class="line">    <span class="hljs-keyword">float</span> lightIntensity = NdotL &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> _Color * lightIntensity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/23/shader-learning9/4.png" alt="左边为调整前，右边为调整后"></p>
+<h3 id="添加反射光"><a href="#添加反射光" class="headerlink" title="添加反射光"></a>添加反射光</h3><p>接下来我们添加反射光的颜色，添加属性：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[HDR]_AmbientColor(<span class="hljs-string">"Ambient Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">float4 frag (v2f v) : SV_Target</span><br><span class="line">&#123;</span><br><span class="line">    float3 normal = normalize(v.worldNormal);</span><br><span class="line">    <span class="hljs-keyword">float</span> NdotL = dot(_WorldSpaceLightPos0 , normal);</span><br><span class="line">    <span class="hljs-keyword">float</span> lightIntensity = NdotL &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;</span><br><span class="line">    float4 light = lightIntensity * _LightColor0;</span><br><span class="line">    <span class="hljs-keyword">return</span> _Color * (light + _AmbientColor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加 light 用来收集和光照有关的数据，<strong>_LightColor0</strong> 表示单一光源的颜色。这里我们注意到明暗交界的地方锯齿比较严重，修改一下代码</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">float</span> lightIntensity = smoothstep(<span class="hljs-number">0</span>, <span class="hljs-number">0.01</span>, dotL);</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/23/shader-learning9/5.png" alt="左图为修复前，右图为修复后"></p>
+<h2 id="添加高光"><a href="#添加高光" class="headerlink" title="添加高光"></a>添加高光</h2><p>卡通风格的高光往往是模型上一块明显的光斑，根据上面提到 Blinn-Phong 公式我们添加代码：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[HDR]_SpecularColor(<span class="hljs-string">"Specular Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">_Glossiness(<span class="hljs-string">"Glossiness"</span>, Float) = <span class="hljs-number">32</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">v2f</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    float4 pos : SV_POSITION;</span><br><span class="line">    float3 worldNormal : NORMAL;</span><br><span class="line">    float3 viewDir : TEXCOORD1;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function">v2f <span class="hljs-title">vert</span> <span class="hljs-params">(a2f v)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    v2f o;</span><br><span class="line">    o.pos = UnityObjectToClipPos(v.vertex);</span><br><span class="line">    o.worldNormal = UnityObjectToWorldNormal(v.normal);</span><br><span class="line">    o.viewDir = WorldSpaceViewDir(v.vertex);</span><br><span class="line">    <span class="hljs-keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float4 frag (v2f v) : SV_Target</span><br><span class="line">&#123;</span><br><span class="line">    float3 normal = normalize(v.worldNormal);</span><br><span class="line">    <span class="hljs-keyword">float</span> NdotL = dot(_WorldSpaceLightPos0 , normal);</span><br><span class="line">    <span class="hljs-keyword">float</span> lightIntensity = smoothstep(<span class="hljs-number">0</span>, <span class="hljs-number">0.01</span>, NdotL);</span><br><span class="line">    float4 light = lightIntensity * _LightColor0;</span><br><span class="line">    float3 viewDir = normalize(v.viewDir);</span><br><span class="line">    float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);</span><br><span class="line">    <span class="hljs-keyword">float</span> NdotH = dot(normal, halfVector);</span><br><span class="line">    <span class="hljs-keyword">float</span> specularIntensity = <span class="hljs-built_in">pow</span>(NdotH * lightIntensity, _Glossiness * _Glossiness) * _SpecularColor;</span><br><span class="line">    <span class="hljs-keyword">return</span> _Color * (light + _AmbientColor + specularIntensity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和明暗边界线的解决方案一样，也做一些小小的更改：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">float</span> specularIntensitySmooth = smoothstep(<span class="hljs-number">0.005</span>, <span class="hljs-number">0.01</span>, specularIntensity);</span><br><span class="line">float4 specular = specularIntensitySmooth * _SpecularColor;</span><br><span class="line"><span class="hljs-keyword">return</span> _Color * (light + _AmbientColor + specular);</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/23/shader-learning9/6.png" alt="左图为修复前，右图为修复后"></p>
+<h2 id="添加描边"><a href="#添加描边" class="headerlink" title="添加描边"></a>添加描边</h2><p>我们在发光的地方添加描边，模型更加卡通化：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[HDR]_RimColor(<span class="hljs-string">"Rim Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">_RimAmount(<span class="hljs-string">"Rim Amount"</span>, Range(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)) = <span class="hljs-number">0.5</span></span><br><span class="line">_RimThreshold(<span class="hljs-string">"Rim Threshold"</span>, Range(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)) = <span class="hljs-number">0.1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">float4 rimDot = <span class="hljs-number">1</span> - dot(viewDir, normal);</span><br><span class="line"><span class="hljs-keyword">float</span> rimIntensity = rimDot * <span class="hljs-built_in">pow</span>(NdotL, _RimThreshold);;</span><br><span class="line">rimIntensity = smoothstep(_RimAmount - <span class="hljs-number">0.01</span>, _RimAmount + <span class="hljs-number">0.01</span>, rimIntensity);</span><br><span class="line">float4 rim = rimIntensity * _RimColor;</span><br><span class="line"><span class="hljs-keyword">return</span> _Color * (light + _AmbientColor + specular + rim);</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/23/shader-learning9/7.png" alt="添加描边效果图"></p>
+<h2 id="添加阴影"><a href="#添加阴影" class="headerlink" title="添加阴影"></a>添加阴影</h2><p>最后一步添加阴影（场景中添加一个地板和遮蔽的物体）：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> multi_compile_fwdbase</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"AutoLight.cginc"</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">v2f</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    float4 pos : SV_POSITION;</span><br><span class="line">    float3 worldNormal : NORMAL;</span><br><span class="line">    float3 viewDir : TEXCOORD1;</span><br><span class="line">    SHADOW_COORDS(<span class="hljs-number">2</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">float</span> shadow = SHADOW_ATTENUATION(v);</span><br><span class="line"><span class="hljs-keyword">float</span> lightIntensity = smoothstep(<span class="hljs-number">0</span>, <span class="hljs-number">0.01</span>, NdotL * shadow);</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/23/shader-learning9/8.png" alt="左图为添加前，右图为添加后"></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Shader、图形学/">Shader、图形学</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/donate/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://blog.zhangruipeng.me/hexo-theme-icarus/gallery/donate/wechat.jpg" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations">
+    <input type="hidden" name="business" value="https://www.paypal.com/c2/home">
+    <input type="hidden" name="currency_code" value="USD">
+</form>
+
+                
+                
+<a class="button is-danger donate" href="https://www.patreon.com/" target="_blank">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/18/shader-learning8/">
+                <span class="level-item">Unity Shader 入门（八）：非真实感渲染知识准备</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/05/23/shader-learning9/';
+        this.page.identifier = '2019/05/23/shader-learning9/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'Kurong00' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/logoMe.png" alt="Kurong00">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Kurong00
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/kurong00" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#前期准备">
+        <span class="has-mr-6">2</span>
+        <span>前期准备</span>
+        </a></li><li>
+        <a class="is-flex" href="#单一光源">
+        <span class="has-mr-6">3</span>
+        <span>单一光源</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Blinn-Phong-光照模型">
+        <span class="has-mr-6">3.1</span>
+        <span>Blinn-Phong 光照模型</span>
+        </a></li><li>
+        <a class="is-flex" href="#添加反射光">
+        <span class="has-mr-6">3.2</span>
+        <span>添加反射光</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#添加高光">
+        <span class="has-mr-6">4</span>
+        <span>添加高光</span>
+        </a></li><li>
+        <a class="is-flex" href="#添加描边">
+        <span class="has-mr-6">5</span>
+        <span>添加描边</span>
+        </a></li><li>
+        <a class="is-flex" href="#添加阴影">
+        <span class="has-mr-6">6</span>
+        <span>添加阴影</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow  ">
+        
+        </div>
+    
+</div>
+
+            
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logoMe.png" alt="Unity Shader 入门（九）：卡通高光shader" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 kurong00&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
