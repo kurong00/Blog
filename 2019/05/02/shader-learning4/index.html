@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言上一节我们学习查看了第一个模板Shader，现在我们开始写第一个Shader练练手。首先我们挑一个：边缘发光效果 的shader来写，先来看一下效果图：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-15T02:28:18.341Z">
+<meta property="og:updated_time" content="2019-07-04T10:50:56.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（四）：边缘发光效果">
 <meta name="twitter:description" content="前言上一节我们学习查看了第一个模板Shader，现在我们开始写第一个Shader练练手。首先我们挑一个：边缘发光效果 的shader来写，先来看一下效果图：">
@@ -147,7 +147,7 @@
             <div class="level-left">
                     <time class="level-item has-text-grey" datetime="2019-05-01T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-02</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-15T02:28:18.341Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-15</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-04T10:50:56.659Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-04</time>
                     
                 
                 <div class="level-item">
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    22 分钟 读完 (大约 3372 个字)
+                    22 分钟 读完 (大约 3369 个字)
                 </span>
                 
                 
@@ -175,13 +175,13 @@
 <h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>根据物体表面法向量和视线向量的夹角来判断是否是物体的边缘部位。夹角越大（接近垂直）说明越接近物体边缘部分，<strong>重点：向量点积运算</strong>。</p>
 <h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>先放一段实现的代码：</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">"Kurong/Rim/RimLightingOpaque"</span></span><br><span class="line">&#123;</span><br><span class="line">    Properties</span><br><span class="line">    &#123;</span><br><span class="line">        _Color(<span class="hljs-string">"Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">        [Normal]_NormalMap(<span class="hljs-string">"Normal Map"</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">"bump"</span> &#123;&#125;</span><br><span class="line">        _RimColor(<span class="hljs-string">"Rim Color"</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0.0</span>)</span><br><span class="line">        _RimPower(<span class="hljs-string">"Rim Power"</span>, Range(<span class="hljs-number">0.5</span>,<span class="hljs-number">6.0</span>)) = <span class="hljs-number">1.0</span></span><br><span class="line">    &#125;</span><br><span class="line">    SubShader</span><br><span class="line">    &#123;</span><br><span class="line">        Tags &#123; <span class="hljs-string">"RenderType"</span> = <span class="hljs-string">"Opaque"</span> &#125;</span><br><span class="line">        LOD <span class="hljs-number">200</span></span><br><span class="line"></span><br><span class="line">        CGPROGRAM</span><br><span class="line"></span><br><span class="line">        #pragma surface surf Standard fullforwardshadows</span><br><span class="line"></span><br><span class="line">        #pragma target <span class="hljs-number">3.0</span></span><br><span class="line"></span><br><span class="line">        fixed4 _Color;</span><br><span class="line">        sampler2D _NormalMap;</span><br><span class="line">        float4 _RimColor;</span><br><span class="line">        <span class="hljs-keyword">float</span> _RimPower;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Input</span></span></span><br><span class="line"><span class="hljs-class">        &#123;</span></span><br><span class="line">            float2 uv_NormalMap;</span><br><span class="line">            float3 viewDir;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">surf</span><span class="hljs-params">(Input IN, inout SurfaceOutputStandard o)</span></span></span><br><span class="line"><span class="hljs-function">        </span>&#123;</span><br><span class="line">            o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));</span><br><span class="line">            o.Albedo = _Color;</span><br><span class="line">            half rim = <span class="hljs-number">1</span> - saturate(dot(o.Normal,normalize(IN.viewDir)));</span><br><span class="line">            o.Emission = _RimColor.rgb * <span class="hljs-built_in">pow</span>(rim,_RimPower);</span><br><span class="line">        &#125;</span><br><span class="line">        ENDCG</span><br><span class="line">        &#125;</span><br><span class="line">            FallBack <span class="hljs-string">"Diffuse"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="表面着色器"><a href="#表面着色器" class="headerlink" title="表面着色器"></a>表面着色器</h3><p>如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下：</p>
+<p>如果你看过上一篇的Shader介绍你应该可以大致看懂上面的代码，我们就关键部分说明一下：</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">surf</span><span class="hljs-params">(Input IN, inout SurfaceOutputStandard o)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));</span><br><span class="line">    o.Albedo = _Color;</span><br><span class="line">    half rim = <span class="hljs-number">1</span> - saturate(dot(o.Normal,normalize(IN.viewDir)));</span><br><span class="line">    o.Emission = _RimColor.rgb * <span class="hljs-built_in">pow</span>(rim,_RimPower);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));</span><br></pre></td></tr></table></figure>
 <p>UnpackNormal：是定义在UnityCG.cginc文件中的方法（这个文件中包含了一系列常用的CG变量以及方法，在Unity安装路径中可以找到），接受一个fixed4的输入，并将其转换为所对应的法线值。在解包得到这个值之后，将其赋给输出的Normal，这里如果有疑惑的话可以跳转下面的<a href="#拓展知识">拓展知识</a>。</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">half rim = <span class="hljs-number">1</span> - saturate(dot(o.Normal,normalize(IN.viewDir)));</span><br></pre></td></tr></table></figure>
 <ul>
-<li>normalize 函数：为了对向量进行归一化处理（这里传入 IN.viewDir 指的是 WorldSpace View Direction，也就是当前坐标的视角方向）</li>
+<li>normalize 函数：为了对向量进行归一化处理（这里传入 IN.viewDir 指的是 <strong>WorldSpace View Direction</strong>，也就是当前坐标的视角方向）</li>
 <li>dot 函数：返回传入的两个参数的点积</li>
 <li>saturate 函数：判断传入的参数是否在 0-1 之间，如果小于0，返回 0；如果大于 1，返回1</li>
 </ul>
@@ -189,7 +189,7 @@
 <ul>
 <li>从 _RimColor 参数获取自发光颜色再和发光的强度混合，最终将颜色赋值给像素的Emission（发散颜色）</li>
 </ul>
-<h2 id="拓展知识"><a href="#拓展知识" class="headerlink" title="拓展知识"></a>拓展知识</h2><p>一般情况下，模型面数越高，可以表现的细节越多，效果就更加真实，相应的计算量也就增大，性能下降。为了平衡这两者的矛盾，常常就使用法线贴图来解决，法线贴图就是把法线信息储存在一张图里。使用法线贴图时，通常顶点数和三角形面数只有高精度模型的十分之一不到，因此可以通过低面数模型来模拟高面数模型的效果，增加细节层次感，效果与高模相差不多，但是大大降低了模型的面数。</p>
+<h2 id="拓展知识"><a href="#拓展知识" class="headerlink" title="拓展知识"></a>拓展知识</h2><p>一般情况下，模型面数越高，可以表现的细节越多，效果就更加真实，与之相应的就是计算量增大，性能下降。为了平衡这两者的矛盾，常常就使用法线贴图来解决，法线贴图就是把法线信息储存在一张图里。使用法线贴图时，通常顶点数和三角形面数只有高精度模型的十分之一不到，因此可以通过低面数模型来模拟高面数模型的效果，增加细节层次感，效果与高模相差不多，但是大大降低了模型的面数。</p>
 <h3 id="法线贴图的历史"><a href="#法线贴图的历史" class="headerlink" title="法线贴图的历史"></a>法线贴图的历史</h3><p>从上古时代来看，最早提出的是凹凸贴图（Bump Mapping），凹凸贴图的思想最早是由图形学届大牛中的大牛 Jim Blinn 提出，后来的 Normal Mapping，Parallax Mapping，Parallax Occulision Mapping，Relief Mapping 等等，均是基于同样的思想，只是考虑得越来越全面，效果也越来越逼真。</p>
 <h4 id="凹凸贴图-Bump-Mapping"><a href="#凹凸贴图-Bump-Mapping" class="headerlink" title="凹凸贴图 Bump Mapping"></a>凹凸贴图 Bump Mapping</h4><p>凹凸贴图是指计算机图形学中在三维环境中通过纹理方法来产生表面凹凸不平的视觉效果。它主要的原理是通过改变表面<strong>光照方程</strong>的法线，而不是表面的几何法线，或对每个待渲染的像素在计算照明之前都要加上一个从高度图中找到的扰动，来模拟凹凸不平的视觉特征，如褶皱、波浪等等。</p>
 <p>Blinn 于 1978 年提出了凹凸贴图方法。使用凹凸贴图，是为了给光滑的平面，在不增加顶点的情况下，增加一些凹凸的变化。他的原理是通过法向量的变化，来产生光影的变化，从而产生凹凸感，而顶点是没有变换的。表示凹凸效果的另一种方法是使用高度图来修改表面法线的方向。每个单色纹理值代表一个高度，所以在纹理中，白色表示高高度区域，黑色是低高度的区域（反之亦然）。示例如图：<br><img src="/2019/05/02/shader-learning4/2.png" alt="Figure 2 波浪高度凹凸贴图以及其在材质上的使用"></p>
@@ -417,11 +417,7 @@
         <a class="is-flex" href="#具体实现">
         <span class="has-mr-6">3</span>
         <span>具体实现</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#表面着色器">
-        <span class="has-mr-6">3.1</span>
-        <span>表面着色器</span>
-        </a></li></ul></li><li>
+        </a></li><li>
         <a class="is-flex" href="#拓展知识">
         <span class="has-mr-6">4</span>
         <span>拓展知识</span>
