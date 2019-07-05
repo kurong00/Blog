@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-29T02:59:56.677Z</updated>
+  <updated>2019-07-05T02:36:34.548Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/05/23/shader-learning9/"/>
     <id>http://yoursite.com/2019/05/23/shader-learning9/</id>
     <published>2019-05-23T13:22:15.000Z</published>
-    <updated>2019-06-29T02:59:56.677Z</updated>
+    <updated>2019-07-05T02:36:34.548Z</updated>
     
     <summary type="html">
     
@@ -41,7 +41,7 @@
     <link href="http://yoursite.com/2019/05/18/shader-learning8/"/>
     <id>http://yoursite.com/2019/05/18/shader-learning8/</id>
     <published>2019-05-18T09:37:25.000Z</published>
-    <updated>2019-05-21T12:42:39.265Z</updated>
+    <updated>2019-07-05T02:36:04.853Z</updated>
     
     <summary type="html">
     
@@ -61,12 +61,13 @@
     <link href="http://yoursite.com/2019/05/05/shader-learning7/"/>
     <id>http://yoursite.com/2019/05/05/shader-learning7/</id>
     <published>2019-05-04T16:00:00.000Z</published>
-    <updated>2019-05-22T11:18:43.346Z</updated>
+    <updated>2019-07-05T02:33:56.345Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。&lt;/p&gt;
-&lt;p&gt;老规矩还是来看一下效果图：&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;老规矩还是来看一下效果图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2019/05/05/shader-learning7/1.png&quot; alt=&quot;模型描边&quot;&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -82,11 +83,12 @@
     <link href="http://yoursite.com/2019/05/04/shader-learning6/"/>
     <id>http://yoursite.com/2019/05/04/shader-learning6/</id>
     <published>2019-05-03T16:00:00.000Z</published>
-    <updated>2019-05-16T02:43:18.410Z</updated>
+    <updated>2019-07-05T02:30:30.255Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前我们写过一个&lt;a href=&quot;https://chenwenling.cn/2019/05/02/shader-learning4/#more&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;边缘发光&lt;/a&gt;的Shader，这一次我们来写这个的升级版：透明物体的边缘发光。&lt;br&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前我们写过一个&lt;a href=&quot;https://chenwenling.cn/2019/05/02/shader-learning4/#more&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;边缘发光&lt;/a&gt;的Shader，这一次我们来写这个的升级版：透明物体的边缘发光。&lt;/p&gt;
+&lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;p&gt;首先我们还是来看一下效果图：&lt;br&gt;&lt;img src=&quot;/2019/05/04/shader-learning6/1.png&quot; alt=&quot;边缘发光透明版&quot;&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -122,11 +124,12 @@
     <link href="http://yoursite.com/2019/05/02/shader-learning4/"/>
     <id>http://yoursite.com/2019/05/02/shader-learning4/</id>
     <published>2019-05-01T16:00:00.000Z</published>
-    <updated>2019-07-04T10:50:56.659Z</updated>
+    <updated>2019-07-05T02:01:41.448Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上一节我们学习查看了第一个模板Shader，现在我们开始写第一个Shader练练手。首先我们挑一个：&lt;strong&gt;边缘发光效果&lt;/strong&gt; 的shader来写，先来看一下效果图：&lt;br&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上一节我们学习查看了第一个模板Shader，现在我们开始写第一个Shader练练手。首先我们挑一个：&lt;strong&gt;边缘发光效果&lt;/strong&gt; 的shader来写，先来看一下效果图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2019/05/02/shader-learning4/1.png&quot; alt=&quot;Figure 1 边缘发光效果图&quot;&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     

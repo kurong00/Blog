@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。 老规矩还是来看一下效果图：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-22T11:18:43.346Z">
+<meta property="og:updated_time" content="2019-07-05T02:33:56.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（七）：模型描边Shader">
 <meta name="twitter:description" content="前言前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。 老规矩还是来看一下效果图：">
@@ -147,7 +147,7 @@
             <div class="level-left">
                     <time class="level-item has-text-grey" datetime="2019-05-04T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-05</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-22T11:18:43.346Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-22</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-05T02:33:56.345Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-05</time>
                     
                 
                 <div class="level-item">
@@ -172,7 +172,8 @@
         </h1>
         <div class="content">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前面几篇我们写了几个边缘发光的shader，另外一个类似功能的就是模型描边，和边缘发光不同的地方在于，描边是在原有模型的基础上，添加一圈的外框。</p>
-<p>老规矩还是来看一下效果图：<br><a id="more"></a><br><img src="/2019/05/05/shader-learning7/1.png" alt="模型描边"></p>
+<p>老规矩还是来看一下效果图：</p>
+<p><img src="/2019/05/05/shader-learning7/1.png" alt="模型描边"><br><a id="more"></a></p>
 <h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>利用两个Pass来绘制：</p>
 <ul>
 <li>第一个Pass将所有表面延展模型，挤出一点点并只输出描边的颜色</li>

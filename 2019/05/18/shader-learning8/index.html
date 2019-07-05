@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言非真实感渲染（Non-Photorealistic Rendering，NPR）， 亦被称为风格化渲染（Stylistic Rendering），与传统的追求照片真实感的真实感渲染（Photorealistic Rendering）计算机图形学不同，非真实感渲染旨在模拟艺术式的绘制风格，使用一些渲染方法达到和某些绘画风格相似的效果。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-21T12:42:39.265Z">
+<meta property="og:updated_time" content="2019-07-05T02:36:04.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（八）：非真实感渲染知识准备">
 <meta name="twitter:description" content="前言非真实感渲染（Non-Photorealistic Rendering，NPR）， 亦被称为风格化渲染（Stylistic Rendering），与传统的追求照片真实感的真实感渲染（Photorealistic Rendering）计算机图形学不同，非真实感渲染旨在模拟艺术式的绘制风格，使用一些渲染方法达到和某些绘画风格相似的效果。">
@@ -147,7 +147,7 @@
             <div class="level-left">
                     <time class="level-item has-text-grey" datetime="2019-05-18T09:37:25.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-18</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-21T12:42:39.265Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-21</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-05T02:36:04.853Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-05</time>
                     
                 
                 <div class="level-item">
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    22 分钟 读完 (大约 3344 个字)
+                    22 分钟 读完 (大约 3338 个字)
                 </span>
                 
                 
@@ -209,11 +209,11 @@
 <li>最后就可以对这些重建起来的路径进行风格化笔划渲染，其中，这些笔划本身可以用很多方法来进行风格化处理，包括变细、火焰、摆动、淡化等效果，同时还有深度和距离信息。如下图。</li>
 </ul>
 <p><img src="/2019/05/18/shader-learning8/9.png" alt="Figure 9 使用混合轮廓描边方法生成的图像，其中可以将找到的轮廓边缘连接起来作为笔划进行渲染。"></p>
-<h2 id="纹理调色板（-Palette-of-Textures-）"><a href="#纹理调色板（-Palette-of-Textures-）" class="headerlink" title="纹理调色板（ Palette of Textures ）"></a>纹理调色板（ Palette of Textures ）</h2><p>除了 toon 渲染这种比较受欢迎的模拟风格之外，还存在其他各式各样的风格。NPR 效果涵盖<br>的范围非常广泛，例如其中的一种：纹理调色板（palette of textures）由 Lake 等人讨论提出，基本思想是通过反射着色项（diffuse shading term）的不同，来选择应用于物体表面上的不同纹理。随着漫反射项逐渐变暗，可以用相应更暗的纹理，而为了能够产生手绘的效果，可以使用屏幕空间坐标来采样纹理。同时，为了增强绘制效果，可以在屏幕空间上的所有表面上运用纸纹理。随着物体的运动，他们就可以在纹理之间进行穿梭。原因在于这个纹理是在屏幕空间中实现的。此外，也可以在世界空间中运用这个纹理，这样就能够得到一个与屏幕空间完全不同的效果。</p>
+<h2 id="Palette-of-Textures-纹理调色板"><a href="#Palette-of-Textures-纹理调色板" class="headerlink" title="Palette of Textures 纹理调色板"></a>Palette of Textures 纹理调色板</h2><p>除了 toon 渲染这种比较受欢迎的模拟风格之外，还存在其他各式各样的风格。NPR 效果涵盖<br>的范围非常广泛，例如其中的一种：纹理调色板（palette of textures）由 Lake 等人讨论提出，基本思想是通过反射着色项（diffuse shading term）的不同，来选择应用于物体表面上的不同纹理。随着漫反射项逐渐变暗，可以用相应更暗的纹理，而为了能够产生手绘的效果，可以使用屏幕空间坐标来采样纹理。同时，为了增强绘制效果，可以在屏幕空间上的所有表面上运用纸纹理。随着物体的运动，他们就可以在纹理之间进行穿梭。原因在于这个纹理是在屏幕空间中实现的。此外，也可以在世界空间中运用这个纹理，这样就能够得到一个与屏幕空间完全不同的效果。</p>
 <p><img src="/2019/05/18/shader-learning8/10.png" alt="Figure 10 使用纹理调色板（paletteof textures）、纸纹理，以及轮廓边缘绘制生成的一幅图像。"></p>
-<h2 id="色调艺术图（-Tonal-Art-Maps-TAM-）"><a href="#色调艺术图（-Tonal-Art-Maps-TAM-）" class="headerlink" title="色调艺术图（ Tonal Art Maps/TAM ）"></a>色调艺术图（ Tonal Art Maps/TAM ）</h2><p>通过在纹理之间进行切换形成的硬着色效果和 toon 着色效果之间的一种混合，Praun 等人以实时生成笔划纹理分级细化图的方法，并可以将其以平滑的方式运用到物体表面上。第一步是生成即时使用的纹理，称为色调艺术图（Tonal Art Maps，TAM）,主要思想是将笔划绘制为分级细分图层次，如图。</p>
+<h2 id="Tonal-Art-Maps-TAM-色调艺术图"><a href="#Tonal-Art-Maps-TAM-色调艺术图" class="headerlink" title="Tonal Art Maps/TAM 色调艺术图"></a>Tonal Art Maps/TAM 色调艺术图</h2><p>通过在纹理之间进行切换形成的硬着色效果和 toon 着色效果之间的一种混合，Praun 等人以实时生成笔划纹理分级细化图的方法，并可以将其以平滑的方式运用到物体表面上。第一步是生成即时使用的纹理，称为色调艺术图（Tonal Art Maps，TAM）,主要思想是将笔划绘制为分级细分图层次，如图。</p>
 <p><img src="/2019/05/18/shader-learning8/11.png" alt="Figure 11 将笔划绘制到细分图层次中，每个分级细化图层次包含图中左边和上边纹理中的所有笔划，这样，在细化图层次之间和相邻纹理之间的插值就比较平滑"><br><img src="/2019/05/18/shader-learning8/12.png" alt="Figure 12 使用 TAM 渲染一副素描图的过程"></p>
-<h2 id="嫁接（-Graftals-）"><a href="#嫁接（-Graftals-）" class="headerlink" title="嫁接（ Graftals ）"></a>嫁接（ Graftals ）</h2><p>嫁接（Graftals）的基本思想，是将几何或者贴花纹理应用到物体表面，从而产生某种特殊效<br>果。可以通过所需要的细节层次，物体表面相对视点的方位或者其他因素，对纹理进行控制。这种方法可以用来模拟钢笔或者画刷的笔刷，如下图。</p>
+<h2 id="Graftals-嫁接"><a href="#Graftals-嫁接" class="headerlink" title="Graftals 嫁接"></a>Graftals 嫁接</h2><p>嫁接（Graftals）的基本思想，是将几何或者贴花纹理应用到物体表面，从而产生某种特殊效<br>果。可以通过所需要的细节层次，物体表面相对视点的方位或者其他因素，对纹理进行控制。这种方法可以用来模拟钢笔或者画刷的笔刷，如下图。</p>
 <p><img src="/2019/05/18/shader-learning8/13.png" alt="Figure 13 使用两种不同的嫁接（Graftals）风格绘制出来的 Standord 小兔"></p>
 
         </div>
@@ -452,17 +452,17 @@
         <span class="has-mr-6">2.2.5</span>
         <span>混和轮廓描边</span>
         </a></li></ul></li></ul></li><li>
-        <a class="is-flex" href="#纹理调色板（-Palette-of-Textures-）">
+        <a class="is-flex" href="#Palette-of-Textures-纹理调色板">
         <span class="has-mr-6">3</span>
-        <span>纹理调色板（ Palette of Textures ）</span>
+        <span>Palette of Textures 纹理调色板</span>
         </a></li><li>
-        <a class="is-flex" href="#色调艺术图（-Tonal-Art-Maps-TAM-）">
+        <a class="is-flex" href="#Tonal-Art-Maps-TAM-色调艺术图">
         <span class="has-mr-6">4</span>
-        <span>色调艺术图（ Tonal Art Maps/TAM ）</span>
+        <span>Tonal Art Maps/TAM 色调艺术图</span>
         </a></li><li>
-        <a class="is-flex" href="#嫁接（-Graftals-）">
+        <a class="is-flex" href="#Graftals-嫁接">
         <span class="has-mr-6">5</span>
-        <span>嫁接（ Graftals ）</span>
+        <span>Graftals 嫁接</span>
         </a></li></ul>
         </div>
     </div>
