@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-05T02:36:34.548Z</updated>
+  <updated>2019-07-09T03:31:58.004Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity Shader 入门（十）：卡通素描Shader</title>
+    <link href="http://yoursite.com/2019/07/05/shader-learning10/"/>
+    <id>http://yoursite.com/2019/07/05/shader-learning10/</id>
+    <published>2019-07-05T13:22:15.000Z</published>
+    <updated>2019-07-09T03:31:58.004Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前介绍了非真实感的卡通渲染，提到了Tonal Art Maps/TAM 色调艺术图&lt;br&gt;&lt;img src=&quot;/2019/07/05/shader-learning10/shader-learning8/12.png&quot; alt=&quot;Figure 12 使用 TAM 渲染一副素描图的过程&quot;&gt;&lt;br&gt;这次我们来实现素描画的效果&lt;br&gt;&lt;img src=&quot;/2019/07/05/shader-learning10/1.png&quot; alt=&quot;效果图&quot;&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Shader" scheme="http://yoursite.com/categories/Shader/"/>
+    
+    
+      <category term="Shader、图形学" scheme="http://yoursite.com/tags/Shader%E3%80%81%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>Unity Shader 入门（九）：卡通高光shader</title>
