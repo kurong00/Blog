@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-09T03:40:04.401Z</updated>
+  <updated>2019-07-09T04:55:50.079Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://yoursite.com/2019/07/05/shader-learning10/"/>
     <id>http://yoursite.com/2019/07/05/shader-learning10/</id>
     <published>2019-07-05T13:22:15.000Z</published>
-    <updated>2019-07-09T03:40:04.401Z</updated>
+    <updated>2019-07-09T04:55:50.079Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前介绍了非真实感的卡通渲染，提到了Tonal Art Maps/TAM 色调艺术图&lt;br&gt;&lt;img src=&quot;/2019/07/05/shader-learning10/6.png&quot; alt=&quot;使用 TAM 渲染一副素描图的过程&quot;&gt;&lt;br&gt;这次我们来实现素描画的效果&lt;br&gt;&lt;img src=&quot;/2019/07/05/shader-learning10/1.png&quot; alt=&quot;效果图&quot;&gt;&lt;br&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前介绍了非真实感的卡通渲染，提到了Tonal Art Maps/TAM 色调艺术图&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -41,7 +41,7 @@
     <link href="http://yoursite.com/2019/05/23/shader-learning9/"/>
     <id>http://yoursite.com/2019/05/23/shader-learning9/</id>
     <published>2019-05-23T13:22:15.000Z</published>
-    <updated>2019-07-05T02:36:34.548Z</updated>
+    <updated>2019-07-09T04:57:16.447Z</updated>
     
     <summary type="html">
     
@@ -185,11 +185,11 @@
     <link href="http://yoursite.com/2019/04/29/shader-learning2/"/>
     <id>http://yoursite.com/2019/04/29/shader-learning2/</id>
     <published>2019-04-28T16:00:00.000Z</published>
-    <updated>2019-05-10T03:32:07.323Z</updated>
+    <updated>2019-07-09T04:56:47.711Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;什么是Shader？&quot;&gt;&lt;a href=&quot;#什么是Shader？&quot; class=&quot;headerlink&quot; title=&quot;什么是Shader？&quot;&gt;&lt;/a&gt;什么是Shader？&lt;/h2&gt;&lt;p&gt;Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：&lt;br&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;什么是Shader&quot;&gt;&lt;a href=&quot;#什么是Shader&quot; class=&quot;headerlink&quot; title=&quot;什么是Shader&quot;&gt;&lt;/a&gt;什么是Shader&lt;/h2&gt;&lt;p&gt;Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：&lt;br&gt;&lt;/p&gt;
     
     </summary>
     

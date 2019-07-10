@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
+    <meta name="description" content="什么是ShaderShader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
 <meta name="keywords" content="Shader、图形学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity Shader 入门（二）：Shader介绍">
 <meta property="og:url" content="http://yoursite.com/2019/04/29/shader-learning2/index.html">
 <meta property="og:site_name" content="Zero World">
-<meta property="og:description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
+<meta property="og:description" content="什么是ShaderShader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-10T03:32:07.323Z">
+<meta property="og:updated_time" content="2019-07-09T04:56:47.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity Shader 入门（二）：Shader介绍">
-<meta name="twitter:description" content="什么是Shader？Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
+<meta name="twitter:description" content="什么是ShaderShader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -147,7 +147,7 @@
             <div class="level-left">
                     <time class="level-item has-text-grey" datetime="2019-04-28T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-29</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-10T03:32:07.323Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-10</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-09T04:56:47.711Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-09</time>
                     
                 
                 <div class="level-item">
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1642 个字)
+                    11 分钟 读完 (大约 1639 个字)
                 </span>
                 
                 
@@ -171,7 +171,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="什么是Shader？"><a href="#什么是Shader？" class="headerlink" title="什么是Shader？"></a>什么是Shader？</h2><p>Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：<br><a id="more"></a></p>
+            <h2 id="什么是Shader"><a href="#什么是Shader" class="headerlink" title="什么是Shader"></a>什么是Shader</h2><p>Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：<br><a id="more"></a></p>
 <ul>
 <li>顶点着色器（Vertex Shader）</li>
 <li>片元着色器（Fragment Shader）</li>
@@ -182,7 +182,7 @@
 <li>Vertex/Fragment Shaders （顶点/片断着色器）</li>
 <li>Fixed Function Shaders （固定管线着色器）：已被淘汰</li>
 </ul>
-<h2 id="什么是着色语言HLSL、GLSL、Cg？"><a href="#什么是着色语言HLSL、GLSL、Cg？" class="headerlink" title="什么是着色语言HLSL、GLSL、Cg？"></a>什么是着色语言HLSL、GLSL、Cg？</h2><p>上一篇讲到了很多可编程的着色阶段（例如顶点着色器、片元着色器等等）。之所以称为可编程的着色阶段就是因为可以用一种特定的语言来编写程序，也就是着色语言（Shading language），以下几种常见的着色语言：</p>
+<h2 id="什么是着色语言HLSL、GLSL、Cg"><a href="#什么是着色语言HLSL、GLSL、Cg" class="headerlink" title="什么是着色语言HLSL、GLSL、Cg"></a>什么是着色语言HLSL、GLSL、Cg</h2><p>上一篇讲到了很多可编程的着色阶段（例如顶点着色器、片元着色器等等）。之所以称为可编程的着色阶段就是因为可以用一种特定的语言来编写程序，也就是着色语言（Shading language），以下几种常见的着色语言：</p>
 <table>
 <thead>
 <tr>
@@ -213,7 +213,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="什么是ShaderLab？"><a href="#什么是ShaderLab？" class="headerlink" title="什么是ShaderLab？"></a>什么是ShaderLab？</h2><p>在Unity中，所有的Shader都是使用ShaderLab来编写的，从结构上来说，它定义了显示一个材质所需要的所有东西，而不仅仅是着色器代码，我们先来看一下ShaderLab的结构</p>
+<h2 id="什么是ShaderLab"><a href="#什么是ShaderLab" class="headerlink" title="什么是ShaderLab"></a>什么是ShaderLab</h2><p>在Unity中，所有的Shader都是使用ShaderLab来编写的，从结构上来说，它定义了显示一个材质所需要的所有东西，而不仅仅是着色器代码，我们先来看一下ShaderLab的结构</p>
 <p><img src="/2019/04/29/shader-learning2/1.png" alt="Figure 1"></p>
 <p>一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。</p>
 <h3 id="ShaderLab和着色语言的关系"><a href="#ShaderLab和着色语言的关系" class="headerlink" title="ShaderLab和着色语言的关系"></a>ShaderLab和着色语言的关系</h3><p>对于表面着色器和顶点着色器我们可以在 ShaderLab 的 Pass 中的 CGPROGRAM 和 ENDCG 之间嵌套Cg/HLSL。或者在 GLSLPROGRAM 和 ENDGLSL 之间嵌套 GLSL。</p>
@@ -436,17 +436,17 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#什么是Shader？">
+        <a class="is-flex" href="#什么是Shader">
         <span class="has-mr-6">1</span>
-        <span>什么是Shader？</span>
+        <span>什么是Shader</span>
         </a></li><li>
-        <a class="is-flex" href="#什么是着色语言HLSL、GLSL、Cg？">
+        <a class="is-flex" href="#什么是着色语言HLSL、GLSL、Cg">
         <span class="has-mr-6">2</span>
-        <span>什么是着色语言HLSL、GLSL、Cg？</span>
+        <span>什么是着色语言HLSL、GLSL、Cg</span>
         </a></li><li>
-        <a class="is-flex" href="#什么是ShaderLab？">
+        <a class="is-flex" href="#什么是ShaderLab">
         <span class="has-mr-6">3</span>
-        <span>什么是ShaderLab？</span>
+        <span>什么是ShaderLab</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#ShaderLab和着色语言的关系">
         <span class="has-mr-6">3.1</span>
