@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>炉石传说对战系统分析</title>
+      <link href="/2020/02/27/gamedesign01/"/>
+      <url>/2020/02/27/gamedesign01/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/2020/02/27/gamedesign01/Page-1.png" alt="游戏系统总览"></p><h2 id="系统总览"><a href="#系统总览" class="headerlink" title="系统总览"></a>系统总览</h2><p><img src="/2020/02/27/gamedesign01/Page-2.png" alt="对战系统总览"></p><h3 id="PVP"><a href="#PVP" class="headerlink" title="PVP"></a>PVP</h3><table><thead><tr><th style="text-align:center">名称</th><th style="text-align:left">含义</th><th style="text-align:left">优点</th><th style="text-align:left">缺点</th></tr></thead><tbody><tr><td style="text-align:center">对战模式</td><td style="text-align:left">玩家自己组成卡组，标准模式中卡包只能使用来自于最近两年的卡包与冒险模式，狂野模式中卡包可使用游戏所有的卡包与冒险模式。分为休闲和天梯两种，天梯模式下游戏胜负影响天梯积分</td><td style="text-align:left">标准模式对新玩家友好，扩展包更少可以降低新手入门门槛；怀念老卡牌的老玩家们则可以在狂野中继续使用原有卡组。奖励机制、星级和排名机制可以清晰的提供玩家目标。</td><td style="text-align:left">天梯环境中，职业平衡仍然不够，少数毒瘤卡组影响游戏体验</td></tr><tr><td style="text-align:center">乱斗模式</td><td style="text-align:left">每周四都会开放乱斗模式，每周的模式规则都不一样。每周第一次赢得乱斗会获得一个经典卡包。有时需要自己组牌，有时则会自动组成牌组，甚至不一样的英雄。</td><td style="text-align:left">乱斗的特殊规则是炉石新机制的试验田，也会造成很多平时天梯看不到的组合出现，可以测试各种奇葩机制的组合结果，从而为以后的版本改动提供数据依据。</td><td style="text-align:left">许多机制特殊导致部分卡组过于强势，奖励较少，玩家在赢得首胜卡包后降低游戏意愿</td></tr><tr><td style="text-align:center">竞技模式</td><td style="text-align:left">玩家花费150金币或者12元的门槛进入竞技场，参加竞技场用的卡牌不需要玩家拥有。玩家在30次选择中，每次从随机3张卡中选一张，组成卡组开始匹配。选牌时在选牌处下方清楚地看到费用曲线。如果胜利12场则挑战成功，失败3场则挑战失败。无论成功与否都会有奖励，奖励至少有一个卡包，并随胜场数给予不同数量的奖励（随机金币、粉尘或者卡包的一种）。</td><td style="text-align:left">奖励非常丰厚的同时也设置了入场券门槛。可以吸引玩家付出自己囤积的金币，达成回收金币的目的。而设置门槛则可以保证玩家可以获得一个卡包，可以让新手减低出局时的挫败感（至少有一个卡包和一点尘）。</td><td style="text-align:left">在给定的卡牌池中按3选1的模式导致卡组的组建随机性较大，对于新手来说难度不算友好，打惯天梯的玩家会不适应。</td></tr></tbody></table><a id="more"></a><h3 id="PVE"><a href="#PVE" class="headerlink" title="PVE"></a>PVE</h3><table><thead><tr><th style="text-align:center">名称</th><th style="text-align:left">含义</th><th style="text-align:left">优点</th><th style="text-align:left">缺点</th></tr></thead><tbody><tr><td style="text-align:center">冒险模式</td><td style="text-align:left">玩家使用700金币或者45元人民币购买冒险模式的一个区（总共4个区）。每个区开出4分之1的冒险模式奖励卡。每个区有数个首领，所有首领战胜了之后才能购买下个区。</td><td style="text-align:left">冒险模式为炉石传说补充了不同的剧情，丰富游戏内容。为颇具创意的首领们可以给玩家们耳目一新的体验，同时探索可以轻松过关的特殊卡组的过程也给了玩家更多的探索空间和成就感。多阶段的机制给了玩家一种“下一区更强挑战”的压迫感。与竞技场一样，也是达成回收金币的目的。</td><td style="text-align:left">奖励获得后冒险模式就失去了再挑战的意义。如果加入成就奖励、粉尘奖励等等可能会更好。某些关卡过于特殊，导致只有少数卡组能过关。</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏设计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏设计、游戏分析 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Unity Shader 入门（十）：卡通素描Shader</title>
       <link href="/2019/07/05/shader-learning10/"/>
       <url>/2019/07/05/shader-learning10/</url>

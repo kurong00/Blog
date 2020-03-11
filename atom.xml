@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-09T04:55:50.079Z</updated>
+  <updated>2020-03-11T08:03:51.999Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>炉石传说对战系统分析</title>
+    <link href="http://yoursite.com/2020/02/27/gamedesign01/"/>
+    <id>http://yoursite.com/2020/02/27/gamedesign01/</id>
+    <published>2020-02-27T00:17:29.000Z</published>
+    <updated>2020-03-11T08:03:51.999Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2020/02/27/gamedesign01/Page-1.png&quot; alt=&quot;游戏系统总览&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;系统总览&quot;&gt;&lt;a href=&quot;#系统总览&quot; class=&quot;headerlink&quot; title=&quot;系统总览&quot;&gt;&lt;/a&gt;系统总览&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2020/02/27/gamedesign01/Page-2.png&quot; alt=&quot;对战系统总览&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;PVP&quot;&gt;&lt;a href=&quot;#PVP&quot; class=&quot;headerlink&quot; title=&quot;PVP&quot;&gt;&lt;/a&gt;PVP&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;名称&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;含义&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;优点&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;缺点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;对战模式&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;玩家自己组成卡组，标准模式中卡包只能使用来自于最近两年的卡包与冒险模式，狂野模式中卡包可使用游戏所有的卡包与冒险模式。分为休闲和天梯两种，天梯模式下游戏胜负影响天梯积分&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;标准模式对新玩家友好，扩展包更少可以降低新手入门门槛；怀念老卡牌的老玩家们则可以在狂野中继续使用原有卡组。奖励机制、星级和排名机制可以清晰的提供玩家目标。&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;天梯环境中，职业平衡仍然不够，少数毒瘤卡组影响游戏体验&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;乱斗模式&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;每周四都会开放乱斗模式，每周的模式规则都不一样。每周第一次赢得乱斗会获得一个经典卡包。有时需要自己组牌，有时则会自动组成牌组，甚至不一样的英雄。&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;乱斗的特殊规则是炉石新机制的试验田，也会造成很多平时天梯看不到的组合出现，可以测试各种奇葩机制的组合结果，从而为以后的版本改动提供数据依据。&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;许多机制特殊导致部分卡组过于强势，奖励较少，玩家在赢得首胜卡包后降低游戏意愿&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;竞技模式&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;玩家花费150金币或者12元的门槛进入竞技场，参加竞技场用的卡牌不需要玩家拥有。玩家在30次选择中，每次从随机3张卡中选一张，组成卡组开始匹配。选牌时在选牌处下方清楚地看到费用曲线。如果胜利12场则挑战成功，失败3场则挑战失败。无论成功与否都会有奖励，奖励至少有一个卡包，并随胜场数给予不同数量的奖励（随机金币、粉尘或者卡包的一种）。&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;奖励非常丰厚的同时也设置了入场券门槛。可以吸引玩家付出自己囤积的金币，达成回收金币的目的。而设置门槛则可以保证玩家可以获得一个卡包，可以让新手减低出局时的挫败感（至少有一个卡包和一点尘）。&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;在给定的卡牌池中按3选1的模式导致卡组的组建随机性较大，对于新手来说难度不算友好，打惯天梯的玩家会不适应。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="游戏设计" scheme="http://yoursite.com/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="游戏设计、游戏分析" scheme="http://yoursite.com/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E3%80%81%E6%B8%B8%E6%88%8F%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>Unity Shader 入门（十）：卡通素描Shader</title>

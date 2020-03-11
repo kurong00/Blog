@@ -2,24 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Unity Shader 入门（二）：Shader介绍 - Zero World</title>
+<title>炉石传说对战系统分析 - Zero World</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="什么是ShaderShader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
-<meta name="keywords" content="Shader、图形学">
+    <meta name="description" content="系统总览 PVP   名称 含义 优点 缺点     对战模式 玩家自己组成卡组，标准模式中卡包只能使用来自于最近两年的卡包与冒险模式，狂野模式中卡包可使用游戏所有的卡包与冒险模式。分为休闲和天梯两种，天梯模式下游戏胜负影响天梯积分 标准模式对新玩家友好，扩展包更少可以降低新手入门门槛；怀念老卡牌的老玩家们则可以在狂野中继续使用原有卡组。奖励机制、星级和排名机制可以清晰的提供玩家目标。 天梯环境">
+<meta name="keywords" content="游戏设计、游戏分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity Shader 入门（二）：Shader介绍">
-<meta property="og:url" content="http://yoursite.com/2019/04/29/shader-learning2/index.html">
+<meta property="og:title" content="炉石传说对战系统分析">
+<meta property="og:url" content="http://yoursite.com/2020/02/27/gamedesign01/index.html">
 <meta property="og:site_name" content="Zero World">
-<meta property="og:description" content="什么是ShaderShader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
+<meta property="og:description" content="系统总览 PVP   名称 含义 优点 缺点     对战模式 玩家自己组成卡组，标准模式中卡包只能使用来自于最近两年的卡包与冒险模式，狂野模式中卡包可使用游戏所有的卡包与冒险模式。分为休闲和天梯两种，天梯模式下游戏胜负影响天梯积分 标准模式对新玩家友好，扩展包更少可以降低新手入门门槛；怀念老卡牌的老玩家们则可以在狂野中继续使用原有卡组。奖励机制、星级和排名机制可以清晰的提供玩家目标。 天梯环境">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-09T04:56:47.711Z">
+<meta property="og:updated_time" content="2020-03-11T08:03:51.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity Shader 入门（二）：Shader介绍">
-<meta name="twitter:description" content="什么是ShaderShader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：">
+<meta name="twitter:title" content="炉石传说对战系统分析">
+<meta name="twitter:description" content="系统总览 PVP   名称 含义 优点 缺点     对战模式 玩家自己组成卡组，标准模式中卡包只能使用来自于最近两年的卡包与冒险模式，狂野模式中卡包可使用游戏所有的卡包与冒险模式。分为休闲和天梯两种，天梯模式下游戏胜负影响天梯积分 标准模式对新玩家友好，扩展包更少可以降低新手入门门槛；怀念老卡牌的老玩家们则可以在狂野中继续使用原有卡组。奖励机制、星级和排名机制可以清晰的提供玩家目标。 天梯环境">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -92,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logoMe.png" alt="Unity Shader 入门（二）：Shader介绍" height="28">
+                <img src="/images/logoMe.png" alt="炉石传说对战系统分析" height="28">
             
             </a>
         </div>
@@ -145,20 +145,20 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                    <time class="level-item has-text-grey" datetime="2019-04-28T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-29</time>
+                    <time class="level-item has-text-grey" datetime="2020-02-27T00:17:29.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-27</time>
                     
-                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-09T04:56:47.711Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-09</time>
+                    <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-03-11T08:03:51.999Z"><i class="far fa-calendar-check">&nbsp;</i>2020-03-11</time>
                     
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Shader/">Shader</a>
+                <a class="has-link-grey -link" href="/categories/游戏设计/">游戏设计</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1639 个字)
+                    7 分钟 读完 (大约 987 个字)
                 </span>
                 
                 
@@ -167,74 +167,61 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Unity Shader 入门（二）：Shader介绍
+                炉石传说对战系统分析
             
         </h1>
         <div class="content">
-            <h2 id="什么是Shader"><a href="#什么是Shader" class="headerlink" title="什么是Shader"></a>什么是Shader</h2><p>Shader（着色器）：是渲染管线上的一小段程序，它负责将输入的Mesh（网格）以指定的方式和输入的贴图、颜色等组合作用然后输出。Shader开发者要做的就是根据输入，进行计算变换，产生输出。shader大体上可以分为两类：<br><a id="more"></a></p>
-<ul>
-<li>顶点着色器（Vertex Shader）</li>
-<li>片元着色器（Fragment Shader）</li>
-</ul>
-<p>而在Unity Shader中分为三类：</p>
-<ul>
-<li>Surface Shaders （表面着色器）：是Unity对Vertex/Fragment Shader的一层包装，可以以极少的代码来完成不同的光照模型与不同平台下需要考虑的事情；缺点是能够实现的效果不如片段着色器来的多。</li>
-<li>Vertex/Fragment Shaders （顶点/片断着色器）</li>
-<li>Fixed Function Shaders （固定管线着色器）：已被淘汰</li>
-</ul>
-<h2 id="什么是着色语言HLSL、GLSL、Cg"><a href="#什么是着色语言HLSL、GLSL、Cg" class="headerlink" title="什么是着色语言HLSL、GLSL、Cg"></a>什么是着色语言HLSL、GLSL、Cg</h2><p>上一篇讲到了很多可编程的着色阶段（例如顶点着色器、片元着色器等等）。之所以称为可编程的着色阶段就是因为可以用一种特定的语言来编写程序，也就是着色语言（Shading language），以下几种常见的着色语言：</p>
-<table>
+            <p><img src="/2020/02/27/gamedesign01/Page-1.png" alt="游戏系统总览"></p>
+<h2 id="系统总览"><a href="#系统总览" class="headerlink" title="系统总览"></a>系统总览</h2><p><img src="/2020/02/27/gamedesign01/Page-2.png" alt="对战系统总览"></p>
+<h3 id="PVP"><a href="#PVP" class="headerlink" title="PVP"></a>PVP</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">名称</th>
-<th style="text-align:left">API</th>
+<th style="text-align:left">含义</th>
 <th style="text-align:left">优点</th>
 <th style="text-align:left">缺点</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">HLSL（High Level Shading Language）</td>
-<td style="text-align:left">Direct3D</td>
-<td style="text-align:left">因为是由微软控制的着色器编译，因此即使是使用了不同的硬件，同一个着色器编译下的结果也都一样</td>
-<td style="text-align:left">支持HLSL的平台有限，几乎都是微软的产品（因为别的平台上没有相应的编译器）</td>
+<td style="text-align:center">对战模式</td>
+<td style="text-align:left">玩家自己组成卡组，标准模式中卡包只能使用来自于最近两年的卡包与冒险模式，狂野模式中卡包可使用游戏所有的卡包与冒险模式。分为休闲和天梯两种，天梯模式下游戏胜负影响天梯积分</td>
+<td style="text-align:left">标准模式对新玩家友好，扩展包更少可以降低新手入门门槛；怀念老卡牌的老玩家们则可以在狂野中继续使用原有卡组。奖励机制、星级和排名机制可以清晰的提供玩家目标。</td>
+<td style="text-align:left">天梯环境中，职业平衡仍然不够，少数毒瘤卡组影响游戏体验</td>
 </tr>
 <tr>
-<td style="text-align:center">GLSL（OpenGL Shading Language）</td>
-<td style="text-align:left">OpenGL</td>
-<td style="text-align:left">因为没有提供着色编译器，而是由显卡驱动来完成着色器的编译工作，因此具有优秀的跨平台性</td>
-<td style="text-align:left">编译的结果取决于硬件提供商（GLSL是依赖硬件而不是操作系统层次的）</td>
+<td style="text-align:center">乱斗模式</td>
+<td style="text-align:left">每周四都会开放乱斗模式，每周的模式规则都不一样。每周第一次赢得乱斗会获得一个经典卡包。有时需要自己组牌，有时则会自动组成牌组，甚至不一样的英雄。</td>
+<td style="text-align:left">乱斗的特殊规则是炉石新机制的试验田，也会造成很多平时天梯看不到的组合出现，可以测试各种奇葩机制的组合结果，从而为以后的版本改动提供数据依据。</td>
+<td style="text-align:left">许多机制特殊导致部分卡组过于强势，奖励较少，玩家在赢得首胜卡包后降低游戏意愿</td>
 </tr>
 <tr>
-<td style="text-align:center">Cg（C for Graphic）</td>
-<td style="text-align:left">/</td>
-<td style="text-align:left">Cg语言是 OpenGL和 DirectX 的上层，会根据平台的不同编译成不同的中间语言，即 Cg 程序是运行在 OpenGL 和 DirectX 标准顶点和像素着色的基础上的，因此具有真正的跨平台性。因为NVIDIA和微软的合作使得 Cg 和 HLSL 语法非常相像</td>
-<td style="text-align:left">可能无法发挥出 OpenGL 的最新特性</td>
+<td style="text-align:center">竞技模式</td>
+<td style="text-align:left">玩家花费150金币或者12元的门槛进入竞技场，参加竞技场用的卡牌不需要玩家拥有。玩家在30次选择中，每次从随机3张卡中选一张，组成卡组开始匹配。选牌时在选牌处下方清楚地看到费用曲线。如果胜利12场则挑战成功，失败3场则挑战失败。无论成功与否都会有奖励，奖励至少有一个卡包，并随胜场数给予不同数量的奖励（随机金币、粉尘或者卡包的一种）。</td>
+<td style="text-align:left">奖励非常丰厚的同时也设置了入场券门槛。可以吸引玩家付出自己囤积的金币，达成回收金币的目的。而设置门槛则可以保证玩家可以获得一个卡包，可以让新手减低出局时的挫败感（至少有一个卡包和一点尘）。</td>
+<td style="text-align:left">在给定的卡牌池中按3选1的模式导致卡组的组建随机性较大，对于新手来说难度不算友好，打惯天梯的玩家会不适应。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="什么是ShaderLab"><a href="#什么是ShaderLab" class="headerlink" title="什么是ShaderLab"></a>什么是ShaderLab</h2><p>在Unity中，所有的Shader都是使用ShaderLab来编写的，从结构上来说，它定义了显示一个材质所需要的所有东西，而不仅仅是着色器代码，我们先来看一下ShaderLab的结构</p>
-<p><img src="/2019/04/29/shader-learning2/1.png" alt="Figure 1"></p>
-<p>一个shader包含多个属性（Properties)，然后是一个或多个的子着色器（SubShader)，在实际运行中，哪一个子着色器被使用是由运行的平台所决定的。每一个子着色器中包含一个或者多个的Pass。在计算着色时，平台先选择最优先可以使用的着色器，然后依次运行其中的Pass，然后得到输出的结果。最后指定一个FallBack，用来处理所有Subshader都不能运行的情况,一般FallBack的都是平台已经定义好的shader。</p>
-<h3 id="ShaderLab和着色语言的关系"><a href="#ShaderLab和着色语言的关系" class="headerlink" title="ShaderLab和着色语言的关系"></a>ShaderLab和着色语言的关系</h3><p>对于表面着色器和顶点着色器我们可以在 ShaderLab 的 Pass 中的 CGPROGRAM 和 ENDCG 之间嵌套Cg/HLSL。或者在 GLSLPROGRAM 和 ENDGLSL 之间嵌套 GLSL。</p>
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Pass &#123;</span><br><span class="line">    CGPROGRAM</span><br><span class="line">    <span class="hljs-comment">//一些编译指令，例如：</span></span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> vertex vert</span></span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> fragment frag</span></span><br><span class="line">    <span class="hljs-comment">//Cg代码</span></span><br><span class="line">    ENDCG</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ShaderLab的模板"><a href="#ShaderLab的模板" class="headerlink" title="ShaderLab的模板"></a>ShaderLab的模板</h3><p>当我们打开Unity，然后在Project面板点击右键，依次从中选择Create/Shader/…发现会有很多的可选项</p>
-<p><img src="/2019/04/29/shader-learning2/2.png" alt="Figure 1"></p>
-<ul>
-<li>Standard Surface Shader：标准表面着色器，是一种基于物理的着色系统（使用了Physically Based Rendering（简称PBR）技术，即基于物理的渲染技术），以模拟现实真实的方式来模拟材质与灯光之间的关系，可以很轻易的表现出各种金属反光效果，同时此种Shader的书写逻辑也更符合人类的思维模式。</li>
-<li>Unlit Shader：Vertex/Fragment Shader,也就是最基本的顶点片断着色器，不受光照影响的Shader，多用于特效、UI上的效果制作。</li>
-<li>Image Effect Shader：也是顶点片断着色器，只不过是针对后处理而定制的模版，例如调色、景深、模糊等，这些基于最终整个屏幕画面而进行再处理的Shader就是后处理。</li>
-<li>Compute Shader：Compute Shader是运行在图形显卡上的一段程序，独立于常规渲染管线之外的，它可以直接将GPU作为并行处理器加以利用，从而使GPU不仅具有3D渲染能力，还具有其他的运算能力。</li>
-<li>Shader Variant Collection：Shader变体收集器，在上面创建的时候，你会发现Shader Variant Collection与以上四个是被隔开的，就是因为这个与它们不一样，它不是制作Shader的模版，而只是对Shader变体进行打包用的容器。</li>
-</ul>
-<p>注：以上的Standard Surface Shader、Unlit Shader、Image Effect Shader仅仅只是Unity为了方便我们书写而内置的几个模版，你完全可以建一个Unlit Shader，然后将其改成Surface Shader,同样也可以将一个Standard Surface Shader改成顶点片断着色器。</p>
-<h2 id="Shader和Material的关系"><a href="#Shader和Material的关系" class="headerlink" title="Shader和Material的关系"></a>Shader和Material的关系</h2><p>由于在Unity中Shader就是运行在图形显卡上的一段包含指令的代码，所以我们需要再创建一个材质来关联它，这样才能把材质赋给场景中的物体来实现我们想要的效果。总结一下Shader与材质的关系：</p>
-<ul>
-<li>一个Shader可以与无数个材质关联。</li>
-<li>一个材质同一时刻只能关联于一个Shader。（但是我们可以通过代码去动态改变材质所关联的Shader）</li>
-<li>材质可以赋与模型，但是Shader不行。</li>
-<li>材质就像是Shader的实例，每个材质都可以参数不一样呈现不同的效果，但是当Shader改变时，关联它的所有材质都会相应的改变。</li>
-</ul>
+<a id="more"></a>
+<h3 id="PVE"><a href="#PVE" class="headerlink" title="PVE"></a>PVE</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:left">含义</th>
+<th style="text-align:left">优点</th>
+<th style="text-align:left">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">冒险模式</td>
+<td style="text-align:left">玩家使用700金币或者45元人民币购买冒险模式的一个区（总共4个区）。每个区开出4分之1的冒险模式奖励卡。每个区有数个首领，所有首领战胜了之后才能购买下个区。</td>
+<td style="text-align:left">冒险模式为炉石传说补充了不同的剧情，丰富游戏内容。为颇具创意的首领们可以给玩家们耳目一新的体验，同时探索可以轻松过关的特殊卡组的过程也给了玩家更多的探索空间和成就感。多阶段的机制给了玩家一种“下一区更强挑战”的压迫感。与竞技场一样，也是达成回收金币的目的。</td>
+<td style="text-align:left">奖励获得后冒险模式就失去了再挑战的意义。如果加入成就奖励、粉尘奖励等等可能会更好。某些关卡过于特殊，导致只有少数卡组能过关。</td>
+</tr>
+</tbody>
+</table>
 
         </div>
         
@@ -242,7 +229,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Shader、图形学/">Shader、图形学</a>
+                    <a class="has-link-grey -link" href="/tags/游戏设计、游戏分析/">游戏设计、游戏分析</a>
                 </div>
             </div>
         </div>
@@ -312,17 +299,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/01/shader-learning3/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Unity Shader 入门（三）：查看Shader</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/28/shader-learning1/">
-                <span class="level-item">Unity Shader 入门（一）：渲染管线</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/05/shader-learning10/">
+                <span class="level-item">Unity Shader 入门（十）：卡通素描Shader</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -338,8 +318,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/04/29/shader-learning2/';
-        this.page.identifier = '2019/04/29/shader-learning2/';
+        this.page.url = 'http://yoursite.com/2020/02/27/gamedesign01/';
+        this.page.identifier = '2020/02/27/gamedesign01/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -436,30 +416,18 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#什么是Shader">
+        <a class="is-flex" href="#系统总览">
         <span class="has-mr-6">1</span>
-        <span>什么是Shader</span>
-        </a></li><li>
-        <a class="is-flex" href="#什么是着色语言HLSL、GLSL、Cg">
-        <span class="has-mr-6">2</span>
-        <span>什么是着色语言HLSL、GLSL、Cg</span>
-        </a></li><li>
-        <a class="is-flex" href="#什么是ShaderLab">
-        <span class="has-mr-6">3</span>
-        <span>什么是ShaderLab</span>
+        <span>系统总览</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#ShaderLab和着色语言的关系">
-        <span class="has-mr-6">3.1</span>
-        <span>ShaderLab和着色语言的关系</span>
+        <a class="is-flex" href="#PVP">
+        <span class="has-mr-6">1.1</span>
+        <span>PVP</span>
         </a></li><li>
-        <a class="is-flex" href="#ShaderLab的模板">
-        <span class="has-mr-6">3.2</span>
-        <span>ShaderLab的模板</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#Shader和Material的关系">
-        <span class="has-mr-6">4</span>
-        <span>Shader和Material的关系</span>
-        </a></li></ul>
+        <a class="is-flex" href="#PVE">
+        <span class="has-mr-6">1.2</span>
+        <span>PVE</span>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
@@ -482,7 +450,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logoMe.png" alt="Unity Shader 入门（二）：Shader介绍" height="28">
+                    <img src="/images/logoMe.png" alt="炉石传说对战系统分析" height="28">
                 
                 </a>
                 <p class="is-size-7">
